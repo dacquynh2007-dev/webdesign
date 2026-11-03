@@ -1,0 +1,1968 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RED DEVILS STORE | Cửa Hàng Áo Đấu Manchester United Chính Hãng</title>
+  <meta name="description" content="Trang web chính thức bán và tùy chỉnh áo đấu Manchester United. Đầy đủ trang chủ, bộ sưu tập, chi tiết sản phẩm, giỏ hàng, thanh toán và tra cứu đơn hàng.">
+  
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  
+  <!-- Font Awesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dark-theme">
+
+  <!-- Top Announcement Bar -->
+  <div class="announcement-bar">
+    <div class="container marquee-content">
+      <span>🔥 <strong>ƯU ĐÃI ĐỘC QUYỀN:</strong> Miễn phí in tên & số áo chuẩn Ngoại Hạng Anh khi đặt hàng hôm nay!</span>
+      <span class="divider">✦</span>
+      <span>⚡ Nhập mã <strong>GLORYMU</strong> giảm 10% cho mọi đơn hàng</span>
+      <span class="divider">✦</span>
+      <span>📦 Freeship toàn quốc cho đơn hàng từ 799.000đ</span>
+      <span class="divider">✦</span>
+      <span>🏟️ Cam kết 100% áo chính hãng chuẩn Old Trafford</span>
+    </div>
+  </div>
+
+  <!-- Main Site Header -->
+  <header class="site-header" id="header">
+    <div class="container header-container">
+      <!-- Mobile Toggle -->
+      <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Mở menu">
+        <i class="fa-solid fa-bars-staggered"></i>
+      </button>
+
+      <!-- Brand Logo -->
+      <a href="#home" class="brand-logo" data-navigate="home">
+        <div class="logo-emblem">
+          <svg viewBox="0 0 100 100" class="red-devil-svg">
+            <circle cx="50" cy="50" r="48" fill="#DA291C" stroke="#FFE500" stroke-width="3"/>
+            <path d="M50 18 L53 32 L47 32 Z M42 22 L45 32 L40 34 Z M58 22 L55 32 L60 34 Z M48 32 L52 32 L52 65 L48 65 Z" fill="#FFE500"/>
+            <path d="M35 48 C35 60 45 72 50 78 C55 72 65 60 65 48 C65 42 60 38 50 38 C40 38 35 42 35 48 Z" fill="#FFE500"/>
+            <circle cx="45" cy="46" r="2.5" fill="#DA291C"/>
+            <circle cx="55" cy="46" r="2.5" fill="#DA291C"/>
+            <path d="M44 54 Q50 60 56 54" stroke="#DA291C" stroke-width="2" fill="none"/>
+          </svg>
+        </div>
+        <div class="logo-text">
+          <span class="logo-title">RED DEVILS</span>
+          <span class="logo-subtitle">MANCHESTER UNITED STORE</span>
+        </div>
+      </a>
+
+      <!-- Primary Navigation Bar (SPA Multi-page router links) -->
+      <nav class="nav-menu" id="navMenu">
+        <button class="nav-link active" data-navigate="home">
+          <i class="fa-solid fa-house"></i> Trang Chủ
+        </button>
+        <button class="nav-link" data-navigate="shop">
+          <i class="fa-solid fa-shirt"></i> Bộ Sưu Tập Áo
+        </button>
+        <button class="nav-link" data-navigate="customizer">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Thiết Kế 3D
+        </button>
+        <button class="nav-link" data-navigate="history">
+          <i class="fa-solid fa-landmark"></i> Lịch Sử & HLV
+        </button>
+        <button class="nav-link" data-navigate="cart">
+          <i class="fa-solid fa-bag-shopping"></i> Giỏ Hàng
+          <span class="nav-cart-pill" id="navCartPill">0</span>
+        </button>
+        <button class="nav-link" data-navigate="checkout">
+          <i class="fa-solid fa-credit-card"></i> Thanh Toán
+        </button>
+        <button class="nav-link" data-navigate="tracking">
+          <i class="fa-solid fa-truck-fast"></i> Tra Cứu Đơn
+        </button>
+      </nav>
+
+      <!-- Header Action Utilities -->
+      <div class="header-actions">
+        <!-- Stadium Chant Sound -->
+        <button class="action-btn sound-btn" id="soundBtn" title="Bật âm thanh không khí Old Trafford" aria-label="Âm thanh khán đài">
+          <i class="fa-solid fa-volume-high"></i>
+          <span class="pulse-ring"></span>
+        </button>
+
+        <!-- Quick Search -->
+        <button class="action-btn search-trigger" id="searchTrigger" title="Tìm kiếm áo" aria-label="Tìm kiếm">
+          <i class="fa-solid fa-magnifying-glass"></i>
+        </button>
+
+        <!-- Cart Quick Drawer Trigger -->
+        <button class="action-btn cart-trigger" id="cartTrigger" title="Xem giỏ hàng" aria-label="Giỏ hàng">
+          <i class="fa-solid fa-bag-shopping"></i>
+          <span class="cart-badge" id="cartBadge">0</span>
+        </button>
+      </div>
+    </div>
+
+    <!-- Quick Search Dropdown -->
+    <div class="search-overlay" id="searchOverlay">
+      <div class="container search-container">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="searchInput" placeholder="Tìm theo tên cầu thủ (Bruno, Mainoo, Garnacho, Rashford) hoặc mẫu áo...">
+          <button id="searchClose" aria-label="Đóng tìm kiếm"><i class="fa-solid fa-xmark"></i></button>
+        </div>
+        <div class="search-suggestions" id="searchSuggestions">
+          <span>Gợi ý nhanh:</span>
+          <button class="tag-btn" data-search="Home">Áo Sân Nhà 24/25</button>
+          <button class="tag-btn" data-search="Away">Áo Sân Khách Navy</button>
+          <button class="tag-btn" data-search="Retro">Retro 1999 Treble</button>
+          <button class="tag-btn" data-search="Bruno">Bruno Fernandes</button>
+          <button class="tag-btn" data-search="Mainoo">Kobbie Mainoo</button>
+          <button class="tag-btn" data-navigate="history">📜 Lịch Sử & HLV</button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- Breadcrumbs Bar (Updates dynamically per page) -->
+  <div class="breadcrumbs-bar">
+    <div class="container breadcrumbs-container">
+      <a href="#home" data-navigate="home"><i class="fa-solid fa-house"></i> Trang Chủ</a>
+      <span class="crumb-separator">/</span>
+      <span class="current-crumb" id="currentCrumb">Trang Chủ</span>
+    </div>
+  </div>
+
+  <!-- ==================== MAIN MULTI-VIEW SPA CONTAINER ==================== -->
+  <main id="appContainer">
+
+    <!-- VIEW 1: TRANG CHỦ (HOME PAGE) -->
+    <section class="app-view active" id="viewHome">
+      <!-- Hero Section -->
+      <div class="hero-section">
+        <div class="hero-bg-lights">
+          <div class="glow-spot spot-left"></div>
+          <div class="glow-spot spot-right"></div>
+          <div class="stadium-silhouette"></div>
+        </div>
+
+        <div class="container hero-grid">
+          <div class="hero-content">
+            <div class="hero-tag">
+              <span class="devil-flame"><i class="fa-solid fa-fire"></i></span>
+              BỘ SƯU TẬP CHÍNH THỨC 2024 / 2025
+            </div>
+            <h1 class="hero-title">
+              THEATRE OF DREAMS
+              <span class="gradient-text">ÁO ĐẤU ĐỎ RỰC LỬA</span>
+            </h1>
+            <p class="hero-desc">
+              Khoác lên mình sắc đỏ kiêu hãnh của Quỷ Đỏ thành Manchester. Tùy chỉnh in tên & số áo chính hãng theo chuẩn Ngoại Hạng Anh với công nghệ tương tác 3D chân thực.
+            </p>
+
+            <div class="hero-features-chips">
+              <div class="chip"><i class="fa-solid fa-shield-halved"></i> 100% Chính Hãng</div>
+              <div class="chip"><i class="fa-solid fa-bolt"></i> In Tên Chuẩn Premier League</div>
+              <div class="chip"><i class="fa-solid fa-truck-fast"></i> Giao Hỏa Tốc Toàn Quốc</div>
+            </div>
+
+            <div class="hero-cta-group">
+              <button class="btn btn-primary btn-glow" data-navigate="customizer">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Tự Thiết Kế Áo 3D
+              </button>
+              <button class="btn btn-secondary" data-navigate="shop">
+                <i class="fa-solid fa-layer-group"></i> Xem Toàn Bộ Áo Đấu
+              </button>
+            </div>
+
+            <div class="hero-stats">
+              <div class="stat-item">
+                <span class="stat-num" id="countOrders">15,480+</span>
+                <span class="stat-label">Áo đấu đã xuất xưởng</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">4.9/5 ★</span>
+                <span class="stat-label">Từ 3,200+ Manucian</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-num">100%</span>
+                <span class="stat-label">Chất liệu Heat.Rdy / Aeroready</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Hero Visual Showcase -->
+          <div class="hero-visual">
+            <div class="hero-jersey-card">
+              <div class="badge-ribbon">BÁN CHẠY NHẤT</div>
+              <div class="jersey-showcase-wrapper">
+                <div class="floating-jersey-display" id="heroJerseyContainer">
+                  <svg viewBox="0 0 400 460" class="hero-jersey-svg" id="heroJerseySvg">
+                    <defs>
+                      <linearGradient id="heroRedGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e61c1c"/>
+                        <stop offset="40%" stop-color="#b80c0c"/>
+                        <stop offset="100%" stop-color="#730505"/>
+                      </linearGradient>
+                      <filter id="heroDropShadow" x="-20%" y="-20%" width="140%" height="140%">
+                        <feDropShadow dx="0" dy="15" stdDeviation="15" flood-color="#da291c" flood-opacity="0.35"/>
+                      </filter>
+                    </defs>
+                    
+                    <g filter="url(#heroDropShadow)">
+                      <!-- Left Sleeve -->
+                      <path d="M 125,50 L 35,115 L 75,170 L 125,120 Z" fill="url(#heroRedGrad)"/>
+                      <path d="M 35,115 L 45,108 L 85,163 L 75,170 Z" fill="#111"/>
+                      <!-- Right Sleeve -->
+                      <path d="M 275,50 L 365,115 L 325,170 L 275,120 Z" fill="url(#heroRedGrad)"/>
+                      <path d="M 365,115 L 355,108 L 315,163 L 325,170 Z" fill="#111"/>
+                      <!-- Torso -->
+                      <path d="M 125,50 Q 200,65 275,50 L 290,380 Q 200,395 110,380 Z" fill="url(#heroRedGrad)"/>
+                      <!-- Shoulder 3 Stripes -->
+                      <line x1="128" y1="52" x2="60" y2="105" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="135" y1="58" x2="68" y2="112" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="142" y1="64" x2="76" y2="119" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="272" y1="52" x2="340" y2="105" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="265" y1="58" x2="332" y2="112" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                      <line x1="258" y1="64" x2="324" y2="119" stroke="#ffffff" stroke-width="3.5" stroke-linecap="round"/>
+                      <!-- Collar -->
+                      <path d="M 155,52 Q 200,95 245,52 L 235,50 Q 200,80 165,50 Z" fill="#ffffff"/>
+                      <!-- Snapdragon -->
+                      <g transform="translate(140, 195)">
+                        <path d="M 60,8 C 55,2 45,0 40,6 C 36,11 40,18 48,18 C 52,18 58,15 60,8 Z" fill="#ffffff" opacity="0.9"/>
+                        <circle cx="48" cy="8" r="2.5" fill="#da291c"/>
+                        <text x="60" y="35" font-family="'Montserrat', sans-serif" font-weight="800" font-size="16" fill="#ffffff" letter-spacing="3" text-anchor="middle">Snapdragon</text>
+                      </g>
+                      <!-- Crest & Adidas -->
+                      <circle cx="240" cy="125" r="14" fill="#FFE500" stroke="#000" stroke-width="1.5"/>
+                      <text x="240" y="128" font-size="8" text-anchor="middle" fill="#da291c" font-weight="900">MU</text>
+                      <text x="200" y="295" font-family="'Outfit', sans-serif" font-weight="600" font-size="12" fill="rgba(255,255,255,0.7)" text-anchor="middle">PHIÊN BẢN CHÍNH THỨC 2024/25</text>
+                      <text x="200" y="320" font-family="'Bebas Neue', sans-serif" font-size="24" fill="#ffffff" letter-spacing="2" text-anchor="middle">OLD TRAFFORD HOME KIT</text>
+                    </g>
+                  </svg>
+                </div>
+              </div>
+              <div class="hero-quick-switch">
+                <span class="switch-label">Khám phá nhanh:</span>
+                <button class="btn btn-sm btn-outline" data-navigate="customizer">
+                  Mở Studio In Tên <i class="fa-solid fa-arrow-right"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Quick Categories Banners -->
+      <div class="container section-padding">
+        <div class="categories-banner-grid">
+          <div class="cat-banner-card cat-home" data-navigate="shop" data-filter="home">
+            <div class="cat-banner-content">
+              <span class="cat-tag">CHỦ ĐẠO</span>
+              <h3>ÁO SÂN NHÀ HOME KIT</h3>
+              <p>Sắc đỏ truyền thống kết hợp công nghệ dệt Heat.Rdy</p>
+              <span class="cat-link">Xem bộ sưu tập <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="cat-banner-card cat-away" data-navigate="shop" data-filter="away">
+            <div class="cat-banner-content">
+              <span class="cat-tag">HIỆN ĐẠI</span>
+              <h3>ÁO SÂN KHÁCH AWAY KIT</h3>
+              <p>Màu xanh Royal Navy quyền lực cho những chuyến du đấu</p>
+              <span class="cat-link">Xem bộ sưu tập <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+          <div class="cat-banner-card cat-retro" data-navigate="shop" data-filter="retro">
+            <div class="cat-banner-content">
+              <span class="cat-tag">HUYỀN THOẠI</span>
+              <h3>RETRO CLASSICS 1999</h3>
+              <p>Tái hiện Cú Ăn 3 Thần Thánh và Đêm Mưa Moscow 2008</p>
+              <span class="cat-link">Xem bộ sưu tập <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Featured Best Sellers Showcase -->
+      <div class="container section-padding">
+        <div class="section-header-flex">
+          <div>
+            <span class="section-badge"><i class="fa-solid fa-fire"></i> SẢN PHẨM NỔI BẬT</span>
+            <h2 class="section-title">TOP ÁO ĐẤU ĐƯỢC ĐẶT NHIỀU NHẤT</h2>
+          </div>
+          <button class="btn btn-outline" data-navigate="shop">
+            Xem Tất Cả Áo <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+        <div class="products-grid" id="homeFeaturedGrid">
+          <!-- Populated by script -->
+        </div>
+      </div>
+
+      <!-- Interactive 3D Customizer Teaser Banner -->
+      <div class="container section-padding">
+        <div class="customizer-teaser-box">
+          <div class="teaser-content">
+            <span class="teaser-badge"><i class="fa-solid fa-cube"></i> TÍNH NĂNG ĐỘC QUYỀN</span>
+            <h2>TỰ TAY THIẾT KẾ ÁO ĐẤU 3D CHUẨN CẦU THỦ</h2>
+            <p>
+              Nhập tên của bạn hoặc thần tượng (Bruno, Rashford, Mainoo, Garnacho), chọn số áo, gắn huy hiệu Ngoại Hạng Anh hay C1, xoay lật 180° mặt trước - mặt sau trực quan.
+            </p>
+            <div class="teaser-actions">
+              <button class="btn btn-primary btn-large btn-glow" data-navigate="customizer">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Mở Phòng Thiết Kế 3D Ngay
+              </button>
+              <button class="btn btn-outline" id="teaserSizeGuideBtn">
+                <i class="fa-solid fa-ruler-combined"></i> Tính Size Thông Minh
+              </button>
+            </div>
+          </div>
+          <div class="teaser-badge-list">
+            <div class="t-badge"><i class="fa-solid fa-check"></i> Xem trước tức thì</div>
+            <div class="t-badge"><i class="fa-solid fa-check"></i> Font Ngoại Hạng Anh chính thức</div>
+            <div class="t-badge"><i class="fa-solid fa-check"></i> Miễn phí in tên số</div>
+            <div class="t-badge"><i class="fa-solid fa-check"></i> Huy hiệu tay áo sắc nét</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stadium Atmosphere Sound Section -->
+      <div class="container section-padding">
+        <div class="stadium-sound-section">
+          <span class="section-badge"><i class="fa-solid fa-bullhorn"></i> THE STRETFORD END EXPERIENCE</span>
+          <h3 class="sound-title">HÒA MÌNH CÙNG KHÔNG KHÍ SÂN OLD TRAFFORD</h3>
+          <p class="sound-sub">Bấm nút để nghe các giai điệu cổ động kinh điển của CĐV Manchester United</p>
+          <div class="sound-buttons-row">
+            <button class="sound-pill-btn" data-sound="chant">
+              <i class="fa-solid fa-music"></i> 🎵 Glory Glory Man United
+            </button>
+            <button class="sound-pill-btn" data-sound="roar">
+              <i class="fa-solid fa-volume-high"></i> 📢 Tiếng Gầm Khán Đài (Crowd Roar)
+            </button>
+            <button class="sound-pill-btn" data-sound="whistle">
+              <i class="fa-solid fa-flag-checkered"></i> ⚽ Còi Trọng Tài Khai Cuộc
+            </button>
+            <button class="sound-pill-btn" data-sound="anthem">
+              <i class="fa-solid fa-drum"></i> 🥁 Nhịp Trống Trận Đấu Lớn
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Home History Showcase Teaser -->
+      <div class="container section-padding">
+        <div class="history-teaser-banner">
+          <div class="history-teaser-content">
+            <span class="section-badge"><i class="fa-solid fa-trophy"></i> DI SẢN 147 NĂM & CÁC HUYỀN THOẠI</span>
+            <h2 class="section-title">TỪ NEWTON HEATH 1878 ĐẾN ĐẾ CHẾ BẤT TỬ OLD TRAFFORD</h2>
+            <p class="section-subtitle">
+              Hành trình gần 1,5 thế kỷ rực lửa với kỷ lục 20 chức vô địch nước Anh, 3 Cúp C1 Champions League, sự hồi sinh phi thường sau thảm họa Munich 1958, Cú Ăn Ba 1999 bất tử và dấu ấn của 25 đời thuyền trưởng dẫn dắt Quỷ Đỏ.
+            </p>
+
+            <div class="history-stat-counters">
+              <div class="h-stat-box">
+                <span class="h-num">1878</span>
+                <span class="h-label">Năm Thành Lập</span>
+              </div>
+              <div class="h-stat-box highlight">
+                <span class="h-num">20</span>
+                <span class="h-label">Vô Địch Nước Anh</span>
+              </div>
+              <div class="h-stat-box">
+                <span class="h-num">3</span>
+                <span class="h-label">Cúp C1 / UCL</span>
+              </div>
+              <div class="h-stat-box">
+                <span class="h-num">67</span>
+                <span class="h-label">Danh Hiệu Lớn Nhỏ</span>
+              </div>
+              <div class="h-stat-box">
+                <span class="h-num">25</span>
+                <span class="h-label">Đời HLV Dẫn Dắt</span>
+              </div>
+            </div>
+
+            <div class="history-legends-preview">
+              <div class="legend-chip">
+                <div class="legend-avatar"><i class="fa-solid fa-crown text-gold"></i></div>
+                <div>
+                  <strong>Sir Matt Busby</strong>
+                  <span>1945 - 1971 • 13 Danh hiệu • Cúp C1 1968</span>
+                </div>
+              </div>
+              <div class="legend-chip highlight-legend">
+                <div class="legend-avatar"><i class="fa-solid fa-star text-gold"></i></div>
+                <div>
+                  <strong>Sir Alex Ferguson</strong>
+                  <span>1986 - 2013 • 38 Danh hiệu • Cú Ăn Ba 1999</span>
+                </div>
+              </div>
+              <div class="legend-chip">
+                <div class="legend-avatar"><i class="fa-solid fa-compass text-red"></i></div>
+                <div>
+                  <strong>Rúben Amorim</strong>
+                  <span>2024 - Hiện tại • Triết lý mới cùng INEOS</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="history-teaser-cta">
+              <button class="btn btn-primary btn-large btn-glow" data-navigate="history">
+                <i class="fa-solid fa-landmark"></i> Khám Phá Lịch Sử & 25 Đời Huấn Luyện Viên <i class="fa-solid fa-arrow-right"></i>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Fan Reviews -->
+      <div class="container section-padding">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-heart"></i> CỘNG ĐỒNG MANUCIAN</span>
+          <h2 class="section-title">ĐÁNH GIÁ TỪ NGƯỜI HÂM MỘ</h2>
+          <p class="section-subtitle">Hơn 15.000+ chiếc áo đấu đã đồng hành cùng CĐV Manchester United trên khắp Việt Nam</p>
+        </div>
+        <div class="reviews-grid">
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"Áo bản Player Heat.Rdy cầm trên tay vải cực kỳ nhẹ và mát. Mình đặt in tên MAINOO 37 số sắc nét, font chữ Ngoại Hạng Anh chuẩn đét, có cả logo sư tử chìm dưới chân số!"</p>
+            <div class="reviewer-meta">
+              <div class="avatar">NT</div>
+              <div>
+                <div class="reviewer-name">Nguyễn Tuấn (Hà Nội)</div>
+                <div class="reviewer-tag"><i class="fa-solid fa-circle-check"></i> Đã mua Áo Home 24/25 Player Edition</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"Đặt áo Retro 1999 Sharp cổ bẻ làm kỷ niệm cú ăn 3 huyền thoại. Đường may cổ bẻ cực kỳ cứng cáp, mang đi xem các trận Big Match ở quán ai cũng hỏi mua ở đâu."</p>
+            <div class="reviewer-meta">
+              <div class="avatar">LH</div>
+              <div>
+                <div class="reviewer-name">Lê Hoàng (TP. Hồ Chí Minh)</div>
+                <div class="reviewer-tag"><i class="fa-solid fa-circle-check"></i> Đã mua Áo Retro 1999 Treble Beckham</div>
+              </div>
+            </div>
+          </div>
+          <div class="review-card">
+            <div class="review-stars">★★★★★</div>
+            <p class="review-quote">"Cực kỳ thích tính năng xem trước áo 3D xoay lật mặt trước mặt sau và bộ tính size tự động. Mình cao 1m72 nặng 68kg chọn size M vừa như in!"</p>
+            <div class="reviewer-meta">
+              <div class="avatar">QD</div>
+              <div>
+                <div class="reviewer-name">Quốc Đạt (Đà Nẵng)</div>
+                <div class="reviewer-tag"><i class="fa-solid fa-circle-check"></i> Đã mua Áo Away Xanh Navy 24/25 Bruno</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 2: BỘ SƯU TẬP ÁO (SHOP / CATALOG PAGE) -->
+    <section class="app-view" id="viewShop">
+      <div class="container section-padding">
+        <div class="page-title-banner">
+          <h1>BỘ SƯU TẬP ÁO ĐẤU MANCHESTER UNITED</h1>
+          <p>Tất cả mẫu áo đấu sân nhà, sân khách, áo thứ 3, áo thủ môn và retro cổ điển chính hãng</p>
+        </div>
+
+        <div class="shop-layout">
+          <!-- Left Sidebar Filters -->
+          <aside class="shop-sidebar">
+            <div class="filter-card">
+              <h4><i class="fa-solid fa-filter"></i> Phân Loại Áo</h4>
+              <ul class="filter-category-list">
+                <li><button class="filter-link active" data-filter="all">Tất Cả Áo Đấu <span class="badge-count" id="countAll">8</span></button></li>
+                <li><button class="filter-link" data-filter="home">Áo Sân Nhà (Home) <span class="badge-count" id="countHome">2</span></button></li>
+                <li><button class="filter-link" data-filter="away">Áo Sân Khách (Away) <span class="badge-count" id="countAway">2</span></button></li>
+                <li><button class="filter-link" data-filter="third">Bộ Thứ Ba (Third) <span class="badge-count" id="countThird">1</span></button></li>
+                <li><button class="filter-link" data-filter="retro">Retro Huyền Thoại <span class="badge-count" id="countRetro">2</span></button></li>
+                <li><button class="filter-link" data-filter="gk">Áo Thủ Môn (GK) <span class="badge-count" id="countGk">1</span></button></li>
+              </ul>
+            </div>
+
+            <div class="filter-card">
+              <h4><i class="fa-solid fa-tag"></i> Lọc Theo Mức Giá</h4>
+              <div class="price-range-wrap">
+                <input type="range" id="priceRangeInput" min="500000" max="1500000" step="50000" value="1500000">
+                <div class="price-range-labels">
+                  <span>500K</span>
+                  <span id="priceRangeDisplay">Tất cả (Dưới 1.500.000đ)</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="filter-card">
+              <h4><i class="fa-solid fa-shirt"></i> Phiên Bản Dệt</h4>
+              <div class="checkbox-group">
+                <label><input type="checkbox" class="version-filter" value="player" checked> Bản Cầu Thủ (Player Heat.Rdy)</label>
+                <label><input type="checkbox" class="version-filter" value="fan" checked> Bản Cổ Động Viên (Fan Replica)</label>
+              </div>
+            </div>
+
+            <div class="filter-card banner-sidebar-cta">
+              <h5>BẠN MUỐN IN TÊN RIÊNG?</h5>
+              <p>Mở ngay công cụ 3D để xem trước áo đấu với tên và số của chính bạn!</p>
+              <button class="btn btn-primary btn-sm btn-block" data-navigate="customizer">
+                <i class="fa-solid fa-wand-magic-sparkles"></i> Mở 3D Studio
+              </button>
+            </div>
+          </aside>
+
+          <!-- Right: Product Grid & Sorting -->
+          <div class="shop-main">
+            <div class="shop-toolbar">
+              <div class="results-count" id="shopResultsCount">Hiển thị 8 mẫu áo đấu</div>
+              <div class="shop-sort-wrap">
+                <label for="shopSortSelect">Sắp xếp theo:</label>
+                <select id="shopSortSelect">
+                  <option value="featured">Phổ Biến & Bán Chạy</option>
+                  <option value="price-asc">Giá: Thấp Đến Cao</option>
+                  <option value="price-desc">Giá: Cao Đến Thấp</option>
+                  <option value="rating">Được Đánh Giá Tốt Nhất</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="products-grid" id="shopProductsGrid">
+              <!-- Rendered by script -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 3: CHI TIẾT SẢN PHẨM (PRODUCT DETAIL PAGE) -->
+    <section class="app-view" id="viewProductDetail">
+      <div class="container section-padding">
+        <div class="product-detail-layout" id="productDetailContainer">
+          <!-- Dynamically populated by renderProductDetail(productId) -->
+        </div>
+
+        <!-- Related Products Section -->
+        <div class="related-products-section section-padding">
+          <div class="section-header">
+            <h3 class="section-title">ÁO ĐẤU CÙNG BỘ SƯU TẬP</h3>
+            <p class="section-subtitle">Các fan Quỷ Đỏ cũng thường đặt kèm các mẫu áo này</p>
+          </div>
+          <div class="products-grid" id="relatedProductsGrid">
+            <!-- Populated by script -->
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 4: THIẾT KẾ ÁO 3D (INTERACTIVE 3D CUSTOMIZER STUDIO) -->
+    <section class="app-view" id="viewCustomizer">
+      <div class="container section-padding">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-cube"></i> LIVE JERSEY STUDIO</span>
+          <h2 class="section-title">PHÒNG THIẾT KẾ ÁO ĐẤU 3D TƯƠNG TÁC</h2>
+          <p class="section-subtitle">Tự do chọn số áo, gõ tên của bạn hoặc thần tượng, gắn huy hiệu Ngoại Hạng Anh & C1 trong thời gian thực</p>
+        </div>
+
+        <div class="customizer-workspace">
+          <!-- Left: 3D Stage -->
+          <div class="jersey-stage-col">
+            <div class="stage-controls-top">
+              <div class="view-toggles">
+                <button class="view-btn active" id="btnViewFront"><i class="fa-solid fa-rotate-left"></i> Mặt Trước</button>
+                <button class="view-btn" id="btnViewBack"><i class="fa-solid fa-rotate-right"></i> Mặt Sau (In Số)</button>
+              </div>
+              <button class="action-pill-btn" id="btnFlip3D" title="Xoay lật 180 độ"><i class="fa-solid fa-arrows-rotate"></i> Lật Áo</button>
+            </div>
+
+            <!-- 3D Flip Card Container -->
+            <div class="jersey-3d-card" id="jersey3DCard">
+              <div class="card-face card-front">
+                <svg viewBox="0 0 500 580" class="interactive-jersey-svg" id="customizerFrontSvg">
+                  <!-- SVG rendered via script -->
+                </svg>
+              </div>
+              <div class="card-face card-back">
+                <svg viewBox="0 0 500 580" class="interactive-jersey-svg" id="customizerBackSvg">
+                  <!-- SVG rendered via script -->
+                </svg>
+              </div>
+            </div>
+
+            <div class="stage-footer-info">
+              <span class="info-pill" id="badgeIndicator"><i class="fa-solid fa-award"></i> Huy hiệu: <strong>Ngoại Hạng Anh (PL)</strong></span>
+              <span class="info-pill" id="versionIndicator"><i class="fa-solid fa-tag"></i> Bản: <strong>Player Authentic (Thi đấu)</strong></span>
+            </div>
+          </div>
+
+          <!-- Right: Controls -->
+          <div class="jersey-controls-col">
+            <!-- Step 1: Kit Variant -->
+            <div class="control-block">
+              <div class="block-title">
+                <span class="step-num">1</span>
+                <h4>Chọn Mẫu Áo Đấu</h4>
+              </div>
+              <div class="kit-selector-grid">
+                <button class="kit-card-btn active" data-kit-id="home">
+                  <span class="kit-color-preview home-preview"></span>
+                  <span class="kit-name">Sân Nhà (Home)</span>
+                  <span class="kit-year">2024/25 • Đỏ Quỷ</span>
+                </button>
+                <button class="kit-card-btn" data-kit-id="away">
+                  <span class="kit-color-preview away-preview"></span>
+                  <span class="kit-name">Sân Khách (Away)</span>
+                  <span class="kit-year">2024/25 • Xanh Royal</span>
+                </button>
+                <button class="kit-card-btn" data-kit-id="third">
+                  <span class="kit-color-preview third-preview"></span>
+                  <span class="kit-name">Bộ Thứ 3 (Third)</span>
+                  <span class="kit-year">2024/25 • Trắng Kem</span>
+                </button>
+                <button class="kit-card-btn" data-kit-id="retro99">
+                  <span class="kit-color-preview retro-preview"></span>
+                  <span class="kit-name">Retro 1999 Treble</span>
+                  <span class="kit-year">Huyền Thoại Cú Ăn 3</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Step 2: Player & Custom Name -->
+            <div class="control-block">
+              <div class="block-title">
+                <span class="step-num">2</span>
+                <h4>Chọn Cầu Thủ Hoặc Tự In Tên Riêng</h4>
+              </div>
+              <div class="player-chips-list">
+                <button class="player-chip active" data-player="BRUNO" data-number="8">
+                  <span class="p-num">8</span>
+                  <span class="p-name">B. Fernandes (C)</span>
+                </button>
+                <button class="player-chip" data-player="RASHFORD" data-number="10">
+                  <span class="p-num">10</span>
+                  <span class="p-name">Rashford</span>
+                </button>
+                <button class="player-chip" data-player="MAINOO" data-number="37">
+                  <span class="p-num">37</span>
+                  <span class="p-name">K. Mainoo</span>
+                </button>
+                <button class="player-chip" data-player="GARNACHO" data-number="17">
+                  <span class="p-num">17</span>
+                  <span class="p-name">A. Garnacho</span>
+                </button>
+                <button class="player-chip" data-player="HØJLUND" data-number="9">
+                  <span class="p-num">9</span>
+                  <span class="p-name">R. Højlund</span>
+                </button>
+                <button class="player-chip" data-player="CUSTOM" data-number="0">
+                  <i class="fa-solid fa-pen"></i> Tự Nhập Tên & Số
+                </button>
+              </div>
+
+              <!-- Custom Inputs -->
+              <div class="custom-inputs-wrap" id="customInputsWrap">
+                <div class="input-group">
+                  <label for="inputCustomName">TÊN TRÊN ÁO (VIẾT HOA):</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-font"></i>
+                    <input type="text" id="inputCustomName" maxlength="12" value="BRUNO" placeholder="VD: ANH TUẤN">
+                  </div>
+                </div>
+                <div class="input-group small">
+                  <label for="inputCustomNumber">SỐ ÁO (1 - 99):</label>
+                  <div class="input-with-icon">
+                    <i class="fa-solid fa-hashtag"></i>
+                    <input type="number" id="inputCustomNumber" min="1" max="99" value="8">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Step 3: Sleeve Badge -->
+            <div class="control-block">
+              <div class="block-title">
+                <span class="step-num">3</span>
+                <h4>Huy Hiệu Giải Đấu (Sleeve Badge)</h4>
+              </div>
+              <div class="options-radio-grid">
+                <label class="option-card">
+                  <input type="radio" name="badgeOption" value="pl" checked>
+                  <div class="option-content">
+                    <div class="badge-icon-prev">🦁</div>
+                    <div class="opt-text">
+                      <strong>Ngoại Hạng Anh (PL)</strong>
+                      <span>Logo Sư Tử Premier League (+80.000đ)</span>
+                    </div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="badgeOption" value="ucl">
+                  <div class="option-content">
+                    <div class="badge-icon-prev">⭐</div>
+                    <div class="opt-text">
+                      <strong>UEFA Champions League</strong>
+                      <span>Quả Bóng Sao & Foundation (+120.000đ)</span>
+                    </div>
+                  </div>
+                </label>
+                <label class="option-card">
+                  <input type="radio" name="badgeOption" value="none">
+                  <div class="option-content">
+                    <div class="badge-icon-prev">✖</div>
+                    <div class="opt-text">
+                      <strong>Không Gắn Huy Hiệu</strong>
+                      <span>Phiên bản nguyên bản (+0đ)</span>
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 4: Fabric Version -->
+            <div class="control-block">
+              <div class="block-title">
+                <span class="step-num">4</span>
+                <h4>Phiên Bản Chất Liệu</h4>
+              </div>
+              <div class="version-toggle-grid">
+                <label class="version-card">
+                  <input type="radio" name="fabricVersion" value="player" checked>
+                  <div class="v-box">
+                    <div class="v-tag">CẦU THỦ THI ĐẤU</div>
+                    <h5>Player Authentic (Heat.Rdy)</h5>
+                    <p>Vải dệt nổi 3D siêu nhẹ, phom ôm vừa vặn, logo nhiệt in nổi như Bruno Fernandes mặc thi đấu.</p>
+                    <span class="v-price">1.250.000đ</span>
+                  </div>
+                </label>
+                <label class="version-card">
+                  <input type="radio" name="fabricVersion" value="fan">
+                  <div class="v-box">
+                    <div class="v-tag fan-tag">CỔ ĐỘNG VIÊN</div>
+                    <h5>Fan Replica (Aeroready)</h5>
+                    <p>Phom suông thoải mái, logo thêu chỉ vàng dày dặn, bền bỉ khi giặt máy và mặc hàng ngày.</p>
+                    <span class="v-price">850.000đ</span>
+                  </div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Step 5: Size Selection -->
+            <div class="control-block">
+              <div class="block-title-flex">
+                <div class="block-title">
+                  <span class="step-num">5</span>
+                  <h4>Chọn Size Áo</h4>
+                </div>
+                <button class="size-advisor-btn" id="openSizeGuideModal">
+                  <i class="fa-solid fa-calculator"></i> Tính Size Thông Minh
+                </button>
+              </div>
+              <div class="size-buttons-row">
+                <button class="size-btn" data-size="S">S</button>
+                <button class="size-btn active" data-size="M">M</button>
+                <button class="size-btn" data-size="L">L</button>
+                <button class="size-btn" data-size="XL">XL</button>
+                <button class="size-btn" data-size="2XL">2XL</button>
+                <button class="size-btn" data-size="3XL">3XL</button>
+              </div>
+              <div class="size-hint" id="sizeHintText">Size M phù hợp: Chiều cao 1m68 - 1m75 • Cân nặng 62 - 70kg</div>
+            </div>
+
+            <!-- Price & Add Button -->
+            <div class="customizer-checkout-box">
+              <div class="price-breakdown">
+                <div class="price-label">Tổng Chi Phí:</div>
+                <div class="price-total" id="customTotalPrice">1.330.000đ</div>
+                <div class="free-print-badge"><i class="fa-solid fa-gift"></i> Đã tặng miễn phí in tên & số (Trị giá 150K)</div>
+              </div>
+              <button class="btn btn-primary btn-large btn-add-custom" id="btnAddCustomToCart">
+                <i class="fa-solid fa-cart-plus"></i> THÊM ÁO ĐÃ THIẾT KẾ VÀO GIỎ
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 5: GIỎ HÀNG (FULL CART VIEW) -->
+    <section class="app-view" id="viewCart">
+      <div class="container section-padding">
+        <div class="page-title-banner">
+          <h1>GIỎ HÀNG CỦA BẠN</h1>
+          <p>Kiểm tra danh sách áo đấu, áp dụng mã voucher và chuẩn bị nhận hàng</p>
+        </div>
+
+        <div class="cart-page-layout">
+          <!-- Left: Cart Items Table -->
+          <div class="cart-page-left">
+            <!-- Free Shipping Bar -->
+            <div class="cart-page-fs-bar">
+              <div class="fs-text" id="cartPageFsText">Mua thêm <strong>799.000đ</strong> để được FREESHIP!</div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="cartPageProgressFill" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <div class="cart-table-wrapper">
+              <div class="cart-table-header">
+                <div class="col-th-prod">Sản Phẩm</div>
+                <div class="col-th-price">Đơn Giá</div>
+                <div class="col-th-qty">Số Lượng</div>
+                <div class="col-th-subtotal">Thành Tiền</div>
+                <div class="col-th-action">Xóa</div>
+              </div>
+              <div class="cart-table-body" id="cartPageItemsList">
+                <!-- Dynamically populated -->
+              </div>
+            </div>
+
+            <div class="cart-actions-row">
+              <button class="btn btn-outline" data-navigate="shop">
+                <i class="fa-solid fa-arrow-left"></i> Tiếp tục chọn áo đấu
+              </button>
+              <button class="btn btn-outline" id="btnClearCart">
+                <i class="fa-solid fa-trash-can"></i> Xóa toàn bộ giỏ hàng
+              </button>
+            </div>
+          </div>
+
+          <!-- Right: Order Summary Card -->
+          <div class="cart-page-right">
+            <div class="order-summary-card">
+              <h3>TỔNG KẾT ĐƠN HÀNG</h3>
+
+              <!-- Voucher Box -->
+              <div class="summary-voucher">
+                <label for="cartPageVoucherInput">Mã Khuyến Mãi / Voucher:</label>
+                <div class="voucher-input-row">
+                  <input type="text" id="cartPageVoucherInput" placeholder="VD: GLORYMU">
+                  <button class="btn btn-apply-voucher" id="btnCartPageApplyVoucher">Áp Dụng</button>
+                </div>
+                <div class="voucher-msg" id="cartPageVoucherMsg"></div>
+                <div class="suggested-coupons">
+                  <span>Mã gợi ý:</span>
+                  <button class="coupon-chip" data-coupon="GLORYMU">GLORYMU (-10%)</button>
+                  <button class="coupon-chip" data-coupon="MUFC50K">MUFC50K (-50K)</button>
+                </div>
+              </div>
+
+              <!-- Breakdown -->
+              <div class="summary-breakdown">
+                <div class="summary-line">
+                  <span>Tạm tính:</span>
+                  <strong id="cartPageSubtotal">0đ</strong>
+                </div>
+                <div class="summary-line discount" id="cartPageDiscountRow" style="display: none;">
+                  <span>Giảm giá voucher:</span>
+                  <strong id="cartPageDiscountAmount">-0đ</strong>
+                </div>
+                <div class="summary-line">
+                  <span>Phí giao hàng:</span>
+                  <strong id="cartPageShipping">0đ</strong>
+                </div>
+                <div class="summary-line total">
+                  <span>TỔNG THANH TOÁN:</span>
+                  <strong id="cartPageTotal" class="text-red">0đ</strong>
+                </div>
+              </div>
+
+              <button class="btn btn-primary btn-large btn-block" data-navigate="checkout" id="btnCartPageToCheckout">
+                <i class="fa-solid fa-credit-card"></i> TIẾN HÀNH THANH TOÁN
+              </button>
+
+              <div class="cart-guarantee-note">
+                <i class="fa-solid fa-shield-halved"></i> Đảm bảo an toàn 100% • Cho phép đồng kiểm khi nhận
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 6: THANH TOÁN (CHECKOUT PAGE) -->
+    <section class="app-view" id="viewCheckout">
+      <div class="container section-padding">
+        <div class="page-title-banner">
+          <h1>THANH TOÁN ĐƠN HÀNG</h1>
+          <p>Hoàn tất thông tin nhận áo Quỷ Đỏ Old Trafford</p>
+        </div>
+
+        <div class="checkout-layout">
+          <!-- Left: Checkout Forms -->
+          <div class="checkout-left">
+            <form id="fullCheckoutForm">
+              <!-- Step 1: Customer Information -->
+              <div class="checkout-step-card">
+                <div class="step-card-header">
+                  <span class="step-badge">1</span>
+                  <h3>Thông Tin Người Nhận</h3>
+                </div>
+                <div class="step-card-body">
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="chkFullName">Họ và Tên *</label>
+                      <input type="text" id="chkFullName" required placeholder="VD: Nguyễn Văn Nam">
+                    </div>
+                    <div class="form-group">
+                      <label for="chkPhone">Số Điện Thoại Nhận Hàng *</label>
+                      <input type="tel" id="chkPhone" required placeholder="VD: 0988 123 456">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="chkEmail">Email (Nhận mã vận đơn & hóa đơn)</label>
+                    <input type="email" id="chkEmail" placeholder="VD: nam.mufc@gmail.com">
+                  </div>
+                  <div class="form-row">
+                    <div class="form-group">
+                      <label for="chkCity">Tỉnh / Thành Phố *</label>
+                      <select id="chkCity" required>
+                        <option value="">-- Chọn Tỉnh / Thành --</option>
+                        <option value="Hà Nội" selected>Hà Nội</option>
+                        <option value="TP. Hồ Chí Minh">TP. Hồ Chí Minh</option>
+                        <option value="Đà Nẵng">Đà Nẵng</option>
+                        <option value="Hải Phòng">Hải Phòng</option>
+                        <option value="Cần Thơ">Cần Thơ</option>
+                        <option value="Khác">Tỉnh thành khác...</option>
+                      </select>
+                    </div>
+                    <div class="form-group">
+                      <label for="chkDistrict">Quận / Huyện *</label>
+                      <input type="text" id="chkDistrict" required placeholder="VD: Ba Đình / Quận 1">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label for="chkAddress">Địa Chỉ Chi Tiết (Số nhà, tên đường, phường/xã) *</label>
+                    <input type="text" id="chkAddress" required placeholder="VD: Số 7 đường Quỷ Đỏ, Phường Cống Vị">
+                  </div>
+                  <div class="form-group">
+                    <label for="chkNote">Ghi Chú Đơn Hàng (Tùy chọn)</label>
+                    <textarea id="chkNote" rows="2" placeholder="VD: Giao giờ hành chính, gọi trước khi giao..."></textarea>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 2: Shipping Method -->
+              <div class="checkout-step-card">
+                <div class="step-card-header">
+                  <span class="step-badge">2</span>
+                  <h3>Phương Thức Vận Chuyển</h3>
+                </div>
+                <div class="step-card-body">
+                  <div class="shipping-methods-grid">
+                    <label class="method-card active">
+                      <input type="radio" name="shippingMethod" value="standard" checked>
+                      <div class="method-content">
+                        <div class="m-icon"><i class="fa-solid fa-truck"></i></div>
+                        <div class="m-text">
+                          <strong>Giao Hàng Tiêu Chuẩn (Toàn Quốc)</strong>
+                          <span>Nhận hàng sau 1 - 3 ngày làm việc</span>
+                        </div>
+                        <span class="m-price" id="shippingMethodPrice">30.000đ</span>
+                      </div>
+                    </label>
+                    <label class="method-card">
+                      <input type="radio" name="shippingMethod" value="express">
+                      <div class="method-content">
+                        <div class="m-icon"><i class="fa-solid fa-bolt"></i></div>
+                        <div class="m-text">
+                          <strong>Giao Hỏa Tốc Old Trafford Express (2H)</strong>
+                          <span>Áp dụng nội thành Hà Nội & TP.HCM</span>
+                        </div>
+                        <span class="m-price">50.000đ</span>
+                      </div>
+                    </label>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Step 3: Payment Method -->
+              <div class="checkout-step-card">
+                <div class="step-card-header">
+                  <span class="step-badge">3</span>
+                  <h3>Phương Thức Thanh Toán</h3>
+                </div>
+                <div class="step-card-body">
+                  <div class="payment-methods-grid">
+                    <label class="pay-method-card active">
+                      <input type="radio" name="chkPayment" value="vietqr" checked>
+                      <div class="p-card-content">
+                        <div class="p-radio-circle"></div>
+                        <div class="p-info">
+                          <strong><i class="fa-solid fa-qrcode text-red"></i> Chuyển Khoản Ngân Hàng VietQR 24/7 (Khuyên dùng)</strong>
+                          <span>Quét mã QR qua mọi ứng dụng ngân hàng & MoMo, xác nhận tự động tức thì.</span>
+                        </div>
+                      </div>
+                    </label>
+
+                    <label class="pay-method-card">
+                      <input type="radio" name="chkPayment" value="cod">
+                      <div class="p-card-content">
+                        <div class="p-radio-circle"></div>
+                        <div class="p-info">
+                          <strong><i class="fa-solid fa-hand-holding-dollar text-gold"></i> Thanh Toán Khi Nhận Hàng (COD)</strong>
+                          <span>Được mở hộp kiểm tra chất lượng áo trước khi gửi tiền cho shipper.</span>
+                        </div>
+                      </div>
+                    </label>
+
+                    <label class="pay-method-card">
+                      <input type="radio" name="chkPayment" value="card">
+                      <div class="p-card-content">
+                        <div class="p-radio-circle"></div>
+                        <div class="p-info">
+                          <strong><i class="fa-solid fa-credit-card"></i> Thẻ Tín Dụng / Ghi Nợ Quốc Tế (Visa, MasterCard)</strong>
+                          <span>Thanh toán mã hóa bảo mật 256-bit SSL chuẩn quốc tế.</span>
+                        </div>
+                      </div>
+                    </label>
+                  </div>
+
+                  <!-- Dynamic VietQR Payment Preview Box -->
+                  <div class="checkout-qr-box" id="checkoutQrBox">
+                    <div class="qr-notice">
+                      <i class="fa-solid fa-circle-info"></i> Quét mã bên dưới hoặc chuyển khoản theo thông tin:
+                    </div>
+                    <div class="qr-display-row">
+                      <div class="qr-svg-wrap">
+                        <svg viewBox="0 0 160 160" class="simulated-qr">
+                          <rect width="160" height="160" fill="#ffffff" rx="8"/>
+                          <rect x="15" y="15" width="35" height="35" fill="#111"/>
+                          <rect x="20" y="20" width="25" height="25" fill="#fff"/>
+                          <rect x="25" y="25" width="15" height="15" fill="#da291c"/>
+                          <rect x="110" y="15" width="35" height="35" fill="#111"/>
+                          <rect x="115" y="20" width="25" height="25" fill="#fff"/>
+                          <rect x="120" y="25" width="15" height="15" fill="#da291c"/>
+                          <rect x="15" y="110" width="35" height="35" fill="#111"/>
+                          <rect x="20" y="115" width="25" height="25" fill="#fff"/>
+                          <rect x="25" y="120" width="15" height="15" fill="#da291c"/>
+                          <g fill="#111">
+                            <rect x="60" y="20" width="8" height="8"/>
+                            <rect x="75" y="25" width="8" height="8"/>
+                            <rect x="90" y="18" width="8" height="8"/>
+                            <rect x="65" y="45" width="12" height="8"/>
+                            <rect x="85" y="40" width="8" height="12"/>
+                            <rect x="25" y="70" width="10" height="10"/>
+                            <rect x="50" y="70" width="15" height="10"/>
+                            <rect x="75" y="70" width="10" height="15"/>
+                            <rect x="95" y="65" width="10" height="10"/>
+                            <rect x="115" y="70" width="10" height="10"/>
+                            <rect x="65" y="95" width="12" height="8"/>
+                            <rect x="85" y="90" width="8" height="14"/>
+                            <rect x="60" y="125" width="15" height="8"/>
+                            <rect x="85" y="120" width="10" height="15"/>
+                            <rect x="115" y="115" width="15" height="8"/>
+                          </g>
+                          <text x="80" y="150" font-size="7" font-weight="bold" fill="#da291c" text-anchor="middle">MANCHESTER UNITED STORE VN</text>
+                        </svg>
+                      </div>
+                      <div class="qr-bank-details">
+                        <div class="bank-line">Ngân hàng: <strong>MB BANK (Quân Đội)</strong></div>
+                        <div class="bank-line">Số tài khoản: <strong>0999.888.MUFC</strong></div>
+                        <div class="bank-line">Chủ tài khoản: <strong>RED DEVILS STORE VN</strong></div>
+                        <div class="bank-line">Số tiền: <strong class="text-red" id="checkoutQrAmount">0đ</strong></div>
+                        <div class="bank-line">Nội dung CK: <strong id="checkoutQrContent" class="text-gold">MUFC [SĐT CỦA BẠN]</strong></div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="checkout-terms">
+                    <label>
+                      <input type="checkbox" id="chkAgreeTerms" checked required>
+                      Tôi đồng ý với chính sách bán hàng và cam kết bảo mật của Red Devils Store.
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-primary btn-large btn-block" id="btnPlaceOrder">
+                    <i class="fa-solid fa-lock"></i> XÁC NHẬN ĐẶT HÀNG NGAY
+                  </button>
+                </div>
+              </div>
+            </form>
+          </div>
+
+          <!-- Right: Checkout Mini Summary -->
+          <div class="checkout-right">
+            <div class="checkout-summary-card">
+              <h3>ĐƠN HÀNG CỦA BẠN (<span id="chkItemsCount">0</span>)</h3>
+              <div class="checkout-items-list" id="checkoutItemsList">
+                <!-- Dynamically filled -->
+              </div>
+              <div class="checkout-totals">
+                <div class="total-row">
+                  <span>Tạm tính:</span>
+                  <span id="chkSubtotal">0đ</span>
+                </div>
+                <div class="total-row discount" id="chkDiscountRow" style="display: none;">
+                  <span>Giảm giá khuyến mãi:</span>
+                  <span id="chkDiscountAmount">-0đ</span>
+                </div>
+                <div class="total-row">
+                  <span>Phí giao hàng:</span>
+                  <span id="chkShipping">0đ</span>
+                </div>
+                <div class="total-row final">
+                  <span>TỔNG THANH TOÁN:</span>
+                  <span id="chkFinalTotal" class="text-red">0đ</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 7: TRA CỨU ĐƠN HÀNG (ORDER TRACKING PAGE) -->
+    <section class="app-view" id="viewTracking">
+      <div class="container section-padding">
+        <div class="page-title-banner">
+          <h1>TRA CỨU TRẠNG THÁI ĐƠN HÀNG</h1>
+          <p>Nhập mã đơn hàng hoặc số điện thoại để theo dõi lộ trình in ấn & giao áo</p>
+        </div>
+
+        <div class="tracking-search-box">
+          <form id="trackingSearchForm">
+            <div class="tracking-input-row">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <input type="text" id="trackingCodeInput" placeholder="Nhập mã đơn hàng (VD: MU-2024-8842) hoặc Số điện thoại...">
+              <button type="submit" class="btn btn-primary">
+                <i class="fa-solid fa-search"></i> Tra Cứu
+              </button>
+            </div>
+          </form>
+          <div class="tracking-sample-hint">
+            Mã mẫu thử nghiệm: <button class="sample-code-btn" data-code="MU-2024-8842">MU-2024-8842</button> hoặc đặt đơn mới để theo dõi ngay!
+          </div>
+        </div>
+
+        <!-- Tracking Results Container -->
+        <div class="tracking-result-card" id="trackingResultCard" style="display: none;">
+          <div class="tracking-header">
+            <div class="order-main-info">
+              <div class="t-order-id">MÃ ĐƠN HÀNG: <strong id="trOrderId">MU-2024-8842</strong></div>
+              <div class="t-order-date">Thời gian đặt: <span id="trOrderDate">14:30 - 02/11/2024</span></div>
+            </div>
+            <div class="t-order-status-badge" id="trStatusBadge">ĐANG IN TÊN SỐ</div>
+          </div>
+
+          <!-- Timeline -->
+          <div class="tracking-timeline">
+            <div class="timeline-step completed">
+              <div class="step-icon"><i class="fa-solid fa-file-invoice"></i></div>
+              <div class="step-content">
+                <strong>Đã Đặt Hàng</strong>
+                <span>Đơn hàng đã được ghi nhận vào hệ thống</span>
+              </div>
+            </div>
+            <div class="timeline-step completed">
+              <div class="step-icon"><i class="fa-solid fa-shirt"></i></div>
+              <div class="step-content">
+                <strong>Đang Xử Lý & In Tên Số</strong>
+                <span>Ép nhiệt logo Premier League & số áo chính hãng</span>
+              </div>
+            </div>
+            <div class="timeline-step active">
+              <div class="step-icon"><i class="fa-solid fa-box-open"></i></div>
+              <div class="step-content">
+                <strong>Đóng Gói & Xuất Kho</strong>
+                <span>Áo đã kiểm định chất lượng và đóng hộp Red Devils</span>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="step-icon"><i class="fa-solid fa-truck-fast"></i></div>
+              <div class="step-content">
+                <strong>Đang Vận Chuyển</strong>
+                <span>Shipper đang giao tới địa chỉ của bạn</span>
+              </div>
+            </div>
+            <div class="timeline-step">
+              <div class="step-icon"><i class="fa-solid fa-circle-check"></i></div>
+              <div class="step-content">
+                <strong>Giao Hàng Thành Công</strong>
+                <span>Bạn đã nhận và hài lòng với chiếc áo Quỷ Đỏ</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Order details in tracking -->
+          <div class="tracking-details-box">
+            <h4>Chi Tiết Đơn Hàng</h4>
+            <div id="trItemsList">
+              <!-- Dynamically populated -->
+            </div>
+            <div class="tr-totals-row">
+              <span>Tổng tiền đơn hàng:</span>
+              <strong id="trTotalAmount" class="text-red">1.330.000đ</strong>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VIEW 8: LỊCH SỬ & CÁC ĐỜI HLV (HISTORY & MANAGERS VIEW) -->
+    <section class="app-view" id="viewHistory">
+      <!-- History Hero Header -->
+      <div class="history-hero-banner">
+        <div class="hero-bg-lights">
+          <div class="glow-spot spot-left"></div>
+          <div class="glow-spot spot-right"></div>
+          <div class="stadium-silhouette"></div>
+        </div>
+        <div class="container history-hero-content">
+          <div class="hero-tag">
+            <span class="devil-flame"><i class="fa-solid fa-trophy"></i></span>
+            THEATRE OF DREAMS • DI SẢN 147 NĂM BẤT TỬ
+          </div>
+          <h1 class="hero-title">
+            LỊCH SỬ HUYỀN THOẠI &
+            <span class="gradient-text">25 ĐỜI HUẤN LUYỆN VIÊN</span>
+          </h1>
+          <p class="hero-desc">
+            Từ đội bóng công nhân đường sắt Newton Heath 1878, vượt qua tro tàn Munich 1958, vươn tới đỉnh cao Cú Ăn Ba 1999 vĩ đại và mở ra kỷ nguyên mới cùng Rúben Amorim. Khám phá toàn cảnh lịch sử hào hùng và 25 vị thuyền trưởng chèo lái con tàu Quỷ Đỏ thành Manchester.
+          </p>
+
+          <!-- History Quick Anchor Navigation Tabs -->
+          <div class="history-nav-tabs">
+            <button class="h-tab-btn active" data-target-sec="secTrophies">
+              <i class="fa-solid fa-trophy"></i> Phòng Truyền Thống (67 Danh Hiệu)
+            </button>
+            <button class="h-tab-btn" data-target-sec="secTimeline">
+              <i class="fa-solid fa-timeline"></i> Mốc Son Lịch Sử (1878 - Nay)
+            </button>
+            <button class="h-tab-btn" data-target-sec="secManagers">
+              <i class="fa-solid fa-user-tie"></i> 25 Đời Huấn Luyện Viên
+            </button>
+            <button class="h-tab-btn" data-target-sec="secOldTrafford">
+              <i class="fa-solid fa-landmark"></i> Biểu Tượng Old Trafford
+            </button>
+            <button class="h-tab-btn" data-target-sec="secQuiz">
+              <i class="fa-solid fa-circle-question"></i> Thử Thách Manucian
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 1: PHÒNG TRUYỀN THỐNG (THE TROPHY ROOM) -->
+      <div class="container section-padding" id="secTrophies">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-crown text-gold"></i> BẢNG VÀNG THÀNH TÍCH</span>
+          <h2 class="section-title">PHÒNG TRUYỀN THỐNG MANCHESTER UNITED</h2>
+          <p class="section-subtitle">Câu lạc bộ giàu thành tích nhất xứ sở sương mù với 67 danh hiệu chính thức cao quý</p>
+        </div>
+
+        <div class="trophy-grid">
+          <!-- Trophy 1: Premier League -->
+          <div class="trophy-card highlight-gold">
+            <div class="trophy-badge-count">20 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-trophy"></i>
+            </div>
+            <h3 class="trophy-name">VÔ ĐỊCH NƯỚC ANH (PREMIER LEAGUE / FIRST DIVISION)</h3>
+            <div class="trophy-record-tag">KỶ LỤC SỐ 1 BÓNG ĐÁ ANH</div>
+            <p class="trophy-years">
+              1908, 1911, 1952, 1956, 1957, 1965, 1967, 1993, 1994, 1996, 1997, 1999, 2000, 2001, 2003, 2007, 2008, 2009, 2011, 2013
+            </p>
+            <div class="trophy-desc">
+              Sir Alex Ferguson đã hiện thực hóa lời hứa "hất cẳng Liverpool khỏi đỉnh cao", đưa Quỷ Đỏ cán mốc 20 chức vô địch lịch sử vào năm 2013.
+            </div>
+          </div>
+
+          <!-- Trophy 2: Champions League -->
+          <div class="trophy-card highlight-red">
+            <div class="trophy-badge-count">3 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-star"></i>
+            </div>
+            <h3 class="trophy-name">CÚP C1 CHÂU ÂU / UEFA CHAMPIONS LEAGUE</h3>
+            <div class="trophy-record-tag">ĐỈNH CAO CHÂU LỤC</div>
+            <p class="trophy-years">
+              1968 (Wembley), 1999 (Camp Nou), 2008 (Moscow)
+            </p>
+            <div class="trophy-desc">
+              CLB Anh đầu tiên vô địch Châu Âu (1968), Cú Ăn Ba vĩ đại 1999 với 2 bàn bù giờ huyền thoại và Đêm mưa Moscow 2008 bất tử.
+            </div>
+          </div>
+
+          <!-- Trophy 3: FA Cup -->
+          <div class="trophy-card">
+            <div class="trophy-badge-count">13 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-award"></i>
+            </div>
+            <h3 class="trophy-name">CÚP FA (THE FA CUP)</h3>
+            <div class="trophy-record-tag">GIẢI ĐẤU LÂU ĐỜI NHẤT THẾ GIỚI</div>
+            <p class="trophy-years">
+              1909, 1948, 1963, 1977, 1983, 1985, 1990, 1994, 1996, 1999, 2004, 2016, 2024
+            </p>
+            <div class="trophy-desc">
+              Gần nhất là chiến tích đánh bại Manchester City 2-1 tại Wembley vào tháng 5/2024 với các bàn thắng của Garnacho và Mainoo.
+            </div>
+          </div>
+
+          <!-- Trophy 4: EFL Cup -->
+          <div class="trophy-card">
+            <div class="trophy-badge-count">6 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-shield"></i>
+            </div>
+            <h3 class="trophy-name">CÚP LIÊN ĐOÀN ANH (EFL / CARABAO CUP)</h3>
+            <div class="trophy-record-tag">ĐẤU TRƯỜNG QUỐC NỘI</div>
+            <p class="trophy-years">
+              1992, 2006, 2009, 2010, 2017, 2023
+            </p>
+            <div class="trophy-desc">
+              Chức vô địch năm 2023 tại Wembley đánh dấu sự trở lại mạnh mẽ và giải tỏa cơn khát danh hiệu sau nhiều năm chờ đợi.
+            </div>
+          </div>
+
+          <!-- Trophy 5: Europa League -->
+          <div class="trophy-card">
+            <div class="trophy-badge-count">1 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-globe"></i>
+            </div>
+            <h3 class="trophy-name">UEFA EUROPA LEAGUE</h3>
+            <div class="trophy-record-tag">CÚP CHÂU ÂU</div>
+            <p class="trophy-years">
+              2017 (Stockholm)
+            </p>
+            <div class="trophy-desc">
+              Chiến thắng 2-0 trước Ajax Amsterdam tại Friends Arena dưới sự dẫn dắt của HLV José Mourinho, hoàn tất bộ sưu tập cúp Châu Âu.
+            </div>
+          </div>
+
+          <!-- Trophy 6: Cup Winners Cup -->
+          <div class="trophy-card">
+            <div class="trophy-badge-count">1 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-medal"></i>
+            </div>
+            <h3 class="trophy-name">CÚP C2 CHÂU ÂU (EUROPEAN CUP WINNERS' CUP)</h3>
+            <div class="trophy-record-tag">KỶ NIỆM ROTTERDAM</div>
+            <p class="trophy-years">
+              1991 (Rotterdam)
+            </p>
+            <div class="trophy-desc">
+              Hạ gục Barcelona 2-1 với cú đúp để đời của tiền đạo Mark Hughes ngay trong mùa giải các CLB Anh được trở lại đấu trường Châu Âu.
+            </div>
+          </div>
+
+          <!-- Trophy 7: World Titles -->
+          <div class="trophy-card">
+            <div class="trophy-badge-count">2 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-earth-americas"></i>
+            </div>
+            <h3 class="trophy-name">CÚP VÔ ĐỊCH THẾ GIỚI (CLUB WORLD CUP & LIÊN LỤC ĐỊA)</h3>
+            <div class="trophy-record-tag">ĐỈNH CAO TOÀN CẦU</div>
+            <p class="trophy-years">
+              1999 (Intercontinental Cup Tokyo), 2008 (FIFA Club World Cup Yokohama)
+            </p>
+            <div class="trophy-desc">
+              CLB bóng đá Anh đầu tiên vô địch cả Cúp Liên Lục Địa (1999) và FIFA Club World Cup (2008) với bàn thắng vàng của Wayne Rooney.
+            </div>
+          </div>
+
+          <!-- Trophy 8: Community Shield -->
+          <div class="trophy-card highlight-gold">
+            <div class="trophy-badge-count">21 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-shield-halved"></i>
+            </div>
+            <h3 class="trophy-name">SIÊU CÚP ANH (FA COMMUNITY SHIELD)</h3>
+            <div class="trophy-record-tag">KỶ LỤC VÔ TIỀN KHOÁNG HẬU</div>
+            <p class="trophy-years">
+              Kỷ lục 21 lần nâng cao Siêu Cúp Anh (gần nhất: 2016)
+            </p>
+            <div class="trophy-desc">
+              Minh chứng hùng hồn cho sự hiện diện thường xuyên tại các trận tranh Siêu cúp khai màn mùa giải của bóng đá Anh.
+            </div>
+          </div>
+
+          <!-- Trophy 9: UEFA Super Cup -->
+          <div class="trophy-card">
+            <div class="trophy-badge-count">1 LẦN</div>
+            <div class="trophy-icon-wrap">
+              <i class="fa-solid fa-bolt"></i>
+            </div>
+            <h3 class="trophy-name">SIÊU CÚP CHÂU ÂU (UEFA SUPER CUP)</h3>
+            <div class="trophy-record-tag">ĐỐI ĐẦU ĐỈNH CAO</div>
+            <p class="trophy-years">
+              1991 (Old Trafford)
+            </p>
+            <div class="trophy-desc">
+              Đánh bại nhà vô địch C1 Red Star Belgrade 1-0 trên thánh địa Old Trafford nhờ pha lập công của Brian McClair.
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 2: DÒNG THỜI GIAN LỊCH SỬ BI TRÁNG (HISTORICAL TIMELINE) -->
+      <div class="container section-padding" id="secTimeline">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-hourglass-half"></i> 1878 - HIỆN TẠI</span>
+          <h2 class="section-title">HÀNH TRÌNH 147 NĂM LỊCH SỬ BI TRÁNG</h2>
+          <p class="section-subtitle">Từ những công nhân đường sắt đến đế chế bóng đá được mến mộ bậc nhất hành tinh</p>
+        </div>
+
+        <!-- Timeline Filters -->
+        <div class="timeline-filter-row">
+          <button class="t-filter-btn active" data-era="all">Tất Cả Giai Đoạn</button>
+          <button class="t-filter-btn" data-era="origin">1878 - 1945: Khởi Thủy & Old Trafford</button>
+          <button class="t-filter-btn" data-era="busby">1945 - 1969: Sir Matt Busby & Munich</button>
+          <button class="t-filter-btn" data-era="ferguson">1986 - 2013: Triều Đại Sir Alex Vĩ Đại</button>
+          <button class="t-filter-btn" data-era="modern">2013 - Nay: Hậu Ferguson & INEOS</button>
+        </div>
+
+        <div class="history-timeline-wrap">
+          <!-- Event 1: 1878 -->
+          <div class="timeline-item" data-era="origin">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">1878</div>
+            <div class="timeline-card">
+              <div class="t-tag">KHỞI NGUỒN</div>
+              <h3>Thành Lập Đội Bóng Newton Heath LYR F.C.</h3>
+              <p>
+                Những công nhân của xưởng toa xe đường sắt <em>Lancashire and Yorkshire Railway</em> tại Newton Heath thành lập đội bóng để thi đấu giao hữu vào các ngày nghỉ. Đội thi đấu trong màu áo xanh lá và vàng (Green & Gold) – màu sắc biểu tượng vẫn sống mãi trong tim Manucian đến tận ngày nay.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 2: 1902 -->
+          <div class="timeline-item" data-era="origin">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">1902</div>
+            <div class="timeline-card">
+              <div class="t-tag">BƯỚC NGOẶT</div>
+              <h3>Khai Sinh Cái Tên "Manchester United" & Màu Áo Đỏ</h3>
+              <p>
+                Đứng trước bờ vực phá sản với khoản nợ lớn, chú chó Saint Bernard của đội trưởng Harry Stafford đã tình cờ dẫn đường cho doanh nhân John Henry Davies đầu tư cứu đội bóng. Ngày 24/4/1902, CLB chính thức đổi tên thành <strong>Manchester United</strong> và chọn màu áo đỏ, quần trắng, tất đen truyền thống.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 3: 1910 -->
+          <div class="timeline-item" data-era="origin">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">1910</div>
+            <div class="timeline-card">
+              <div class="t-tag">THÁNH ĐỊA</div>
+              <h3>Khánh Thành Sân Vận Động Old Trafford</h3>
+              <p>
+                Dưới sự dẫn dắt của HLV Ernest Mangnall, MU chuyển từ sân Bank Street sang sân nhà mới Old Trafford với kinh phí khổng lồ 60.000 bảng vào ngày 19/2/1910. Sân bóng tráng lệ bậc nhất bấy giờ sau này được huyền thoại Sir Bobby Charlton gọi bằng cái tên thiêng liêng: <strong>"The Theatre of Dreams"</strong> (Nhà hát của những giấc mơ).
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 4: 1945 - 1957 -->
+          <div class="timeline-item" data-era="busby">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">1945 - 1957</div>
+            <div class="timeline-card">
+              <div class="t-tag">THẾ HỆ VÀNG</div>
+              <h3>Kỷ Nguyên Sir Matt Busby & "Busby Babes"</h3>
+              <p>
+                Sir Matt Busby nhận chức HLV trưởng sau Thế chiến II và bắt đầu một cuộc cách mạng đào tạo trẻ. Thế hệ những chàng trai tuổi đôi mươi đầy kiệt xuất như Duncan Edwards, Bobby Charlton, Tommy Taylor đã làm say đắm cả nước Anh bằng lối đá tấn công quyến rũ, liên tiếp vô địch First Division năm 1952, 1956 và 1957.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 5: 1958 -->
+          <div class="timeline-item highlight-tragedy" data-era="busby">
+            <div class="timeline-dot tragedy"></div>
+            <div class="timeline-date">06/02/1958</div>
+            <div class="timeline-card">
+              <div class="t-tag tragedy-tag"><i class="fa-solid fa-ribbon"></i> BI KỊCH MUNICH</div>
+              <h3>Thảm Họa Hàng Không Munich 1958 & Sự Hồi Sinh Thần Kỳ</h3>
+              <p>
+                Chuyến bay chở đội bóng trở về sau khi giành vé vào bán kết Cúp C1 tại Belgrade gặp nạn khi cất cánh giữa bão tuyết tại sân bay Munich. 23 người đã tử nạn, trong đó có 8 cầu thủ Busby Babes và các thành viên ban huấn luyện. Dù chịu mất mát khôn cùng, trợ lý Jimmy Murphy cùng Sir Matt Busby sau khi bình phục đã kiên cường tái thiết CLB từ đống tro tàn, khắc ghi tinh thần không bao giờ bỏ cuộc.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 6: 1968 -->
+          <div class="timeline-item" data-era="busby">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">1968</div>
+            <div class="timeline-card">
+              <div class="t-tag">ĐỈNH CAO CHÂU ÂU</div>
+              <h3>Vô Địch Cúp C1 Châu Âu - "The Holy Trinity" Lên Đỉnh</h3>
+              <p>
+                Đúng 10 năm sau bi kịch Munich, ngày 29/5/1968 tại Wembley, Sir Matt Busby cùng các học trò xuất sắc gồm bộ ba "United Trinity" (Bobby Charlton, George Best, Denis Law) đã vùi dập Benfica của Eusébio 4-1 sau hiệp phụ. Manchester United trở thành câu lạc bộ Anh đầu tiên trong lịch sử đăng quang Cúp C1 Châu Âu.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 7: 1986 -->
+          <div class="timeline-item" data-era="ferguson">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">1986</div>
+            <div class="timeline-card">
+              <div class="t-tag">NGÀY ĐỔI THAY</div>
+              <h3>Sir Alex Ferguson Cập Bến Old Trafford</h3>
+              <p>
+                Ngày 6/11/1986, Alex Ferguson rời Aberdeen để tiếp quản chiếc ghế HLV trưởng Manchester United. Với kỷ luật thép, khát khao cháy bỏng và tầm nhìn phi thường, ông đã tái cấu trúc toàn diện học viện bóng đá trẻ và xây dựng nền móng cho triều đại thống trị kéo dài hơn một phần tư thế kỷ.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 8: 1999 -->
+          <div class="timeline-item highlight-gold-item" data-era="ferguson">
+            <div class="timeline-dot gold"></div>
+            <div class="timeline-date">1999</div>
+            <div class="timeline-card">
+              <div class="t-tag gold-tag"><i class="fa-solid fa-crown"></i> BẤT TỬ</div>
+              <h3>Cú Ăn Ba Lịch Sử (The Historic Treble 1999)</h3>
+              <p>
+                Mùa giải kỳ vĩ nhất lịch sử bóng đá Anh: Thế hệ vàng Class of '92 (David Beckham, Ryan Giggs, Paul Scholes, Gary Neville, Nicky Butt) cùng Roy Keane, Dwight Yorke, Andy Cole đã vô địch Ngoại Hạng Anh, Cúp FA, và đỉnh điểm là đêm chung kết C1 nghẹt thở tại Nou Camp khi Teddy Sheringham và Ole Gunnar Solskjær ghi liên tiếp 2 bàn ở phút 90+1 và 90+3 để ngược dòng hạ gục Bayern Munich 2-1.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 9: 2008 -->
+          <div class="timeline-item" data-era="ferguson">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2008</div>
+            <div class="timeline-card">
+              <div class="t-tag">MOSCOW 2008</div>
+              <h3>Đêm Mưa Moscow & Cúp C1 Thứ 3 Cùng Cristiano Ronaldo</h3>
+              <p>
+                Đội hình bão táp với bộ ba Ronaldo - Rooney - Tevez kết hợp cùng bức tường thép Ferdinand - Vidic và Edwin van der Sar. Trận chung kết Champions League nội bộ Anh đầu tiên tại sân Luzhniki khép lại trong cơn mưa tuyết với pha cản phá luân lưu quyết định của Van der Sar trước Anelka, mang về chiếc cúp C1 thứ 3 cho Quỷ Đỏ.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 10: 2013 -->
+          <div class="timeline-item" data-era="ferguson">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2013</div>
+            <div class="timeline-card">
+              <div class="t-tag">CHIẾC CÚP SỐ 20</div>
+              <h3>Kỷ Lục 20 Danh Hiệu Premier League & Lời Chia Tay Huyền Thoại</h3>
+              <p>
+                Với cú hat-trick siêu đẳng của Robin van Persie trước Aston Villa, MU chính thức đăng quang chức vô địch Ngoại Hạng Anh lần thứ 20. Sir Alex Ferguson tuyên bố giải nghệ sau 1.500 trận và 38 danh hiệu, để lại một di sản đồ sộ không ai có thể xô đổ trong lịch sử bóng đá hiện đại.
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 11: 2014 - 2024 -->
+          <div class="timeline-item" data-era="modern">
+            <div class="timeline-dot"></div>
+            <div class="timeline-date">2014 - 2024</div>
+            <div class="timeline-card">
+              <div class="t-tag">THỬ THÁCH & DANH HIỆU</div>
+              <h3>Thập Kỷ Chuyển Giao & Những Chiếc Cúp Mới</h3>
+              <p>
+                Giai đoạn tái thiết đầy sóng gió nhưng Quỷ Đỏ vẫn bổ sung thêm vào phòng truyền thống: FA Cup 2016 (Louis van Gaal), Cú đúp Europa League & League Cup 2017 (José Mourinho), League Cup 2023 và đặc biệt là trận thắng rực lửa 2-1 trước Man City để nâng cao Cúp FA 2024 (Erik ten Hag).
+              </p>
+            </div>
+          </div>
+
+          <!-- Event 12: 2024 - Nay -->
+          <div class="timeline-item highlight-red-item" data-era="modern">
+            <div class="timeline-dot red"></div>
+            <div class="timeline-date">2024 - Hiện Tại</div>
+            <div class="timeline-card">
+              <div class="t-tag red-tag"><i class="fa-solid fa-fire"></i> KỶ NGUYÊN MỚI</div>
+              <h3>Tập Đoàn INEOS & Bình Minh Cùng Rúben Amorim</h3>
+              <p>
+                Sir Jim Ratcliffe và tập đoàn INEOS chính thức nắm quyền kiểm soát mảng bóng đá, đầu tư nâng cấp sân Old Trafford và cơ sở Carrington. Tháng 11/2024, nhà cầm quân tài năng người Bồ Đào Nha <strong>Rúben Amorim</strong> chính thức tiếp quản chiếc ghế nóng, mang theo sơ đồ chiến thuật 3-4-2-1 hiện đại cùng khát vọng đưa Quỷ Đỏ trở lại vị thế đỉnh cao.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 3: TOÀN TẬP 25 ĐỜI HUẤN LUYỆN VIÊN (MANAGERS DIRECTORY) -->
+      <div class="container section-padding" id="secManagers">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-user-tie"></i> HALL OF MANAGERS</span>
+          <h2 class="section-title">25 ĐỜI HUẤN LUYỆN VIÊN TRONG LỊCH SỬ MANCHESTER UNITED</h2>
+          <p class="section-subtitle">Chân dung và bảng thống kê chi tiết các vị thuyền trưởng từng dẫn dắt Quỷ Đỏ thành Manchester</p>
+        </div>
+
+        <!-- Manager Toolbar: Search & Filter Tabs -->
+        <div class="manager-toolbar">
+          <div class="manager-search-wrap">
+            <i class="fa-solid fa-magnifying-glass"></i>
+            <input type="text" id="mgrSearchInput" placeholder="Tìm kiếm HLV theo tên (Ferguson, Busby, Amorim, Ten Hag, Mourinho...)...">
+          </div>
+          <div class="manager-filter-pills" id="mgrFilterPills">
+            <button class="m-pill active" data-mgr-filter="all">Tất Cả (25 HLV)</button>
+            <button class="m-pill" data-mgr-filter="legend">Huyền Thoại Bất Tử</button>
+            <button class="m-pill" data-mgr-filter="classic">Thời Cổ Điển (1903 - 1986)</button>
+            <button class="m-pill" data-mgr-filter="post-saf">Hậu Sir Alex (2013 - 2024)</button>
+            <button class="m-pill" data-mgr-filter="current">HLV Hiện Tại</button>
+          </div>
+        </div>
+
+        <!-- Managers Grid -->
+        <div class="managers-grid" id="managersGridContainer">
+          <!-- Dynamically populated by renderManagers() in script.js -->
+        </div>
+      </div>
+
+      <!-- SECTION 4: BIỂU TƯỢNG VĂN HÓA OLD TRAFFORD (HERITAGE & ICONS) -->
+      <div class="container section-padding" id="secOldTrafford">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-landmark"></i> DI SẢN BẤT TỬ</span>
+          <h2 class="section-title">BIỂU TƯỢNG VĂN HÓA SÂN OLD TRAFFORD</h2>
+          <p class="section-subtitle">Những tượng đài, khán đài và truyền thống tạo nên linh hồn của Quỷ Đỏ thành Manchester</p>
+        </div>
+
+        <div class="heritage-grid">
+          <div class="heritage-card">
+            <div class="heritage-icon"><i class="fa-solid fa-bullhorn text-red"></i></div>
+            <h3>Khán Đài Stretford End Huyền Thoại</h3>
+            <p>
+              Khán đài phía Tây nổi tiếng thế giới, nơi tập trung những CĐV cuồng nhiệt nhất. Những tiếng hô vang <em>"United! United!"</em> từ Stretford End từng được coi như cầu thủ thứ 12 hút bóng vào lưới đối phương trong những phút bù giờ điên rồ.
+            </p>
+          </div>
+
+          <div class="heritage-card highlight-gold">
+            <div class="heritage-icon"><i class="fa-solid fa-people-group text-gold"></i></div>
+            <h3>Tượng Đài Bộ Ba "United Trinity"</h3>
+            <p>
+              Bức tượng sừng sững bên ngoài khán đài Đông vinh danh ba Quả Bóng Vàng kiệt xuất: George Best, Denis Law và Sir Bobby Charlton. Họ chính là biểu tượng cho tinh thần bóng đá cống hiến, tài hoa và vẻ đẹp bất diệt của Manchester United.
+            </p>
+          </div>
+
+          <div class="heritage-card">
+            <div class="heritage-icon"><i class="fa-solid fa-school text-red"></i></div>
+            <h3>Kỷ Lục 85 Năm Học Viện Cầu Thủ Trẻ</h3>
+            <p>
+              Kể từ tháng 10 năm 1937 đến nay, trải qua hơn <strong>4.250 trận đấu liên tiếp</strong> trong hơn 85 năm, Manchester United luôn có ít nhất một cầu thủ tốt nghiệp từ học viện góp mặt trong danh sách đăng ký thi đấu.
+            </p>
+          </div>
+
+          <div class="heritage-card">
+            <div class="heritage-icon"><i class="fa-solid fa-clock-rotate-left text-red"></i></div>
+            <h3>Đồng Hồ Tưởng Niệm Munich (Munich Clock)</h3>
+            <p>
+              Nằm ở góc khán đài Đông Nam, chiếc đồng hồ tưởng niệm ghi lại thời khắc định mệnh 3:04 chiều ngày 6/2/1958. Đó là lời nhắc nhở thiêng liêng về cội nguồn, lòng kiên trì và ngọn lửa không bao giờ tắt của Quỷ Đỏ.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- SECTION 5: TRẮC NGHIỆM KIẾN THỨC MANUCIAN (RED DEVILS TRIVIA QUIZ) -->
+      <div class="container section-padding" id="secQuiz">
+        <div class="section-header text-center">
+          <span class="section-badge"><i class="fa-solid fa-circle-question"></i> MINI-GAME TƯƠNG TÁC</span>
+          <h2 class="section-title">THỬ THÁCH TRẮC NGHIỆM KIẾN THỨC QUỶ ĐỎ</h2>
+          <p class="section-subtitle">Kiểm tra mức độ am hiểu của bạn về lịch sử huy hoàng và các đời HLV Manchester United</p>
+        </div>
+
+        <div class="quiz-container" id="quizContainer">
+          <div class="quiz-header">
+            <div class="quiz-progress-text">Câu hỏi <span id="quizCurrentNum">1</span> / 5</div>
+            <div class="quiz-score-live">Điểm: <strong id="quizLiveScore">0</strong>/50</div>
+          </div>
+          <div class="quiz-progress-bar">
+            <div class="quiz-progress-fill" id="quizProgressFill" style="width: 20%;"></div>
+          </div>
+
+          <div class="quiz-body" id="quizBody">
+            <!-- Dynamically populated by renderQuizQuestion() in script.js -->
+          </div>
+
+          <div class="quiz-feedback" id="quizFeedback" style="display: none;"></div>
+
+          <div class="quiz-actions" id="quizActions">
+            <button class="btn btn-primary" id="btnNextQuiz" style="display: none;">
+              Câu Tiếp Theo <i class="fa-solid fa-arrow-right"></i>
+            </button>
+          </div>
+        </div>
+
+        <!-- Quiz Final Result Modal / Box -->
+        <div class="quiz-result-box" id="quizResultBox" style="display: none;">
+          <div class="result-trophy-icon">🏆</div>
+          <h3 id="quizResultTitle">XUẤT SẮC! BẠN LÀ MANUCIAN ĐÍCH THỰC</h3>
+          <div class="result-score-badge" id="quizFinalScoreBadge">50 / 50 ĐIỂM</div>
+          <p class="result-evaluation" id="quizEvaluationText">
+            Kiến thức về lịch sử MU và các đời HLV của bạn vô cùng uyên bác! Tinh thần Quỷ Đỏ chảy rực lửa trong huyết quản của bạn!
+          </p>
+          <div class="result-cta-row">
+            <button class="btn btn-outline" id="btnRestartQuiz">
+              <i class="fa-solid fa-rotate-right"></i> Thử Thách Lại
+            </button>
+            <button class="btn btn-primary btn-glow" data-navigate="customizer">
+              <i class="fa-solid fa-wand-magic-sparkles"></i> In Tên Lên Áo Đấu Ngay
+            </button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+  <!-- ==================== END MAIN SPA CONTAINER ==================== -->
+
+  <!-- Trust Guarantees Bar -->
+  <section class="guarantees-section">
+    <div class="container">
+      <div class="guarantees-grid">
+        <div class="g-box">
+          <div class="g-icon"><i class="fa-solid fa-shield-halved"></i></div>
+          <div class="g-info">
+            <h5>CAM KẾT CHÍNH HÃNG</h5>
+            <p>100% áo đấu có tem mác chứng nhận, đền gấp 10 lần nếu phát hiện hàng giả.</p>
+          </div>
+        </div>
+        <div class="g-box">
+          <div class="g-icon"><i class="fa-solid fa-rotate-left"></i></div>
+          <div class="g-info">
+            <h5>ĐỔI SIZE TRONG 7 NGÀY</h5>
+            <p>Hỗ trợ đổi size tận nhà miễn phí nếu áo mặc không vừa vặn.</p>
+          </div>
+        </div>
+        <div class="g-box">
+          <div class="g-icon"><i class="fa-solid fa-medal"></i></div>
+          <div class="g-info">
+            <h5>BẢO HÀNH IN TÊN SỐ 1 NĂM</h5>
+            <p>Bảo hành trọn đời độ bám dính của mực in và số áo chính hãng.</p>
+          </div>
+        </div>
+        <div class="g-box">
+          <div class="g-icon"><i class="fa-solid fa-bolt"></i></div>
+          <div class="g-info">
+            <h5>GIAO HÀNG HỎA TỐC</h5>
+            <p>Giao 2H tại TP.HCM & Hà Nội. Toàn quốc nhận hàng sau 1 - 2 ngày.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-col col-main">
+        <div class="brand-logo">
+          <span class="logo-title">RED DEVILS STORE</span>
+        </div>
+        <p class="footer-about">
+          Cửa hàng chuyên cung cấp áo đấu Manchester United độc quyền và uy tín số 1 Việt Nam. Mang tinh thần rực lửa của sân Old Trafford đến với mọi Manucian.
+        </p>
+        <div class="footer-socials">
+          <a href="#" aria-label="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+          <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+          <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube"></i></a>
+          <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram"></i></a>
+        </div>
+      </div>
+
+      <div class="footer-col">
+        <h5 class="col-heading">DANH MỤC TRANG</h5>
+        <ul class="col-links">
+          <li><a href="#home" data-navigate="home">Trang Chủ</a></li>
+          <li><a href="#shop" data-navigate="shop">Bộ Sưu Tập Áo Đấu</a></li>
+          <li><a href="#customizer" data-navigate="customizer">Thiết Kế Áo 3D</a></li>
+          <li><a href="#history" data-navigate="history">Lịch Sử & Các Đời HLV</a></li>
+          <li><a href="#cart" data-navigate="cart">Giỏ Hàng</a></li>
+          <li><a href="#checkout" data-navigate="checkout">Thanh Toán</a></li>
+          <li><a href="#tracking" data-navigate="tracking">Tra Cứu Đơn Hàng</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5 class="col-heading">HỖ TRỢ KHÁCH HÀNG</h5>
+        <ul class="col-links">
+          <li><button class="footer-text-btn" id="footerSizeGuideBtn">Hướng dẫn tính size chuẩn</button></li>
+          <li><a href="#">Chính sách đổi trả 7 ngày</a></li>
+          <li><a href="#">Phương thức thanh toán VietQR & COD</a></li>
+          <li><a href="#">Bảo hành in tên & số áo</a></li>
+          <li><a href="#">Hotline tư vấn: 1900.MUFC (08:00 - 22:00)</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h5 class="col-heading">NHẬN ƯU ĐÃI QUỶ ĐỎ</h5>
+        <p class="newsletter-sub">Đăng ký email để nhận mã giảm 15% cho đơn hàng đầu tiên:</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input type="email" placeholder="Nhập email của bạn..." required>
+          <button type="submit" aria-label="Đăng ký"><i class="fa-solid fa-paper-plane"></i></button>
+        </form>
+        <div class="store-badge-verified">
+          <i class="fa-solid fa-circle-check"></i> ĐẠI LÝ ÁO ĐẤU MAN UTD UY TÍN TẠI VIỆT NAM
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <div class="container footer-bottom-inner">
+        <p>© 2024 - 2025 Red Devils Store Vietnam. All rights reserved. Glory Glory Man United!</p>
+        <div class="payment-methods-icons">
+          <span class="pay-tag">COD</span>
+          <span class="pay-tag">VietQR</span>
+          <span class="pay-tag">MoMo</span>
+          <span class="pay-tag">Visa</span>
+          <span class="pay-tag">Mastercard</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Slide-in Quick Cart Drawer -->
+  <div class="cart-drawer-overlay" id="cartOverlay"></div>
+  <aside class="cart-drawer" id="cartDrawer">
+    <div class="drawer-header">
+      <div class="drawer-title">
+        <i class="fa-solid fa-bag-shopping"></i> GIỎ HÀNG CỦA BẠN (<span id="cartCountHeader">0</span>)
+      </div>
+      <button class="drawer-close" id="cartCloseBtn" aria-label="Đóng giỏ hàng">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+    </div>
+
+    <!-- Free Shipping Progress -->
+    <div class="free-shipping-bar-wrap">
+      <div class="fs-text" id="freeShippingText">Mua thêm <strong>799.000đ</strong> để được FREESHIP!</div>
+      <div class="progress-bar">
+        <div class="progress-fill" id="shippingProgressFill" style="width: 0%;"></div>
+      </div>
+    </div>
+
+    <!-- Cart Items List -->
+    <div class="cart-items-container" id="cartItemsList">
+      <!-- Dynamically filled -->
+    </div>
+
+    <!-- Cart Drawer Footer -->
+    <div class="drawer-footer">
+      <div class="voucher-box">
+        <div class="voucher-input-row">
+          <input type="text" id="voucherInput" placeholder="Mã giảm giá (VD: GLORYMU)">
+          <button class="btn btn-apply-voucher" id="btnApplyVoucher">Áp Dụng</button>
+        </div>
+        <div class="voucher-msg" id="voucherMsg"></div>
+      </div>
+
+      <div class="cart-summary-totals">
+        <div class="sum-row">
+          <span>Tạm tính:</span>
+          <span id="cartSubtotal">0đ</span>
+        </div>
+        <div class="sum-row discount" id="cartDiscountRow" style="display: none;">
+          <span>Giảm giá khuyến mãi:</span>
+          <span id="cartDiscountAmount">-0đ</span>
+        </div>
+        <div class="sum-row">
+          <span>Phí vận chuyển:</span>
+          <span id="cartShippingFee">0đ</span>
+        </div>
+        <div class="sum-row total">
+          <span>TỔNG CỘNG:</span>
+          <span id="cartFinalTotal">0đ</span>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-large btn-block" id="btnDrawerToCheckout">
+        <i class="fa-solid fa-lock"></i> TIẾN HÀNH THANH TOÁN
+      </button>
+      <button class="btn btn-outline btn-block" id="btnDrawerToCartPage">
+        <i class="fa-solid fa-cart-shopping"></i> Xem Giỏ Hàng Chi Tiết
+      </button>
+    </div>
+  </aside>
+
+  <!-- Size Guide Modal -->
+  <div class="modal-overlay" id="sizeGuideModal">
+    <div class="modal-window size-window">
+      <button class="modal-close" id="sizeGuideCloseBtn"><i class="fa-solid fa-xmark"></i></button>
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-ruler-combined"></i> TƯ VẤN CHỌN SIZE ÁO ĐẤU CHUẨN XÁC</h3>
+        <p>Kéo thước đo chiều cao và cân nặng để hệ thống tự động đề xuất size áo hoàn hảo</p>
+      </div>
+      <div class="modal-body size-body">
+        <div class="size-calculator-box">
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Chiều cao của bạn:</span>
+              <strong id="heightValue">172 cm</strong>
+            </div>
+            <input type="range" id="heightSlider" min="150" max="195" value="172" class="range-slider">
+          </div>
+          <div class="slider-group">
+            <div class="slider-header">
+              <span>Cân nặng của bạn:</span>
+              <strong id="weightValue">67 kg</strong>
+            </div>
+            <input type="range" id="weightSlider" min="45" max="105" value="67" class="range-slider">
+          </div>
+          <div class="fit-preference">
+            <span>Sở thích mặc:</span>
+            <div class="fit-pills">
+              <button class="fit-btn" data-fit="tight">Ôm Sát Cầu Thủ (Slim)</button>
+              <button class="fit-btn active" data-fit="regular">Vừa Vặn Tiêu Chuẩn</button>
+              <button class="fit-btn" data-fit="loose">Thoải Mái Rộng Rãi</button>
+            </div>
+          </div>
+          <div class="recommended-size-result">
+            <div class="rec-label">SIZE ÁO ĐỀ XUẤT CHO BẠN:</div>
+            <div class="rec-size-badge" id="recommendedSizeBadge">M</div>
+            <div class="rec-note" id="recommendedSizeNote">
+              Phù hợp với dáng người của bạn, vừa vặn ngực & vai khi vận động thể thao hoặc dạo phố.
+            </div>
+            <button class="btn btn-primary" id="btnApplyCalculatedSize">
+              <i class="fa-solid fa-check"></i> Chọn Size Này Cho Áo Đấu
+            </button>
+          </div>
+        </div>
+
+        <div class="size-table-wrap">
+          <h4>BẢNG THÔNG SỐ SIZE CHI TIẾT (CM)</h4>
+          <table class="size-table">
+            <thead>
+              <tr>
+                <th>Size</th>
+                <th>Dài Áo</th>
+                <th>Vòng Ngực</th>
+                <th>Chiều Cao</th>
+                <th>Cân Nặng</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>S</td><td>68 cm</td><td>94 cm</td><td>1m55 - 1m65</td><td>50 - 60 kg</td></tr>
+              <tr class="highlight"><td>M</td><td>71 cm</td><td>98 cm</td><td>1m65 - 1m75</td><td>60 - 70 kg</td></tr>
+              <tr><td>L</td><td>74 cm</td><td>104 cm</td><td>1m72 - 1m80</td><td>70 - 80 kg</td></tr>
+              <tr><td>XL</td><td>77 cm</td><td>110 cm</td><td>1m78 - 1m85</td><td>80 - 90 kg</td></tr>
+              <tr><td>2XL</td><td>80 cm</td><td>116 cm</td><td>1m82 - 1m90</td><td>90 - 100 kg</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Order Success Modal -->
+  <div class="modal-overlay" id="successModal">
+    <div class="modal-window success-window text-center">
+      <div class="success-icon-wrap">
+        <i class="fa-solid fa-circle-check"></i>
+      </div>
+      <h3 class="success-title">ĐẶT HÀNG THÀNH CÔNG!</h3>
+      <p class="success-sub">Cảm ơn bạn đã lựa chọn Red Devils Store! Mã đơn hàng của bạn là:</p>
+      <div class="order-code-badge" id="orderSuccessCode">MU-2024-98421</div>
+      <p class="success-desc">
+        Hệ thống đã nhận đơn và tiến hành in tên số ngay lập tức. Bạn có thể tra cứu đơn hàng bất kỳ lúc nào bằng mã trên!
+      </p>
+      <div class="success-actions">
+        <button class="btn btn-outline" id="btnTrackSuccessOrder">
+          <i class="fa-solid fa-truck-fast"></i> Tra Cứu Đơn Hàng Này
+        </button>
+        <button class="btn btn-primary" id="btnContinueAfterSuccess">
+          <i class="fa-solid fa-house"></i> Về Trang Chủ
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Confetti Canvas -->
+  <canvas id="confettiCanvas"></canvas>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
