@@ -16,6 +16,8 @@ const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 1420,
     badge: 'BÁN CHẠY NHẤT',
+    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/bb34e2d7ef774076b2384c4aecc3c090_9366/Manchester_United_24-25_Home_Jersey_Red_IU1397_HM1.jpg',
+    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/43467503eadf4300b94fefdbba19ca7b_9366/Manchester_United_24-25_Home_Authentic_Jersey_Red_JF1291_HM3_hover.jpg',
     description: 'Chiếc áo đấu sân nhà Manchester United 2024/2025 mang sắc đỏ rực lửa với hiệu ứng chuyển sắc gradient độc đáo. Nhà tài trợ Snapdragon nổi bật trước ngực cùng 3 sọc trắng Adidas kiêu hãnh trên vai.',
     features: [
       'Công nghệ dệt Heat.Rdy làm mát cơ thể tối ưu',
@@ -37,6 +39,8 @@ const PRODUCTS = [
     rating: 4.9,
     reviewsCount: 890,
     badge: 'MỚI RA MẮT',
+    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/c0054b97aa8a4feb86159d614c1053a9_9366/Manchester_United_24-25_Away_Jersey_Blue_IU1390_HM1.jpg',
+    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/01f074d6c81d4e0e8e6ca6f505436605_9366/Manchester_United_24-25_Away_Jersey_Blue_IU1390_HM3_hover.jpg',
     description: 'Phiên bản sân khách màu xanh Royal Navy quyền lực lấy cảm hứng từ dòng sông Irwell và sắc xanh lịch sử từng đồng hành cùng Quỷ Đỏ trong chức vô địch Châu Âu 1968.',
     features: [
       'Họa tiết dệt chìm hình chữ M lặp lại hiện đại',
@@ -58,6 +62,8 @@ const PRODUCTS = [
     rating: 4.9,
     reviewsCount: 650,
     badge: 'RETRO TREFOIL',
+    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/00807ed890c5497f89bbcd4bae02a308_9366/Manchester_United_24-25_Third_Jersey_White_IY7806_HM1.jpg',
+    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/50bb6d6d84f44a4789596c3f6e85d9c2_9366/Manchester_United_24-25_Third_Jersey_White_IY7806_HM3_hover.jpg',
     description: 'Sự trở lại của logo 3 lá Adidas Trefoil huyền thoại trên nền màu trắng kem ngọc trai. Dải 3 màu đỏ - trắng - đen băng qua ngực tạo nên tuyệt tác thời trang bóng đá đường phố.',
     features: [
       'Logo Adidas Trefoil cổ điển chỉ xuất hiện trên áo đấu cấp cao',
@@ -79,6 +85,8 @@ const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 2150,
     badge: 'TREBLE 1999',
+    image: 'https://mufc-live.cdn.scayle.cloud/images/bbf4823a4aa25964f6a02ce5867d810c.jpg?brightness=1&width=600&height=750&quality=80',
+    imageBack: 'https://mufc-live.cdn.scayle.cloud/images/d3856eb2aa15c73df9da6892550e5015.jpg?brightness=1&width=600&height=750&quality=80',
     description: 'Mẫu áo bất tử gắn liền với đêm thần kỳ Camp Nou 1999 của Sir Alex Ferguson. Cổ bẻ có khóa zip độc đáo, logo nhà tài trợ SHARP huyền thoại in to bản cùng logo Umbro kim cương dệt nổi.',
     features: [
       'Tái hiện nguyên bản 100% mẫu áo chung kết C1 1999',
@@ -100,6 +108,8 @@ const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 1840,
     badge: 'MOSCOW 2008',
+    image: 'https://thevault.co.uk/cdn/shop/files/manchester-united-2008-Champions-League-Final-Shirt.jpg?v=1767971559&width=800',
+    imageBack: 'https://thevault.co.uk/cdn/shop/files/manchester-united-2008-Champions-League-Final-Shirt-back.jpg?v=1767971559&width=800',
     description: 'Áo đấu chứng kiến Cristiano Ronaldo bật cao đánh đầu xé lưới Chelsea tại Moscow trong trận chung kết Champions League 2008 nghẹt thở. Dải sọc trắng sau lưng tôn vinh dáng vẻ dũng mãnh.',
     features: [
       'Nhà tài trợ AIG in lụa chuẩn xác màu trắng',
@@ -121,6 +131,8 @@ const PRODUCTS = [
     rating: 4.8,
     reviewsCount: 310,
     badge: 'ONANA 24',
+    image: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-home-goalkeeper-shirt-2024-25_ss5_p-200954460+pv-1+u-ncz7oqvq3m7pbbgq6g8g+v-3c483d739ea1496a84976767ae8fe048.jpg?_hv=2&w=600',
+    imageBack: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-home-goalkeeper-shirt-2024-25_ss5_p-200954460+pv-2+u-ncz7oqvq3m7pbbgq6g8g+v-0897b6a4a6e44081ba740449ec9c0e52.jpg?_hv=2&w=600',
     description: 'Áo thủ môn chính thức của Andre Onana với tông màu xanh dạ quang nổi bật giúp tăng phản xạ và uy lực trong khung gỗ Old Trafford.',
     features: [
       'Đệm hỗ trợ cùi chỏ linh hoạt khi bay người cản phá',
@@ -141,6 +153,8 @@ const PRODUCTS = [
     rating: 4.9,
     reviewsCount: 420,
     badge: 'ANTHEM JACKET',
+    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/a42b94f6f700445d9a9b70b42df52285_9366/Manchester_United_24-25_Anthem_Jacket_Red_KV6731_HM1.jpg',
+    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/a42b94f6f700445d9a9b70b42df52285_9366/Manchester_United_24-25_Anthem_Jacket_Red_KV6731_HM3_hover.jpg',
     description: 'Mẫu áo khoác các cầu thủ mặc khi xếp hàng chào sân trước mỗi trận cầu đỉnh cao. Thiết kế 2 mặt có thể mặc đảo ngược (Reversible) cực kỳ thời thượng.',
     features: [
       'Thiết kế mặc được 2 mặt: Mặt đỏ rực lửa & Mặt đen huyền bí',
@@ -161,6 +175,8 @@ const PRODUCTS = [
     rating: 4.8,
     reviewsCount: 512,
     badge: 'PRE-MATCH',
+    image: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-pre-match-warm-up-shirt_ss5_p-200954461+pv-1+u-cfsd6j7f6efyv8efrw0d+v-3a9d9b23f81e4cb89d9016b8d7890760.jpg?_hv=2&w=600',
+    imageBack: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-pre-match-warm-up-shirt_ss5_p-200954461+pv-2+u-cfsd6j7f6efyv8efrw0d+v-b2a88d6beae04f719460a8b417c8230b.jpg?_hv=2&w=600',
     description: 'Áo khởi động trên thảm cỏ Old Trafford trước giờ bóng lăn. Họa tiết đồ họa trừu tượng lấy cảm hứng từ biểu tượng Quỷ Đỏ cách điệu.',
     features: [
       'Chất liệu thấm hút mồ hôi Aeroready chuyên sâu',
@@ -192,18 +208,13 @@ const state = {
   shippingFee: 30000,
   freeShippingThreshold: 799000,
   
-  // Customizer state
-  customizer: {
-    kitId: 'home',
-    view: 'front', // 'front' or 'back'
-    name: 'BRUNO',
-    number: 8,
-    badge: 'pl', // 'pl', 'ucl', 'none'
-    version: 'player', // 'player' (Heat.Rdy) or 'fan' (Aeroready)
-    size: 'M',
-    basePrice: 1250000,
-    badgePrice: 80000
-  },
+
+
+  // History view state
+  currentMgrFilter: 'all',
+  quizCurrentIndex: 0,
+  quizScore: 0,
+  quizAnswered: false,
 
   // Sound system state
   isAudioMuted: false
@@ -248,10 +259,8 @@ function navigateTo(viewName, params = {}) {
       crumbName = prod ? prod.name : 'Chi Tiết Sản Phẩm';
       break;
     case 'customizer':
-      targetViewEl = document.getElementById('viewCustomizer');
-      crumbName = 'Phòng Thiết Kế 3D';
-      renderCustomizerSvgs();
-      break;
+      navigateTo('shop');
+      return;
     case 'cart':
       targetViewEl = document.getElementById('viewCart');
       crumbName = 'Giỏ Hàng';
@@ -269,6 +278,12 @@ function navigateTo(viewName, params = {}) {
         document.getElementById('trackingCodeInput').value = params.code;
         lookupOrder(params.code);
       }
+      break;
+    case 'history':
+      targetViewEl = document.getElementById('viewHistory');
+      crumbName = 'Lịch Sử & HLV';
+      renderManagers();
+      initQuiz();
       break;
     default:
       targetViewEl = document.getElementById('viewHome');
@@ -303,10 +318,13 @@ function navigateTo(viewName, params = {}) {
 
 // Bind all navigation triggers with data-navigate
 function setupNavigationListeners() {
+  const searchOverlay = document.getElementById('searchOverlay');
+
   document.addEventListener('click', (e) => {
     const navBtn = e.target.closest('[data-navigate]');
     if (navBtn) {
       e.preventDefault();
+      if (searchOverlay) searchOverlay.classList.remove('open');
       const target = navBtn.getAttribute('data-navigate');
       const filter = navBtn.getAttribute('data-filter');
       const prodId = navBtn.getAttribute('data-prod-id');
@@ -325,7 +343,6 @@ function setupNavigationListeners() {
 
   // Quick Search open/close
   const searchTrigger = document.getElementById('searchTrigger');
-  const searchOverlay = document.getElementById('searchOverlay');
   const searchClose = document.getElementById('searchClose');
   const searchInput = document.getElementById('searchInput');
 
@@ -355,12 +372,12 @@ function setupNavigationListeners() {
     });
   }
 
-  document.querySelectorAll('.tag-btn').forEach(btn => {
+  document.querySelectorAll('.tag-btn[data-search]').forEach(btn => {
     btn.addEventListener('click', () => {
       const q = btn.getAttribute('data-search');
       if (searchOverlay) searchOverlay.classList.remove('open');
       navigateTo('shop');
-      filterProductsByQuery(q.toLowerCase());
+      if (q) filterProductsByQuery(q.toLowerCase());
     });
   });
 }
@@ -591,243 +608,21 @@ function generateJerseySvgContent(kitType, isBack = false, name = 'BRUNO', numbe
   }
 }
 
-// Render dynamic customizer front and back SVGs
-function renderCustomizerSvgs() {
-  const frontSvg = document.getElementById('customizerFrontSvg');
-  const backSvg = document.getElementById('customizerBackSvg');
-
-  const { kitId, name, number, badge } = state.customizer;
-
-  if (frontSvg) {
-    frontSvg.innerHTML = generateJerseySvgContent(kitId, false, name, number, badge);
-  }
-  if (backSvg) {
-    backSvg.innerHTML = generateJerseySvgContent(kitId, true, name, number, badge);
-  }
-
-  // Update indicators
-  const badgeLabels = {
-    pl: 'Ngoại Hạng Anh (PL)',
-    ucl: 'UEFA Champions League (UCL)',
-    none: 'Không Gắn Huy Hiệu'
-  };
-  const badgeIndicator = document.getElementById('badgeIndicator');
-  if (badgeIndicator) {
-    badgeIndicator.innerHTML = `<i class="fa-solid fa-award"></i> Huy hiệu: <strong>${badgeLabels[badge]}</strong>`;
-  }
-
-  const versionIndicator = document.getElementById('versionIndicator');
-  if (versionIndicator) {
-    versionIndicator.innerHTML = `<i class="fa-solid fa-tag"></i> Bản: <strong>${state.customizer.version === 'player' ? 'Player Authentic (Thi đấu)' : 'Fan Replica (Cổ động viên)'}</strong>`;
-  }
-
-  // Update total price display
-  updateCustomizerPrice();
-}
-
-// Calculate and update 3D Customizer Price
-function updateCustomizerPrice() {
-  let base = state.customizer.version === 'player' ? 1250000 : 850000;
-  if (state.customizer.kitId === 'retro99') base = 950000;
-
-  let badgeExtra = 0;
-  if (state.customizer.badge === 'pl') badgeExtra = 80000;
-  if (state.customizer.badge === 'ucl') badgeExtra = 120000;
-
-  const total = base + badgeExtra;
-  const priceDisplay = document.getElementById('customTotalPrice');
-  if (priceDisplay) {
-    priceDisplay.textContent = formatVND(total);
-  }
-}
-
-// Setup Customizer Interactive Controls
-function setupCustomizerListeners() {
-  // Flip card button
-  const flipBtn = document.getElementById('btnFlip3D');
-  const card = document.getElementById('jersey3DCard');
-  const btnFront = document.getElementById('btnViewFront');
-  const btnBack = document.getElementById('btnViewBack');
-
-  if (flipBtn && card) {
-    flipBtn.addEventListener('click', () => {
-      card.classList.toggle('flipped');
-      const isFlipped = card.classList.contains('flipped');
-      if (btnFront && btnBack) {
-        btnFront.classList.toggle('active', !isFlipped);
-        btnBack.classList.toggle('active', isFlipped);
-      }
-    });
-  }
-
-  if (btnFront && card) {
-    btnFront.addEventListener('click', () => {
-      card.classList.remove('flipped');
-      btnFront.classList.add('active');
-      if (btnBack) btnBack.classList.remove('active');
-    });
-  }
-
-  if (btnBack && card) {
-    btnBack.addEventListener('click', () => {
-      card.classList.add('flipped');
-      btnBack.classList.add('active');
-      if (btnFront) btnFront.classList.remove('active');
-    });
-  }
-
-  // Kit Variant buttons
-  const kitBtns = document.querySelectorAll('.kit-card-btn');
-  kitBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      kitBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      state.customizer.kitId = btn.getAttribute('data-kit-id');
-      renderCustomizerSvgs();
-      playTone(400, 'sine', 0.1);
-    });
-  });
-
-  // Star Player Chips
-  const playerChips = document.querySelectorAll('.player-chip');
-  const nameInput = document.getElementById('inputCustomName');
-  const numInput = document.getElementById('inputCustomNumber');
-
-  playerChips.forEach(chip => {
-    chip.addEventListener('click', () => {
-      playerChips.forEach(c => c.classList.remove('active'));
-      chip.classList.add('active');
-
-      const pKey = chip.getAttribute('data-player');
-      if (pKey === 'CUSTOM') {
-        if (nameInput) nameInput.focus();
-      } else {
-        const pData = STAR_PLAYERS[pKey];
-        if (pData) {
-          state.customizer.name = pData.name;
-          state.customizer.number = pData.number;
-          if (nameInput) nameInput.value = pData.name;
-          if (numInput) numInput.value = pData.number;
-          renderCustomizerSvgs();
-          // Automatically flip to back so user sees the change!
-          if (card && !card.classList.contains('flipped')) {
-            card.classList.add('flipped');
-            if (btnBack) btnBack.classList.add('active');
-            if (btnFront) btnFront.classList.remove('active');
-          }
-          playTone(550, 'sine', 0.1);
-        }
-      }
-    });
-  });
-
-  // Live input typing for name & number
-  if (nameInput) {
-    nameInput.addEventListener('input', (e) => {
-      state.customizer.name = e.target.value.toUpperCase() || 'MAN UTD';
-      renderCustomizerSvgs();
-    });
-  }
-
-  if (numInput) {
-    numInput.addEventListener('input', (e) => {
-      const val = parseInt(e.target.value) || 0;
-      state.customizer.number = Math.min(99, Math.max(1, val));
-      renderCustomizerSvgs();
-    });
-  }
-
-  // Badge Radio options
-  const badgeRadios = document.querySelectorAll('input[name="badgeOption"]');
-  badgeRadios.forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      state.customizer.badge = e.target.value;
-      renderCustomizerSvgs();
-    });
-  });
-
-  // Fabric Version Radios
-  const fabricRadios = document.querySelectorAll('input[name="fabricVersion"]');
-  fabricRadios.forEach(radio => {
-    radio.addEventListener('change', (e) => {
-      state.customizer.version = e.target.value;
-      renderCustomizerSvgs();
-    });
-  });
-
-  // Size buttons in customizer
-  const sizeBtns = document.querySelectorAll('.size-buttons-row .size-btn');
-  const sizeHint = document.getElementById('sizeHintText');
-  const sizeHints = {
-    'S': 'Size S phù hợp: Chiều cao 1m55 - 1m65 • Cân nặng 50 - 60kg',
-    'M': 'Size M phù hợp: Chiều cao 1m65 - 1m75 • Cân nặng 60 - 70kg',
-    'L': 'Size L phù hợp: Chiều cao 1m72 - 1m80 • Cân nặng 70 - 80kg',
-    'XL': 'Size XL phù hợp: Chiều cao 1m78 - 1m85 • Cân nặng 80 - 90kg',
-    '2XL': 'Size 2XL phù hợp: Chiều cao 1m82 - 1m90 • Cân nặng 90 - 100kg',
-    '3XL': 'Size 3XL phù hợp: Chiều cao 1m85+ • Cân nặng 98kg+'
-  };
-
-  sizeBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      sizeBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const sz = btn.getAttribute('data-size');
-      state.customizer.size = sz;
-      if (sizeHint && sizeHints[sz]) {
-        sizeHint.textContent = sizeHints[sz];
-      }
-    });
-  });
-
-  // Add customized jersey to Cart button
-  const btnAddCustom = document.getElementById('btnAddCustomToCart');
-  if (btnAddCustom) {
-    btnAddCustom.addEventListener('click', () => {
-      const kitNames = {
-        home: 'Áo Sân Nhà Home 2024/25',
-        away: 'Áo Sân Khách Away 2024/25',
-        third: 'Áo Bộ Thứ Ba Third 2024/25',
-        retro99: 'Áo Retro Cú Ăn 3 1999'
-      };
-
-      let basePrice = state.customizer.version === 'player' ? 1250000 : 850000;
-      if (state.customizer.kitId === 'retro99') basePrice = 950000;
-      let badgePrice = state.customizer.badge === 'pl' ? 80000 : (state.customizer.badge === 'ucl' ? 120000 : 0);
-
-      const customItem = {
-        cartId: 'custom-' + Date.now(),
-        productId: 'mu-' + state.customizer.kitId,
-        name: `${kitNames[state.customizer.kitId]} (Tùy Chỉnh)`,
-        price: basePrice + badgePrice,
-        size: state.customizer.size,
-        version: state.customizer.version === 'player' ? 'Bản Thi Đấu (Player Heat.Rdy)' : 'Bản CĐV (Fan Aeroready)',
-        customName: state.customizer.name,
-        customNumber: state.customizer.number,
-        badge: state.customizer.badge.toUpperCase(),
-        kitType: state.customizer.kitId,
-        quantity: 1
-      };
-
-      addToCart(customItem);
-      triggerConfetti();
-      showToast(`Đã thêm áo tùy chỉnh #${customItem.customNumber} ${customItem.customName} vào giỏ hàng!`, 'success');
-      playCashChime();
-      openCartDrawer();
-    });
-  }
-}
-
 // ==================== 5. PRODUCT CATALOG & SHOP SYSTEM ====================
 function createProductCardHtml(prod) {
-  const svgThumb = generateJerseySvgContent(prod.kitType, false);
+  const fallbackSvg = generateJerseySvgContent(prod.kitType, false);
 
   return `
     <div class="product-card" data-prod-id="${prod.id}">
       <span class="p-card-badge">${prod.badge}</span>
       <div class="p-card-thumb" data-navigate="product-detail" data-prod-id="${prod.id}">
-        <svg viewBox="0 0 500 580">
-          ${svgThumb}
-        </svg>
+        <img 
+          src="${prod.image}" 
+          alt="${prod.name}" 
+          class="product-real-img" 
+          loading="lazy"
+          onerror="this.onerror=null; this.outerHTML='<svg viewBox=\'0 0 500 580\'>${fallbackSvg.replace(/'/g, "\\'")}</svg>';"
+        />
         <div class="p-card-quick-actions">
           <button class="btn btn-sm btn-primary btn-block" data-navigate="product-detail" data-prod-id="${prod.id}">
             <i class="fa-solid fa-eye"></i> Xem Chi Tiết
@@ -847,7 +642,7 @@ function createProductCardHtml(prod) {
         </div>
         <div class="p-card-footer-btns">
           <button class="btn btn-outline btn-sm btn-block" data-navigate="product-detail" data-prod-id="${prod.id}">
-            Tùy biến in tên
+            <i class="fa-solid fa-shirt"></i> Chọn Size & Mua
           </button>
           <button class="btn btn-primary btn-sm btn-quick-add" data-id="${prod.id}" title="Thêm nhanh vào giỏ">
             <i class="fa-solid fa-cart-plus"></i>
@@ -966,6 +761,7 @@ function setupShopFilters() {
           cartId: 'quick-' + Date.now(),
           productId: prod.id,
           name: prod.name,
+          image: prod.image,
           price: prod.playerPrice,
           size: 'M',
           version: 'Bản Cầu Thủ (Player Heat.Rdy)',
@@ -990,25 +786,30 @@ function renderProductDetail(productId) {
   const container = document.getElementById('productDetailContainer');
   if (!container) return;
 
-  const svgFront = generateJerseySvgContent(prod.kitType, false, 'BRUNO', '8', 'pl');
-  const svgBack = generateJerseySvgContent(prod.kitType, true, 'BRUNO', '8', 'pl');
+  const fallbackSvg = generateJerseySvgContent(prod.kitType, false);
 
   container.innerHTML = `
     <!-- Left: Stage & Gallery -->
     <div class="p-detail-gallery">
       <div class="p-detail-main-stage" id="detailMainStage">
-        <svg viewBox="0 0 500 580" id="detailInteractiveSvg">
-          ${svgFront}
-        </svg>
+        <img 
+          src="${prod.image}" 
+          alt="${prod.name}" 
+          id="detailMainImg" 
+          class="detail-real-img"
+          onerror="this.onerror=null; this.outerHTML='<svg viewBox=\'0 0 500 580\'>${fallbackSvg.replace(/'/g, "\\'")}</svg>';"
+        />
       </div>
 
       <div class="p-detail-thumbs">
-        <button class="p-thumb-btn active" id="detailThumbFront">
-          <svg viewBox="0 0 500 580">${svgFront}</svg>
+        <button class="p-thumb-btn active" id="detailThumbFront" title="Mặt trước">
+          <img src="${prod.image}" alt="Mặt trước" />
         </button>
-        <button class="p-thumb-btn" id="detailThumbBack">
-          <svg viewBox="0 0 500 580">${svgBack}</svg>
+        ${prod.imageBack ? `
+        <button class="p-thumb-btn" id="detailThumbBack" title="Mặt sau">
+          <img src="${prod.imageBack}" alt="Mặt sau" />
         </button>
+        ` : ''}
       </div>
     </div>
 
@@ -1027,7 +828,7 @@ function renderProductDetail(productId) {
         <span class="p-detail-current-price" id="detailCalculatedPrice">${formatVND(prod.playerPrice)}</span>
         <span class="p-detail-old-price">${formatVND(prod.oldPrice)}</span>
         <span class="discount-tag" style="background: rgba(218,41,28,0.2); color: #ff3b30; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem;">
-          TIẾT KIỆM 200.000đ
+          TIẾT KIỆM ${formatVND(prod.oldPrice - prod.playerPrice)}
         </span>
       </div>
 
@@ -1039,17 +840,26 @@ function renderProductDetail(productId) {
         <div class="p-detail-row">
           <div class="input-group">
             <label>TÊN IN TRÊN ÁO:</label>
-            <input type="text" id="detailInputName" value="BRUNO" maxlength="12" style="background:#111; color:#fff; border:1px solid #333; padding:8px; border-radius:4px; font-weight:700; width:100%; text-transform:uppercase;">
+            <input type="text" id="detailInputName" value="BRUNO" maxlength="12" style="background:#111; color:#fff; border:1px solid #333; padding:8px 12px; border-radius:4px; font-weight:700; width:100%; text-transform:uppercase;">
           </div>
           <div class="input-group">
             <label>SỐ ÁO:</label>
-            <input type="number" id="detailInputNumber" value="8" min="1" max="99" style="background:#111; color:#fff; border:1px solid #333; padding:8px; border-radius:4px; font-weight:700; width:100%;">
+            <input type="number" id="detailInputNumber" value="8" min="1" max="99" style="background:#111; color:#fff; border:1px solid #333; padding:8px 12px; border-radius:4px; font-weight:700; width:100%;">
           </div>
         </div>
 
-        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:6px;">
+        <div class="p-detail-quick-players">
+          <span style="font-size:0.8rem; color:#888;">Gợi ý in nhanh:</span>
+          <button type="button" class="player-chip-btn" data-name="BRUNO" data-num="8">Bruno (8)</button>
+          <button type="button" class="player-chip-btn" data-name="MAINOO" data-num="37">Mainoo (37)</button>
+          <button type="button" class="player-chip-btn" data-name="GARNACHO" data-num="17">Garnacho (17)</button>
+          <button type="button" class="player-chip-btn" data-name="RASHFORD" data-num="10">Rashford (10)</button>
+          <button type="button" class="player-chip-btn" data-name="HØJLUND" data-num="9">Højlund (9)</button>
+        </div>
+
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
           <label style="font-size:0.8rem; color:#aaa;">Huy hiệu tay áo:</label>
-          <select id="detailSelectBadge" style="background:#111; color:#fff; border:1px solid #333; padding:6px; border-radius:4px; font-size:0.85rem;">
+          <select id="detailSelectBadge" style="background:#111; color:#fff; border:1px solid #333; padding:6px 10px; border-radius:4px; font-size:0.85rem;">
             <option value="pl" selected>🦁 Ngoại Hạng Anh (+80K)</option>
             <option value="ucl">⭐ UEFA Champions League (+120K)</option>
             <option value="none">✖ Không gắn huy hiệu (+0đ)</option>
@@ -1060,7 +870,7 @@ function renderProductDetail(productId) {
       <!-- Size Selection -->
       <div>
         <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;">
-          <strong style="font-size:0.9rem;">Chọn Size:</strong>
+          <strong style="font-size:0.9rem;">Chọn Size (Chuẩn EU):</strong>
           <button class="size-advisor-btn" id="detailSizeCalcBtn"><i class="fa-solid fa-calculator"></i> Tính size chuẩn</button>
         </div>
         <div class="size-buttons-row" id="detailSizeRow">
@@ -1112,64 +922,48 @@ function renderProductDetail(productId) {
   `;
 
   // Setup detail interactive events
-  let detailIsBack = false;
   let detailSelectedSize = 'M';
 
-  const detailSvg = document.getElementById('detailInteractiveSvg');
+  const detailMainImg = document.getElementById('detailMainImg');
   const thumbFront = document.getElementById('detailThumbFront');
   const thumbBack = document.getElementById('detailThumbBack');
   const dName = document.getElementById('detailInputName');
   const dNum = document.getElementById('detailInputNumber');
   const dBadge = document.getElementById('detailSelectBadge');
 
-  function updateDetailView() {
-    const curName = dName ? dName.value.toUpperCase() : 'BRUNO';
-    const curNum = dNum ? dNum.value : '8';
-    const curBadge = dBadge ? dBadge.value : 'pl';
-    if (detailSvg) {
-      detailSvg.innerHTML = generateJerseySvgContent(prod.kitType, detailIsBack, curName, curNum, curBadge);
-    }
-  }
-
-  if (thumbFront) {
+  if (thumbFront && detailMainImg) {
     thumbFront.addEventListener('click', () => {
-      detailIsBack = false;
+      detailMainImg.src = prod.image;
       thumbFront.classList.add('active');
       if (thumbBack) thumbBack.classList.remove('active');
-      updateDetailView();
     });
   }
 
-  if (thumbBack) {
+  if (thumbBack && detailMainImg && prod.imageBack) {
     thumbBack.addEventListener('click', () => {
-      detailIsBack = true;
+      detailMainImg.src = prod.imageBack;
       thumbBack.classList.add('active');
       if (thumbFront) thumbFront.classList.remove('active');
-      updateDetailView();
     });
   }
 
-  if (dName) {
-    dName.addEventListener('input', () => {
-      detailIsBack = true;
-      if (thumbBack) thumbBack.classList.add('active');
-      if (thumbFront) thumbFront.classList.remove('active');
-      updateDetailView();
+  // Quick player buttons
+  container.querySelectorAll('.player-chip-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const name = btn.getAttribute('data-name');
+      const num = btn.getAttribute('data-num');
+      if (dName) dName.value = name;
+      if (dNum) dNum.value = num;
+      if (prod.imageBack && detailMainImg && thumbBack) {
+        detailMainImg.src = prod.imageBack;
+        thumbBack.classList.add('active');
+        if (thumbFront) thumbFront.classList.remove('active');
+      }
     });
-  }
-
-  if (dNum) {
-    dNum.addEventListener('input', () => {
-      detailIsBack = true;
-      if (thumbBack) thumbBack.classList.add('active');
-      if (thumbFront) thumbFront.classList.remove('active');
-      updateDetailView();
-    });
-  }
+  });
 
   if (dBadge) {
     dBadge.addEventListener('change', () => {
-      updateDetailView();
       let badgeAdd = dBadge.value === 'pl' ? 80000 : (dBadge.value === 'ucl' ? 120000 : 0);
       const prEl = document.getElementById('detailCalculatedPrice');
       if (prEl) prEl.textContent = formatVND(prod.playerPrice + badgeAdd);
@@ -1202,6 +996,7 @@ function renderProductDetail(productId) {
         cartId: 'item-' + Date.now(),
         productId: prod.id,
         name: prod.name,
+        image: prod.image,
         price: prod.playerPrice + badgeAdd,
         size: detailSelectedSize,
         version: 'Bản Cầu Thủ (Player Heat.Rdy)',
@@ -1230,6 +1025,7 @@ function renderProductDetail(productId) {
         cartId: 'item-' + Date.now(),
         productId: prod.id,
         name: prod.name,
+        image: prod.image,
         price: prod.playerPrice + badgeAdd,
         size: detailSelectedSize,
         version: 'Bản Cầu Thủ (Player Heat.Rdy)',
@@ -1248,19 +1044,18 @@ function renderProductDetail(productId) {
   // Accordion toggle
   document.querySelectorAll('.accordion-trigger').forEach(trigger => {
     trigger.addEventListener('click', () => {
-      const item = trigger.closest('.accordion-item');
-      item.classList.toggle('open');
+      const parent = trigger.parentElement;
+      parent.classList.toggle('active');
     });
   });
 
-  // Render related products
+  // Render related products (other 3 kits)
   const relatedGrid = document.getElementById('relatedProductsGrid');
   if (relatedGrid) {
-    const related = PRODUCTS.filter(p => p.id !== prod.id).slice(0, 4);
+    const related = PRODUCTS.filter(p => p.id !== prod.id).slice(0, 3);
     relatedGrid.innerHTML = related.map(createProductCardHtml).join('');
   }
 }
-
 // ==================== 7. CART SYSTEM & DRAWER ====================
 function loadCartFromStorage() {
   try {
@@ -1282,6 +1077,10 @@ function saveCartToStorage() {
 }
 
 function addToCart(item) {
+  if (!item.image) {
+    const prod = PRODUCTS.find(p => p.id === item.productId);
+    if (prod) item.image = prod.image;
+  }
   state.cart.push(item);
   saveCartToStorage();
   updateCartBadges();
@@ -1395,11 +1194,13 @@ function renderCartDrawer() {
     `;
   } else {
     container.innerHTML = state.cart.map(item => {
+      const prod = PRODUCTS.find(p => p.id === item.productId);
+      const imgSrc = item.image || (prod ? prod.image : '');
       const svgThumb = generateJerseySvgContent(item.kitType || 'home', true, item.customName, item.customNumber);
       return `
         <div class="cart-row-item" style="grid-template-columns: 60px 1fr auto; padding: 12px 0;">
           <div class="c-item-img" style="width: 55px; height: 55px;">
-            <svg viewBox="0 0 500 580">${svgThumb}</svg>
+            ${imgSrc ? `<img src="${imgSrc}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;">` : `<svg viewBox="0 0 500 580">${svgThumb}</svg>`}
           </div>
           <div class="c-item-details" style="padding: 0 10px;">
             <h5 style="font-size: 0.88rem;">${item.name}</h5>
@@ -1480,12 +1281,14 @@ function renderFullCartPage() {
     `;
   } else {
     container.innerHTML = state.cart.map(item => {
+      const prod = PRODUCTS.find(p => p.id === item.productId);
+      const imgSrc = item.image || (prod ? prod.image : '');
       const svgThumb = generateJerseySvgContent(item.kitType || 'home', true, item.customName, item.customNumber);
       return `
         <div class="cart-row-item">
           <div class="c-item-prod">
             <div class="c-item-img">
-              <svg viewBox="0 0 500 580">${svgThumb}</svg>
+              ${imgSrc ? `<img src="${imgSrc}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;">` : `<svg viewBox="0 0 500 580">${svgThumb}</svg>`}
             </div>
             <div class="c-item-details">
               <h5>${item.name}</h5>
@@ -1684,7 +1487,6 @@ function renderCheckoutView() {
   const totalEl = document.getElementById('chkFinalTotal');
   const discRow = document.getElementById('chkDiscountRow');
   const discEl = document.getElementById('chkDiscountAmount');
-  const qrAmountEl = document.getElementById('checkoutQrAmount');
 
   const { subtotal, discount, shipping, finalTotal } = getCartTotals();
 
@@ -1710,7 +1512,6 @@ function renderCheckoutView() {
   if (subEl) subEl.textContent = formatVND(subtotal);
   if (shipEl) shipEl.textContent = shipping === 0 ? 'MIỄN PHÍ' : formatVND(shipping);
   if (totalEl) totalEl.textContent = formatVND(finalTotal);
-  if (qrAmountEl) qrAmountEl.textContent = formatVND(finalTotal);
 
   if (discRow && discEl) {
     if (discount > 0) {
@@ -1725,20 +1526,11 @@ function renderCheckoutView() {
 function setupCheckoutListeners() {
   // Payment Method selection
   const payCards = document.querySelectorAll('.pay-method-card input');
-  const qrBox = document.getElementById('checkoutQrBox');
 
   payCards.forEach(input => {
     input.addEventListener('change', (e) => {
       document.querySelectorAll('.pay-method-card').forEach(c => c.classList.remove('active'));
       e.target.closest('.pay-method-card').classList.add('active');
-
-      if (qrBox) {
-        if (e.target.value === 'vietqr') {
-          qrBox.style.display = 'block';
-        } else {
-          qrBox.style.display = 'none';
-        }
-      }
     });
   });
 
@@ -1757,16 +1549,6 @@ function setupCheckoutListeners() {
       renderCheckoutView();
     });
   });
-
-  // Phone input update QR content code
-  const phoneInput = document.getElementById('chkPhone');
-  const qrContentDisplay = document.getElementById('checkoutQrContent');
-  if (phoneInput && qrContentDisplay) {
-    phoneInput.addEventListener('input', (e) => {
-      const val = e.target.value.trim();
-      qrContentDisplay.textContent = val ? `MUFC ${val}` : 'MUFC [SĐT CỦA BẠN]';
-    });
-  }
 
   // Full Checkout Form Submit
   const checkoutForm = document.getElementById('fullCheckoutForm');
@@ -2013,10 +1795,9 @@ function setupSizeGuideListeners() {
   if (applyBtn) {
     applyBtn.addEventListener('click', () => {
       const rec = calculateRecommendedSize();
-      state.customizer.size = rec;
 
-      // Update active button in customizer
-      document.querySelectorAll('.size-buttons-row .size-btn').forEach(btn => {
+      // Update active size button on product detail
+      document.querySelectorAll('#detailSizeRow .size-btn, .size-buttons-row .size-btn').forEach(btn => {
         if (btn.getAttribute('data-size') === rec) {
           btn.classList.add('active');
         } else {
@@ -2025,7 +1806,7 @@ function setupSizeGuideListeners() {
       });
 
       closeSizeGuideModal();
-      showToast(`Đã chọn Size ${rec} vào cấu hình áo đấu!`, 'success');
+      showToast(`Đã chọn Size ${rec} cho áo đấu của bạn!`, 'success');
       playTone(500, 'sine', 0.1);
     });
   }
@@ -2241,27 +2022,735 @@ function showToast(message, type = 'info') {
   }, 3500);
 }
 
+// ==================== 13b. HISTORY, MANAGERS & QUIZ SYSTEM ====================
+const MANAGERS = [
+  {
+    id: 'albut',
+    name: 'A. H. Albut',
+    period: '1892 - 1900',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 265,
+    wins: 130,
+    winRate: '49.1%',
+    trophies: ['Thư ký điều hành đầu tiên', 'Khai sinh thời Newton Heath'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Vị thư ký kiêm quản lý chính thức đầu tiên phụ trách các vấn đề của Newton Heath F.C. (tiền thân của Manchester United).'
+  },
+  {
+    id: 'west',
+    name: 'James West',
+    period: '1900 - 1903',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 113,
+    wins: 46,
+    winRate: '40.7%',
+    trophies: ['Chứng kiến đổi tên CLB', 'Khai sinh sắc áo Đỏ (1902)'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Chứng kiến thời khắc lịch sử khi CLB được cứu khỏi phá sản và chính thức mang tên Manchester United vào năm 1902.'
+  },
+  {
+    id: 'mangnall',
+    name: 'Ernest Mangnall',
+    period: '1903 - 1912',
+    category: 'legend',
+    subCategories: ['classic'],
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 373,
+    wins: 202,
+    winRate: '54.2%',
+    trophies: ['2 First Division (1908, 1911)', '1 FA Cup (1909)', '2 Charity Shield'],
+    badge: 'Huyền Thoại',
+    badgeClass: 'badge-legend',
+    desc: 'Kiến trúc sư đưa Quỷ Đỏ giành chức Vô địch Nước Anh đầu tiên trong lịch sử (1908) và khánh thành thánh địa Old Trafford năm 1910.'
+  },
+  {
+    id: 'bentley',
+    name: 'John Bentley',
+    period: '1912 - 1914',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 82,
+    wins: 36,
+    winRate: '43.9%',
+    trophies: ['Dẫn dắt trước Thế chiến I'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Tiếp quản chiếc ghế nóng từ Mangnall và giúp MU giữ vững vị thế tại giải VĐQG trước khi Thế chiến thứ nhất bùng nổ.'
+  },
+  {
+    id: 'robson',
+    name: 'Jack Robson',
+    period: '1914 - 1921',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 139,
+    wins: 41,
+    winRate: '29.5%',
+    trophies: ['Duy trì CLB qua Thế chiến I'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Vị thuyền trưởng tận tụy chèo lái Manchester United duy trì hoạt động và thi đấu giải thời chiến trong suốt Thế chiến thứ nhất.'
+  },
+  {
+    id: 'chapman',
+    name: 'John Chapman',
+    period: '1921 - 1926',
+    category: 'classic',
+    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    matches: 221,
+    wins: 86,
+    winRate: '38.9%',
+    trophies: ['Thăng hạng First Division (1925)'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'HLV người Scotland đầu tiên của United, giúp đội bóng thăng hạng trở lại giải đấu cao nhất nước Anh vào năm 1925.'
+  },
+  {
+    id: 'hilditch',
+    name: 'Clarence Hilditch',
+    period: '1926 - 1927',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 33,
+    wins: 10,
+    winRate: '30.3%',
+    trophies: ['Cầu thủ kiêm HLV đầu tiên'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Cầu thủ kiêm HLV trưởng đầu tiên và duy nhất trong kỷ nguyên sơ khai của Manchester United.'
+  },
+  {
+    id: 'bamlett',
+    name: 'Herbert Bamlett',
+    period: '1927 - 1931',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 183,
+    wins: 57,
+    winRate: '31.1%',
+    trophies: ['Cựu trọng tài Chung kết FA Cup 1914'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Từng là trọng tài bắt trận chung kết FA Cup 1914 trước khi chuyển sang dẫn dắt Manchester United trong thời kỳ suy thoái kinh tế.'
+  },
+  {
+    id: 'crickmer',
+    name: 'Walter Crickmer',
+    period: '1931 - 1932 & 1937 - 1945',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 119,
+    wins: 49,
+    winRate: '41.2%',
+    trophies: ['2 nhiệm kỳ HLV trưởng', 'Thư ký cống hiến 32 năm'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Thư ký huyền thoại 2 lần đứng ra làm HLV tạm quyền cứu nguy CLB. Ông hy sinh anh dũng trong thảm họa Munich 1958.'
+  },
+  {
+    id: 'duncan',
+    name: 'Scott Duncan',
+    period: '1932 - 1937',
+    category: 'classic',
+    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    matches: 235,
+    wins: 92,
+    winRate: '39.1%',
+    trophies: ['Vô địch Second Division (1936)'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Chiến lược gia người Scotland đưa Quỷ Đỏ đoạt chức vô địch giải Hạng Nhì 1936 cùng lối đá phòng ngự phản công sắc bén.'
+  },
+  {
+    id: 'busby',
+    name: 'Sir Matt Busby',
+    period: '1945 - 1969 & 1970 - 1971',
+    category: 'legend',
+    subCategories: ['classic'],
+    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    matches: 1141,
+    wins: 576,
+    winRate: '50.5%',
+    trophies: ['1 Cúp C1 Châu Âu (1968)', '5 First Division', '2 FA Cup', '5 Charity Shield'],
+    badge: 'Huyền Thoại Bất Tử',
+    badgeClass: 'badge-legend',
+    desc: 'Biểu tượng vĩ đại khai sinh dàn sao "Busby Babes", kiên cường hồi sinh từ tro tàn Munich 1958 để đưa MU đăng quang Cúp C1 Châu Âu 1968.'
+  },
+  {
+    id: 'mcguinness',
+    name: 'Wilf McGuinness',
+    period: '1969 - 1970',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 87,
+    wins: 32,
+    winRate: '36.8%',
+    trophies: ['Bán kết Cúp Liên đoàn', 'Bán kết Cúp FA'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Cựu danh thủ thuộc thế hệ Busby Babes dũng cảm tiếp nhận trọng trách thay thế Sir Matt Busby ở tuổi 31.'
+  },
+  {
+    id: 'ofarrell',
+    name: 'Frank O\'Farrell',
+    period: '1971 - 1972',
+    category: 'classic',
+    nationality: 'Ireland 🇮🇪',
+    matches: 81,
+    wins: 30,
+    winRate: '37.0%',
+    trophies: ['HLV người Ireland đầu tiên'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Chiến lược gia người Ireland từng đưa Leicester vào chung kết FA Cup trước khi chuyển đến lãnh xướng chiếc ghế nóng tại Old Trafford.'
+  },
+  {
+    id: 'docherty',
+    name: 'Tommy Docherty',
+    period: '1972 - 1977',
+    category: 'legend',
+    subCategories: ['classic'],
+    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    matches: 228,
+    wins: 107,
+    winRate: '46.9%',
+    trophies: ['1 FA Cup (1977)', '1 Second Division (1975)'],
+    badge: 'Huyền Thoại',
+    badgeClass: 'badge-legend',
+    desc: '"The Doc" mang lại thứ bóng đá tấn công rực lửa, tái thiết đội hình và đập tan hy vọng ăn ba của Liverpool ở trận chung kết FA Cup 1977.'
+  },
+  {
+    id: 'sexton',
+    name: 'Dave Sexton',
+    period: '1977 - 1981',
+    category: 'classic',
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 201,
+    wins: 81,
+    winRate: '40.3%',
+    trophies: ['1 Charity Shield (1977)', 'Á quân First Division (1980)'],
+    badge: 'Cổ Điển',
+    badgeClass: 'badge-classic',
+    desc: 'Chiến lược gia điềm tĩnh nâng cao Charity Shield 1977, dẫn dắt đội bóng vào chung kết FA Cup 1979 và về nhì tại First Division 1980.'
+  },
+  {
+    id: 'atkinson',
+    name: 'Ron Atkinson',
+    period: '1981 - 1986',
+    category: 'legend',
+    subCategories: ['classic'],
+    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
+    matches: 292,
+    wins: 146,
+    winRate: '50.0%',
+    trophies: ['2 FA Cup (1983, 1985)', '1 Charity Shield (1983)'],
+    badge: 'Huyền Thoại',
+    badgeClass: 'badge-legend',
+    desc: '"Big Ron" đưa về siêu tiền vệ Bryan Robson, biến United thành thế lực đấu cúp đáng sợ với 2 chức vô địch FA Cup 1983 và 1985.'
+  },
+  {
+    id: 'ferguson',
+    name: 'Sir Alex Ferguson',
+    period: '1986 - 2013',
+    category: 'legend',
+    subCategories: ['classic'],
+    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    matches: 1500,
+    wins: 895,
+    winRate: '59.7%',
+    trophies: ['38 danh hiệu đỉnh cao: 13 Premier League', '2 Champions League', '5 FA Cup', 'Cú Ăn Ba 1999'],
+    badge: 'Vĩ Đại Nhất Mọi Thời Đại',
+    badgeClass: 'badge-legend',
+    desc: 'Nhà cầm quân vĩ đại nhất lịch sử bóng đá thế giới. 26 năm hoàng kim biến Manchester United thành đế chế toàn cầu không thể xô đổ.'
+  },
+  {
+    id: 'moyes',
+    name: 'David Moyes',
+    period: '2013 - 2014',
+    category: 'post-saf',
+    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
+    matches: 51,
+    wins: 27,
+    winRate: '52.9%',
+    trophies: ['1 FA Community Shield (2013)'],
+    badge: 'Hậu Sir Alex',
+    badgeClass: 'badge-postsaf',
+    desc: '"The Chosen One" được chính Sir Alex Ferguson tiến cử, mang về danh hiệu Siêu Cúp Anh 2013 ngay trong trận chính thức đầu tiên.'
+  },
+  {
+    id: 'giggs',
+    name: 'Ryan Giggs',
+    period: '2014 (Tạm quyền)',
+    category: 'legend',
+    subCategories: ['post-saf'],
+    nationality: 'Xứ Wales 🏴󠁧󠁢󠁷󠁬󠁳󠁿',
+    matches: 4,
+    wins: 2,
+    winRate: '50.0%',
+    trophies: ['Kỷ lục 963 trận thi đấu', '34 danh hiệu cầu thủ'],
+    badge: 'Huyền Thoại',
+    badgeClass: 'badge-legend',
+    desc: 'Huyền thoại ra sân nhiều nhất lịch sử MU đảm nhận vai trò HLV tạm quyền 4 trận cuối mùa 2013/14 trong sự tôn kính của toàn bộ người hâm mộ.'
+  },
+  {
+    id: 'vangaal',
+    name: 'Louis van Gaal',
+    period: '2014 - 2016',
+    category: 'post-saf',
+    nationality: 'Hà Lan 🇳🇱',
+    matches: 103,
+    wins: 54,
+    winRate: '52.4%',
+    trophies: ['1 FA Cup (2016)'],
+    badge: 'Hậu Sir Alex',
+    badgeClass: 'badge-postsaf',
+    desc: '"Tulip Thép" mang phong cách kiểm soát triệt để, đoạt Cúp FA 2016 và mở ra cơ hội tỏa sáng cho lứa sao trẻ như Marcus Rashford.'
+  },
+  {
+    id: 'mourinho',
+    name: 'José Mourinho',
+    period: '2016 - 2018',
+    category: 'post-saf',
+    nationality: 'Bồ Đào Nha 🇵🇹',
+    matches: 144,
+    wins: 84,
+    winRate: '58.3%',
+    trophies: ['1 UEFA Europa League (2017)', '1 EFL Cup (2017)', '1 Community Shield (2016)'],
+    badge: 'Hậu Sir Alex',
+    badgeClass: 'badge-postsaf',
+    desc: '"Người đặc biệt" đem về cú đúp danh hiệu Europa League & League Cup 2016/17, hoàn tất bộ sưu tập cúp châu lục duy nhất còn thiếu của Quỷ Đỏ.'
+  },
+  {
+    id: 'solskjaer',
+    name: 'Ole Gunnar Solskjær',
+    period: '2018 - 2021',
+    category: 'legend',
+    subCategories: ['post-saf'],
+    nationality: 'Na Uy 🇳🇴',
+    matches: 168,
+    wins: 91,
+    winRate: '54.2%',
+    trophies: ['Á quân Premier League (2021)', 'Kỷ lục 29 trận bất bại sân khách'],
+    badge: 'Huyền Thoại',
+    badgeClass: 'badge-legend',
+    desc: 'Người hùng Nou Camp 1999 trở lại làm bùng cháy tinh thần Quỷ Đỏ, xác lập kỷ lục vô tiền khoáng hậu 29 trận bất bại liên tiếp trên sân khách.'
+  },
+  {
+    id: 'rangnick',
+    name: 'Ralf Rangnick',
+    period: '2021 - 2022 (Tạm quyền)',
+    category: 'post-saf',
+    nationality: 'Đức 🇩🇪',
+    matches: 29,
+    wins: 11,
+    winRate: '37.9%',
+    trophies: ['Bậc thầy Gegenpressing hiện đại'],
+    badge: 'Hậu Sir Alex',
+    badgeClass: 'badge-postsaf',
+    desc: 'Nhà tư tưởng bóng đá Đức mang đến những phân tích chiến thuật hiện đại và đặt nền móng cho kế hoạch tái thiết cơ cấu thể thao.'
+  },
+  {
+    id: 'tenhag',
+    name: 'Erik ten Hag',
+    period: '2022 - 2024',
+    category: 'post-saf',
+    nationality: 'Hà Lan 🇳🇱',
+    matches: 128,
+    wins: 70,
+    winRate: '54.7%',
+    trophies: ['1 Carabao Cup (2023)', '1 FA Cup (2024)'],
+    badge: 'Hậu Sir Alex',
+    badgeClass: 'badge-postsaf',
+    desc: 'Giải tỏa cơn khát 6 năm trắng danh hiệu với chức vô địch Carabao Cup 2023 và đánh bại Man City 2-1 tại Wembley để nâng cao Cúp FA 2024.'
+  },
+  {
+    id: 'amorim',
+    name: 'Rúben Amorim',
+    period: '2024 - Hiện tại',
+    category: 'current',
+    nationality: 'Bồ Đào Nha 🇵🇹',
+    matches: 'Đang cập nhật',
+    wins: 'Mới nhậm chức',
+    winRate: 'Kỳ vọng lớn',
+    trophies: ['2 VĐQG Bồ Đào Nha (Sporting CP)', 'Sơ đồ 3-4-2-1 biến ảo'],
+    badge: 'HLV Đương Nhiệm',
+    badgeClass: 'badge-current',
+    desc: 'Tân thuyền trưởng tài ba mang sơ đồ 3-4-2-1 cùng triết lý bóng đá cường độ cao, mở ra kỷ nguyên mới đầy hứa hẹn dưới sự bảo trợ của INEOS.'
+  }
+];
+
+function renderManagers(query = '', filter = 'all') {
+  const container = document.getElementById('managersGridContainer');
+  if (!container) return;
+
+  const q = query.toLowerCase().trim();
+
+  const filtered = MANAGERS.filter(m => {
+    const matchQuery = !q || m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q) || m.nationality.toLowerCase().includes(q);
+    let matchFilter = true;
+    if (filter === 'legend') {
+      matchFilter = m.category === 'legend' || (m.subCategories && m.subCategories.includes('legend'));
+    } else if (filter === 'classic') {
+      matchFilter = m.category === 'classic' || (m.subCategories && m.subCategories.includes('classic'));
+    } else if (filter === 'post-saf') {
+      matchFilter = m.category === 'post-saf' || (m.subCategories && m.subCategories.includes('post-saf'));
+    } else if (filter === 'current') {
+      matchFilter = m.category === 'current';
+    }
+    return matchQuery && matchFilter;
+  });
+
+  if (filtered.length === 0) {
+    container.innerHTML = `
+      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--color-text-subtle);">
+        <i class="fa-solid fa-user-slash" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.5;"></i>
+        <h4>Không tìm thấy huấn luyện viên nào phù hợp</h4>
+        <p>Thử tìm với tên như "Ferguson", "Busby", "Amorim", "Ten Hag", "Mourinho"...</p>
+      </div>
+    `;
+    return;
+  }
+
+  container.innerHTML = filtered.map(m => {
+    const cardClass = m.category === 'legend' ? 'manager-card legend-card' : (m.category === 'current' ? 'manager-card current-card' : 'manager-card');
+    const trophiesHtml = m.trophies.map(t => `<span class="mgr-trophy-pill"><i class="fa-solid fa-trophy"></i> ${t}</span>`).join('');
+    const avatarIcon = m.category === 'legend' ? 'fa-star' : (m.category === 'current' ? 'fa-bolt' : 'fa-user-tie');
+
+    return `
+      <div class="${cardClass}">
+        <span class="mgr-badge ${m.badgeClass}">${m.badge}</span>
+        <div class="mgr-card-header">
+          <div class="mgr-avatar">
+            <i class="fa-solid ${avatarIcon}"></i>
+          </div>
+          <div class="mgr-main-info">
+            <h4 class="mgr-name">${m.name}</h4>
+            <div class="mgr-meta">
+              <span><i class="fa-regular fa-calendar"></i> ${m.period}</span>
+              <span>•</span>
+              <span>${m.nationality}</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="mgr-stats-grid">
+          <div class="mgr-stat-box">
+            <div class="mgr-stat-val">${m.matches}</div>
+            <div class="mgr-stat-lbl">Số Trận</div>
+          </div>
+          <div class="mgr-stat-box">
+            <div class="mgr-stat-val">${m.wins}</div>
+            <div class="mgr-stat-lbl">Thắng</div>
+          </div>
+          <div class="mgr-stat-box">
+            <div class="mgr-stat-val text-gold">${m.winRate}</div>
+            <div class="mgr-stat-lbl">Tỷ Lệ</div>
+          </div>
+        </div>
+
+        <div class="mgr-trophies-wrap">
+          <h5>Thành Tích & Dấu Ấn</h5>
+          <div class="mgr-trophy-tags">
+            ${trophiesHtml}
+          </div>
+        </div>
+
+        <p class="mgr-desc">${m.desc}</p>
+      </div>
+    `;
+  }).join('');
+}
+
+const QUIZ_QUESTIONS = [
+  {
+    question: "Manchester United được thành lập vào năm nào và dưới tên gọi ban đầu là gì?",
+    options: [
+      "1878 - Newton Heath LYR F.C.",
+      "1902 - Manchester Central F.C.",
+      "1888 - Red Devils F.C.",
+      "1910 - Stretford United"
+    ],
+    correctIndex: 0,
+    explanation: "Đội bóng được thành lập năm 1878 bởi các công nhân công ty đường sắt Lancashire & Yorkshire Railway với tên gọi Newton Heath LYR F.C. trước khi đổi tên thành Manchester United vào năm 1902."
+  },
+  {
+    question: "Sir Alex Ferguson đã giành được tổng cộng bao nhiêu danh hiệu chính thức cùng Manchester United trong 26 năm cầm quân?",
+    options: [
+      "25 danh hiệu",
+      "38 danh hiệu",
+      "30 danh hiệu",
+      "42 danh hiệu"
+    ],
+    correctIndex: 1,
+    explanation: "Sir Alex Ferguson đã giành tổng cộng 38 danh hiệu chính thức (bao gồm 13 Premier League, 2 Champions League, 5 FA Cup, 4 Cúp Liên đoàn...) trở thành HLV vĩ đại nhất lịch sử."
+  },
+  {
+    question: "Ai là người ghi bàn ấn định chiến thắng 2-1 ở phút bù giờ 90+3 trong trận chung kết Champions League 1999 tại Camp Nou?",
+    options: [
+      "David Beckham",
+      "Teddy Sheringham",
+      "Ole Gunnar Solskjær",
+      "Ryan Giggs"
+    ],
+    correctIndex: 2,
+    explanation: "Teddy Sheringham gỡ hòa 1-1 ở phút 90+1 và Ole Gunnar Solskjær đệm bóng cận thành ở phút 90+3 đưa MU hoàn tất Cú Ăn Ba vĩ đại nhất lịch sử."
+  },
+  {
+    question: "Đội bóng Anh đầu tiên trong lịch sử đăng quang Cúp C1 Châu Âu vào năm 1968 dưới sự dẫn dắt của ai?",
+    options: [
+      "Sir Alex Ferguson",
+      "Sir Matt Busby",
+      "Ernest Mangnall",
+      "Tommy Docherty"
+    ],
+    correctIndex: 1,
+    explanation: "Sir Matt Busby cùng bộ ba Trinity (Bobby Charlton, George Best, Denis Law) đã vượt qua bi kịch Munich 1958 để đưa MU vô địch Cúp C1 vào năm 1968 sau chiến thắng 4-1 trước Benfica."
+  },
+  {
+    question: "Ai là HLV trưởng chính thức tiếp quản chiếc ghế nóng tại Old Trafford từ tháng 11/2024?",
+    options: [
+      "José Mourinho",
+      "Rúben Amorim",
+      "Erik ten Hag",
+      "Thomas Tuchel"
+    ],
+    correctIndex: 1,
+    explanation: "Chiến lược gia người Bồ Đào Nha Rúben Amorim chính thức ký hợp đồng dẫn dắt Quỷ Đỏ từ tháng 11/2024, mở đầu kỷ nguyên mới cùng ban lãnh đạo INEOS."
+  }
+];
+
+function initQuiz() {
+  state.quizCurrentIndex = 0;
+  state.quizScore = 0;
+  state.quizAnswered = false;
+
+  const quizContainer = document.getElementById('quizContainer');
+  const quizResultBox = document.getElementById('quizResultBox');
+  if (quizContainer) quizContainer.style.display = 'block';
+  if (quizResultBox) quizResultBox.style.display = 'none';
+
+  renderQuizQuestion();
+}
+
+function renderQuizQuestion() {
+  const qIndex = state.quizCurrentIndex;
+  const total = QUIZ_QUESTIONS.length;
+  const qData = QUIZ_QUESTIONS[qIndex];
+  if (!qData) return;
+
+  state.quizAnswered = false;
+
+  const numEl = document.getElementById('quizCurrentNum');
+  const scoreEl = document.getElementById('quizLiveScore');
+  const progressEl = document.getElementById('quizProgressFill');
+  const bodyEl = document.getElementById('quizBody');
+  const feedbackEl = document.getElementById('quizFeedback');
+  const nextBtn = document.getElementById('btnNextQuiz');
+
+  if (numEl) numEl.textContent = qIndex + 1;
+  if (scoreEl) scoreEl.textContent = state.quizScore;
+  if (progressEl) progressEl.style.width = `${((qIndex + 1) / total) * 100}%`;
+  if (feedbackEl) feedbackEl.style.display = 'none';
+  if (nextBtn) nextBtn.style.display = 'none';
+
+  const letters = ['A', 'B', 'C', 'D'];
+  const optionsHtml = qData.options.map((opt, idx) => `
+    <button class="quiz-option-btn" data-opt-idx="${idx}">
+      <span class="quiz-option-letter">${letters[idx]}</span>
+      <span class="quiz-option-text">${opt}</span>
+    </button>
+  `).join('');
+
+  if (bodyEl) {
+    bodyEl.innerHTML = `
+      <div class="quiz-q-title">${qIndex + 1}. ${qData.question}</div>
+      <div class="quiz-options">
+        ${optionsHtml}
+      </div>
+    `;
+
+    bodyEl.querySelectorAll('.quiz-option-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const selectedIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
+        handleQuizAnswer(selectedIdx);
+      });
+    });
+  }
+}
+
+function handleQuizAnswer(selectedIdx) {
+  if (state.quizAnswered) return;
+  state.quizAnswered = true;
+
+  const qIndex = state.quizCurrentIndex;
+  const qData = QUIZ_QUESTIONS[qIndex];
+  const isCorrect = selectedIdx === qData.correctIndex;
+
+  const optionBtns = document.querySelectorAll('.quiz-option-btn');
+  optionBtns.forEach((btn, idx) => {
+    btn.disabled = true;
+    if (idx === qData.correctIndex) {
+      btn.classList.add('correct');
+    } else if (idx === selectedIdx && !isCorrect) {
+      btn.classList.add('wrong');
+    }
+  });
+
+  const feedbackEl = document.getElementById('quizFeedback');
+  const nextBtn = document.getElementById('btnNextQuiz');
+  const scoreEl = document.getElementById('quizLiveScore');
+
+  if (isCorrect) {
+    state.quizScore += 10;
+    if (scoreEl) scoreEl.textContent = state.quizScore;
+    playTone(659.25, 'sine', 0.15); // pleasant chime
+    if (feedbackEl) {
+      feedbackEl.className = 'quiz-feedback correct';
+      feedbackEl.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> CHÍNH XÁC!</strong> +10 điểm. ${qData.explanation}`;
+      feedbackEl.style.display = 'block';
+    }
+  } else {
+    playTone(220, 'sawtooth', 0.2); // low tone
+    if (feedbackEl) {
+      feedbackEl.className = 'quiz-feedback wrong';
+      feedbackEl.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> CHƯA CHÍNH XÁC!</strong> Đáp án đúng là: <strong>${qData.options[qData.correctIndex]}</strong>. ${qData.explanation}`;
+      feedbackEl.style.display = 'block';
+    }
+  }
+
+  if (nextBtn) {
+    if (qIndex === QUIZ_QUESTIONS.length - 1) {
+      nextBtn.innerHTML = 'Xem Kết Quả <i class="fa-solid fa-trophy"></i>';
+    } else {
+      nextBtn.innerHTML = 'Câu Tiếp Theo <i class="fa-solid fa-arrow-right"></i>';
+    }
+    nextBtn.style.display = 'inline-flex';
+  }
+}
+
+function handleQuizNext() {
+  if (state.quizCurrentIndex < QUIZ_QUESTIONS.length - 1) {
+    state.quizCurrentIndex++;
+    renderQuizQuestion();
+  } else {
+    showQuizResult();
+  }
+}
+
+function showQuizResult() {
+  const quizContainer = document.getElementById('quizContainer');
+  const quizResultBox = document.getElementById('quizResultBox');
+  const finalBadge = document.getElementById('quizFinalScoreBadge');
+  const resultTitle = document.getElementById('quizResultTitle');
+  const evalText = document.getElementById('quizEvaluationText');
+
+  if (quizContainer) quizContainer.style.display = 'none';
+  if (quizResultBox) quizResultBox.style.display = 'block';
+
+  const score = state.quizScore;
+  if (finalBadge) finalBadge.textContent = `${score} / 50 ĐIỂM`;
+
+  if (score === 50) {
+    if (resultTitle) resultTitle.textContent = 'XUẤT SẮC! BẠN LÀ MANUCIAN ĐÍCH THỰC';
+    if (evalText) evalText.textContent = 'Kiến thức về lịch sử MU và các đời HLV của bạn vô cùng uyên bác! Tinh thần Quỷ Đỏ chảy rực lửa trong huyết quản của bạn!';
+    launchConfetti();
+    playStadiumSound('chant');
+  } else if (score >= 30) {
+    if (resultTitle) resultTitle.textContent = 'RẤT TỐT! FAN TRUNG THÀNH CỦA QUỶ ĐỎ';
+    if (evalText) evalText.textContent = 'Bạn có nền tảng kiến thức rất đáng nể về Manchester United. Hãy tiếp tục tình yêu bất diệt với Nhà hát của những giấc mơ!';
+    launchConfetti();
+  } else {
+    if (resultTitle) resultTitle.textContent = 'CỐ GẮNG LÊN! HÃY TÌM HIỂU THÊM VỀ MU';
+    if (evalText) evalText.textContent = 'Lịch sử 147 năm của Man United còn rất nhiều điều kỳ thú đang chờ bạn khám phá. Hãy thử sức lại lần nữa nhé!';
+  }
+}
+
+function setupHistoryListeners() {
+  // History Quick Anchor Navigation Tabs
+  document.querySelectorAll('.h-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.h-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const targetSecId = btn.getAttribute('data-target-sec');
+      const targetSec = document.getElementById(targetSecId);
+      if (targetSec) {
+        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+
+  // Timeline era filters
+  document.querySelectorAll('.t-filter-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.t-filter-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const era = btn.getAttribute('data-era');
+      const timelineItems = document.querySelectorAll('.timeline-item');
+      timelineItems.forEach(item => {
+        if (era === 'all' || item.getAttribute('data-era') === era) {
+          item.style.display = 'block';
+        } else {
+          item.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Managers search and filter
+  const mgrSearchInput = document.getElementById('mgrSearchInput');
+  if (mgrSearchInput) {
+    mgrSearchInput.addEventListener('input', (e) => {
+      renderManagers(e.target.value, state.currentMgrFilter || 'all');
+    });
+  }
+
+  document.querySelectorAll('.m-pill').forEach(pill => {
+    pill.addEventListener('click', () => {
+      document.querySelectorAll('.m-pill').forEach(p => p.classList.remove('active'));
+      pill.classList.add('active');
+      const filter = pill.getAttribute('data-mgr-filter');
+      state.currentMgrFilter = filter;
+      const q = mgrSearchInput ? mgrSearchInput.value : '';
+      renderManagers(q, filter);
+    });
+  });
+
+  // Quiz next and restart buttons
+  const btnNext = document.getElementById('btnNextQuiz');
+  if (btnNext) {
+    btnNext.addEventListener('click', handleQuizNext);
+  }
+
+  const btnRestart = document.getElementById('btnRestartQuiz');
+  if (btnRestart) {
+    btnRestart.addEventListener('click', initQuiz);
+  }
+}
+
 // ==================== 14. INITIALIZATION ====================
 document.addEventListener('DOMContentLoaded', () => {
   loadCartFromStorage();
   updateCartBadges();
   setupNavigationListeners();
-  setupCustomizerListeners();
   setupShopFilters();
   setupCartListeners();
   setupCheckoutListeners();
   setupTrackingListeners();
   setupSizeGuideListeners();
   setupSoundListeners();
+  setupHistoryListeners();
 
   // Render initial views
   renderCatalog();
-  renderCustomizerSvgs();
   renderCartDrawer();
 
-  // Check URL hash for direct links (e.g. #shop, #customizer, #cart, #checkout)
+  // Check URL hash for direct links (e.g. #shop, #customizer, #cart, #checkout, #history)
   const hash = window.location.hash.replace('#', '');
-  if (['home', 'shop', 'customizer', 'cart', 'checkout', 'tracking'].includes(hash)) {
+  if (['home', 'shop', 'cart', 'checkout', 'tracking', 'history'].includes(hash)) {
     navigateTo(hash);
   } else {
     navigateTo('home');
