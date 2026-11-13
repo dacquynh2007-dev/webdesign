@@ -16,8 +16,8 @@ const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 1420,
     badge: 'BÁN CHẠY NHẤT',
-    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/bb34e2d7ef774076b2384c4aecc3c090_9366/Manchester_United_24-25_Home_Jersey_Red_IU1397_HM1.jpg',
-    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/43467503eadf4300b94fefdbba19ca7b_9366/Manchester_United_24-25_Home_Authentic_Jersey_Red_JF1291_HM3_hover.jpg',
+    image: 'images/home-kit-2024-25-front.png',
+    imageBack: 'images/home-kit-2024-25-back.png',
     description: 'Chiếc áo đấu sân nhà Manchester United 2024/2025 mang sắc đỏ rực lửa với hiệu ứng chuyển sắc gradient độc đáo. Nhà tài trợ Snapdragon nổi bật trước ngực cùng 3 sọc trắng Adidas kiêu hãnh trên vai.',
     features: [
       'Công nghệ dệt Heat.Rdy làm mát cơ thể tối ưu',
@@ -39,7 +39,7 @@ const PRODUCTS = [
     rating: 4.9,
     reviewsCount: 890,
     badge: 'MỚI RA MẮT',
-    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/c0054b97aa8a4feb86159d614c1053a9_9366/Manchester_United_24-25_Away_Jersey_Blue_IU1390_HM1.jpg',
+    image: 'images/away-kit-2024-25-front.png',
     imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/01f074d6c81d4e0e8e6ca6f505436605_9366/Manchester_United_24-25_Away_Jersey_Blue_IU1390_HM3_hover.jpg',
     description: 'Phiên bản sân khách màu xanh Royal Navy quyền lực lấy cảm hứng từ dòng sông Irwell và sắc xanh lịch sử từng đồng hành cùng Quỷ Đỏ trong chức vô địch Châu Âu 1968.',
     features: [
@@ -62,7 +62,7 @@ const PRODUCTS = [
     rating: 4.9,
     reviewsCount: 650,
     badge: 'RETRO TREFOIL',
-    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/00807ed890c5497f89bbcd4bae02a308_9366/Manchester_United_24-25_Third_Jersey_White_IY7806_HM1.jpg',
+    image: 'images/third-kit-2024-25-front.png',
     imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/50bb6d6d84f44a4789596c3f6e85d9c2_9366/Manchester_United_24-25_Third_Jersey_White_IY7806_HM3_hover.jpg',
     description: 'Sự trở lại của logo 3 lá Adidas Trefoil huyền thoại trên nền màu trắng kem ngọc trai. Dải 3 màu đỏ - trắng - đen băng qua ngực tạo nên tuyệt tác thời trang bóng đá đường phố.',
     features: [
@@ -85,8 +85,8 @@ const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 2150,
     badge: 'TREBLE 1999',
-    image: 'https://mufc-live.cdn.scayle.cloud/images/bbf4823a4aa25964f6a02ce5867d810c.jpg?brightness=1&width=600&height=750&quality=80',
-    imageBack: 'https://mufc-live.cdn.scayle.cloud/images/d3856eb2aa15c73df9da6892550e5015.jpg?brightness=1&width=600&height=750&quality=80',
+    image: 'images/retro-treble-1999-front.png',
+    imageBack: 'images/retro-treble-1999-back.png',
     description: 'Mẫu áo bất tử gắn liền với đêm thần kỳ Camp Nou 1999 của Sir Alex Ferguson. Cổ bẻ có khóa zip độc đáo, logo nhà tài trợ SHARP huyền thoại in to bản cùng logo Umbro kim cương dệt nổi.',
     features: [
       'Tái hiện nguyên bản 100% mẫu áo chung kết C1 1999',
@@ -108,7 +108,7 @@ const PRODUCTS = [
     rating: 5.0,
     reviewsCount: 1840,
     badge: 'MOSCOW 2008',
-    image: 'https://thevault.co.uk/cdn/shop/files/manchester-united-2008-Champions-League-Final-Shirt.jpg?v=1767971559&width=800',
+    image: 'images/retro-moscow-2008-front.png',
     imageBack: 'https://thevault.co.uk/cdn/shop/files/manchester-united-2008-Champions-League-Final-Shirt-back.jpg?v=1767971559&width=800',
     description: 'Áo đấu chứng kiến Cristiano Ronaldo bật cao đánh đầu xé lưới Chelsea tại Moscow trong trận chung kết Champions League 2008 nghẹt thở. Dải sọc trắng sau lưng tôn vinh dáng vẻ dũng mãnh.',
     features: [
@@ -609,8 +609,31 @@ function generateJerseySvgContent(kitType, isBack = false, name = 'BRUNO', numbe
 }
 
 // ==================== 5. PRODUCT CATALOG & SHOP SYSTEM ====================
+function showJerseyImageFallback(img) {
+  img.onerror = null;
+  img.src = `data:image/svg+xml;charset=utf-8,${img.dataset.fallbackSvg}`;
+}
+
+function createJerseyFallbackSvg(kitType, isBack = false) {
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 580">${generateJerseySvgContent(kitType, isBack)}</svg>`;
+}
+
+function renderRatingStars(rating) {
+  const ratingPercent = `${(Math.max(0, Math.min(5, rating)) / 5) * 100}%`;
+  const formattedRating = rating.toFixed(1);
+
+  return `
+    <span class="rating-stars" role="img" aria-label="${formattedRating} trên 5 sao">
+      <span class="rating-stars-empty">★★★★★</span>
+      <span class="rating-stars-filled" style="width: ${ratingPercent}">★★★★★</span>
+    </span>
+    <span class="rating-value">${formattedRating}</span>
+  `;
+}
+
 function createProductCardHtml(prod) {
-  const fallbackSvg = generateJerseySvgContent(prod.kitType, false);
+  const fallbackSvg = createJerseyFallbackSvg(prod.kitType);
+  const fallbackSvgData = encodeURIComponent(fallbackSvg).replace(/'/g, '%27');
 
   return `
     <div class="product-card" data-prod-id="${prod.id}">
@@ -618,10 +641,11 @@ function createProductCardHtml(prod) {
       <div class="p-card-thumb" data-navigate="product-detail" data-prod-id="${prod.id}">
         <img 
           src="${prod.image}" 
-          alt="${prod.name}" 
+          alt="${prod.name} - mặt trước"
           class="product-real-img" 
           loading="lazy"
-          onerror="this.onerror=null; this.outerHTML='<svg viewBox=\'0 0 500 580\'>${fallbackSvg.replace(/'/g, "\\'")}</svg>';"
+          data-fallback-svg="${fallbackSvgData}"
+          onerror="showJerseyImageFallback(this)"
         />
         <div class="p-card-quick-actions">
           <button class="btn btn-sm btn-primary btn-block" data-navigate="product-detail" data-prod-id="${prod.id}">
@@ -633,7 +657,7 @@ function createProductCardHtml(prod) {
         <span class="p-card-category">${prod.categoryName}</span>
         <h4 class="p-card-title" data-navigate="product-detail" data-prod-id="${prod.id}">${prod.name}</h4>
         <div class="p-card-rating">
-          <span>★★★★★</span>
+          ${renderRatingStars(prod.rating)}
           <span class="rating-count">(${prod.reviewsCount})</span>
         </div>
         <div class="p-card-prices">
@@ -786,7 +810,10 @@ function renderProductDetail(productId) {
   const container = document.getElementById('productDetailContainer');
   if (!container) return;
 
-  const fallbackSvg = generateJerseySvgContent(prod.kitType, false);
+  const fallbackSvg = createJerseyFallbackSvg(prod.kitType);
+  const fallbackSvgData = encodeURIComponent(fallbackSvg).replace(/'/g, '%27');
+  const fallbackSvgBack = createJerseyFallbackSvg(prod.kitType, true);
+  const fallbackSvgBackData = encodeURIComponent(fallbackSvgBack).replace(/'/g, '%27');
 
   container.innerHTML = `
     <!-- Left: Stage & Gallery -->
@@ -794,20 +821,21 @@ function renderProductDetail(productId) {
       <div class="p-detail-main-stage" id="detailMainStage">
         <img 
           src="${prod.image}" 
-          alt="${prod.name}" 
+          alt="${prod.name} - mặt trước"
           id="detailMainImg" 
           class="detail-real-img"
-          onerror="this.onerror=null; this.outerHTML='<svg viewBox=\'0 0 500 580\'>${fallbackSvg.replace(/'/g, "\\'")}</svg>';"
+          data-fallback-svg="${fallbackSvgData}"
+          onerror="showJerseyImageFallback(this)"
         />
       </div>
 
       <div class="p-detail-thumbs">
         <button class="p-thumb-btn active" id="detailThumbFront" title="Mặt trước">
-          <img src="${prod.image}" alt="Mặt trước" />
+          <img src="${prod.image}" alt="${prod.name} - mặt trước" data-fallback-svg="${fallbackSvgData}" onerror="showJerseyImageFallback(this)" />
         </button>
         ${prod.imageBack ? `
         <button class="p-thumb-btn" id="detailThumbBack" title="Mặt sau">
-          <img src="${prod.imageBack}" alt="Mặt sau" />
+          <img src="${prod.imageBack}" alt="${prod.name} - mặt sau" data-fallback-svg="${fallbackSvgBackData}" onerror="showJerseyImageFallback(this)" />
         </button>
         ` : ''}
       </div>
@@ -819,7 +847,9 @@ function renderProductDetail(productId) {
       <h1 class="p-detail-title">${prod.name}</h1>
 
       <div class="p-detail-rating-row">
-        <span class="text-gold">★★★★★ 5.0</span>
+        <span class="rating-summary">
+          ${renderRatingStars(prod.rating)}
+        </span>
         <span class="rating-count">(${prod.reviewsCount} Đánh giá từ Manucian)</span>
         <span class="stock-tag" style="color: #4cd964;"><i class="fa-solid fa-circle-check"></i> Còn hàng sẵn giao</span>
       </div>
@@ -933,7 +963,9 @@ function renderProductDetail(productId) {
 
   if (thumbFront && detailMainImg) {
     thumbFront.addEventListener('click', () => {
+      detailMainImg.dataset.fallbackSvg = fallbackSvgData;
       detailMainImg.src = prod.image;
+      detailMainImg.alt = `${prod.name} - mặt trước`;
       thumbFront.classList.add('active');
       if (thumbBack) thumbBack.classList.remove('active');
     });
@@ -941,7 +973,9 @@ function renderProductDetail(productId) {
 
   if (thumbBack && detailMainImg && prod.imageBack) {
     thumbBack.addEventListener('click', () => {
+      detailMainImg.dataset.fallbackSvg = fallbackSvgBackData;
       detailMainImg.src = prod.imageBack;
+      detailMainImg.alt = `${prod.name} - mặt sau`;
       thumbBack.classList.add('active');
       if (thumbFront) thumbFront.classList.remove('active');
     });
@@ -955,7 +989,9 @@ function renderProductDetail(productId) {
       if (dName) dName.value = name;
       if (dNum) dNum.value = num;
       if (prod.imageBack && detailMainImg && thumbBack) {
+        detailMainImg.dataset.fallbackSvg = fallbackSvgBackData;
         detailMainImg.src = prod.imageBack;
+        detailMainImg.alt = `${prod.name} - mặt sau`;
         thumbBack.classList.add('active');
         if (thumbFront) thumbFront.classList.remove('active');
       }

@@ -827,7 +827,7 @@ input, select, textarea {
 }
 
 .p-card-thumb {
-  background: radial-gradient(circle at 50% 50%, rgba(255, 255, 255, 0.05) 0%, transparent 70%);
+  background: #fff;
   padding: 25px 15px;
   display: flex;
   align-items: center;
@@ -899,8 +899,29 @@ input, select, textarea {
   align-items: center;
   gap: 5px;
   font-size: 0.75rem;
-  color: var(--color-gold);
   margin-bottom: 12px;
+}
+
+.rating-stars {
+  display: inline-block;
+  position: relative;
+  color: var(--color-text-subtle);
+  letter-spacing: 1px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.rating-stars-filled {
+  position: absolute;
+  inset: 0 auto 0 0;
+  overflow: hidden;
+  color: var(--color-gold);
+  white-space: nowrap;
+}
+
+.rating-value {
+  color: var(--color-gold);
+  font-weight: 700;
 }
 
 .rating-count {
@@ -1207,7 +1228,7 @@ input, select, textarea {
 .shop-sort-wrap select {
   background: var(--color-bg-surface);
   border: 1px solid var(--color-border);
-  color: #fff;
+  color: #1f2937;
   padding: 6px 12px;
   border-radius: var(--radius-sm);
   outline: none;
@@ -1233,7 +1254,7 @@ input, select, textarea {
 }
 
 .p-detail-main-stage {
-  background: radial-gradient(circle at 50% 50%, rgba(218, 41, 28, 0.12) 0%, var(--color-bg-surface) 75%);
+  background: #fff;
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 30px;
@@ -1261,7 +1282,7 @@ input, select, textarea {
   height: 70px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--color-border);
-  background: var(--color-bg-surface);
+  background: #fff;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1311,6 +1332,13 @@ input, select, textarea {
   font-size: 0.85rem;
   border-bottom: 1px solid var(--color-border);
   padding-bottom: 15px;
+}
+
+.rating-summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
 }
 
 .p-detail-price-box {
@@ -1592,10 +1620,16 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   padding: 8px 12px;
   border-radius: var(--radius-sm);
-  color: #fff;
+  color: #1f2937;
   font-size: 0.88rem;
   outline: none;
   text-transform: uppercase;
+}
+
+.voucher-input-row input::placeholder,
+.newsletter-form input::placeholder {
+  color: #6b7280;
+  opacity: 1;
 }
 
 .btn-apply-voucher {
@@ -1735,9 +1769,14 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 10px 14px;
-  color: #fff;
+  color: #1f2937;
   font-size: 0.9rem;
   outline: none;
+}
+
+.form-group input::placeholder, .form-group textarea::placeholder {
+  color: #6b7280;
+  opacity: 1;
 }
 
 .form-group input:focus, .form-group select:focus, .form-group textarea:focus {
@@ -3470,7 +3509,7 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm) 0 0 var(--radius-sm);
   padding: 10px 14px;
-  color: #fff;
+  color: #1f2937;
   font-size: 0.85rem;
   outline: none;
 }
@@ -3631,13 +3670,6 @@ input, select, textarea {
   max-width: 360px;
   max-height: 420px;
   object-fit: contain;
-  filter: drop-shadow(0 20px 35px rgba(0, 0, 0, 0.7));
-  transition: transform 0.35s ease;
-}
-
-.p-detail-main-stage:hover img,
-.p-detail-main-stage:hover .detail-real-img {
-  transform: scale(1.05);
 }
 
 .p-thumb-btn img {
