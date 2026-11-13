@@ -17,7 +17,7 @@ const PRODUCTS = [
     reviewsCount: 1420,
     badge: 'BÁN CHẠY NHẤT',
     image: 'images/home-kit-2024-25-front.png',
-    imageBack: 'images/home-kit-2024-25-back.png',
+    imageBack: 'images/home-kit-2024-25-back.png?v=20261114-0205',
     description: 'Chiếc áo đấu sân nhà Manchester United 2024/2025 mang sắc đỏ rực lửa với hiệu ứng chuyển sắc gradient độc đáo. Nhà tài trợ Snapdragon nổi bật trước ngực cùng 3 sọc trắng Adidas kiêu hãnh trên vai.',
     features: [
       'Công nghệ dệt Heat.Rdy làm mát cơ thể tối ưu',
@@ -40,7 +40,7 @@ const PRODUCTS = [
     reviewsCount: 890,
     badge: 'MỚI RA MẮT',
     image: 'images/away-kit-2024-25-front.png',
-    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/01f074d6c81d4e0e8e6ca6f505436605_9366/Manchester_United_24-25_Away_Jersey_Blue_IU1390_HM3_hover.jpg',
+    imageBack: 'images/away-kit-2024-25-back.png?v=20261114-0205',
     description: 'Phiên bản sân khách màu xanh Royal Navy quyền lực lấy cảm hứng từ dòng sông Irwell và sắc xanh lịch sử từng đồng hành cùng Quỷ Đỏ trong chức vô địch Châu Âu 1968.',
     features: [
       'Họa tiết dệt chìm hình chữ M lặp lại hiện đại',
@@ -63,7 +63,7 @@ const PRODUCTS = [
     reviewsCount: 650,
     badge: 'RETRO TREFOIL',
     image: 'images/third-kit-2024-25-front.png',
-    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/50bb6d6d84f44a4789596c3f6e85d9c2_9366/Manchester_United_24-25_Third_Jersey_White_IY7806_HM3_hover.jpg',
+    imageBack: 'images/third-kit-2024-25-back.png?v=20261114-0205',
     description: 'Sự trở lại của logo 3 lá Adidas Trefoil huyền thoại trên nền màu trắng kem ngọc trai. Dải 3 màu đỏ - trắng - đen băng qua ngực tạo nên tuyệt tác thời trang bóng đá đường phố.',
     features: [
       'Logo Adidas Trefoil cổ điển chỉ xuất hiện trên áo đấu cấp cao',
@@ -86,7 +86,7 @@ const PRODUCTS = [
     reviewsCount: 2150,
     badge: 'TREBLE 1999',
     image: 'images/retro-treble-1999-front.png',
-    imageBack: 'images/retro-treble-1999-back.png',
+    imageBack: 'images/retro-treble-1999-back.png?v=20261114-0205',
     description: 'Mẫu áo bất tử gắn liền với đêm thần kỳ Camp Nou 1999 của Sir Alex Ferguson. Cổ bẻ có khóa zip độc đáo, logo nhà tài trợ SHARP huyền thoại in to bản cùng logo Umbro kim cương dệt nổi.',
     features: [
       'Tái hiện nguyên bản 100% mẫu áo chung kết C1 1999',
@@ -109,7 +109,7 @@ const PRODUCTS = [
     reviewsCount: 1840,
     badge: 'MOSCOW 2008',
     image: 'images/retro-moscow-2008-front.png',
-    imageBack: 'https://thevault.co.uk/cdn/shop/files/manchester-united-2008-Champions-League-Final-Shirt-back.jpg?v=1767971559&width=800',
+    imageBack: 'images/retro-moscow-2008-back.png?v=20261114-0205',
     description: 'Áo đấu chứng kiến Cristiano Ronaldo bật cao đánh đầu xé lưới Chelsea tại Moscow trong trận chung kết Champions League 2008 nghẹt thở. Dải sọc trắng sau lưng tôn vinh dáng vẻ dũng mãnh.',
     features: [
       'Nhà tài trợ AIG in lụa chuẩn xác màu trắng',
@@ -965,6 +965,7 @@ function renderProductDetail(productId) {
     thumbFront.addEventListener('click', () => {
       detailMainImg.dataset.fallbackSvg = fallbackSvgData;
       detailMainImg.src = prod.image;
+      detailMainImg.classList.remove('is-back');
       detailMainImg.alt = `${prod.name} - mặt trước`;
       thumbFront.classList.add('active');
       if (thumbBack) thumbBack.classList.remove('active');
@@ -975,6 +976,7 @@ function renderProductDetail(productId) {
     thumbBack.addEventListener('click', () => {
       detailMainImg.dataset.fallbackSvg = fallbackSvgBackData;
       detailMainImg.src = prod.imageBack;
+      detailMainImg.classList.add('is-back');
       detailMainImg.alt = `${prod.name} - mặt sau`;
       thumbBack.classList.add('active');
       if (thumbFront) thumbFront.classList.remove('active');
@@ -991,6 +993,7 @@ function renderProductDetail(productId) {
       if (prod.imageBack && detailMainImg && thumbBack) {
         detailMainImg.dataset.fallbackSvg = fallbackSvgBackData;
         detailMainImg.src = prod.imageBack;
+        detailMainImg.classList.add('is-back');
         detailMainImg.alt = `${prod.name} - mặt sau`;
         thumbBack.classList.add('active');
         if (thumbFront) thumbFront.classList.remove('active');
