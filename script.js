@@ -131,8 +131,8 @@ const PRODUCTS = [
     rating: 4.8,
     reviewsCount: 310,
     badge: 'ONANA 24',
-    image: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-home-goalkeeper-shirt-2024-25_ss5_p-200954460+pv-1+u-ncz7oqvq3m7pbbgq6g8g+v-3c483d739ea1496a84976767ae8fe048.jpg?_hv=2&w=600',
-    imageBack: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-home-goalkeeper-shirt-2024-25_ss5_p-200954460+pv-2+u-ncz7oqvq3m7pbbgq6g8g+v-0897b6a4a6e44081ba740449ec9c0e52.jpg?_hv=2&w=600',
+    image: 'images/onana-goalkeeper-2024-25-front.png?v=20261114-onana-kit',
+    imageBack: 'images/onana-goalkeeper-2024-25-back.png?v=20261114-onana-kit',
     description: 'Áo thủ môn chính thức của Andre Onana với tông màu xanh dạ quang nổi bật giúp tăng phản xạ và uy lực trong khung gỗ Old Trafford.',
     features: [
       'Đệm hỗ trợ cùi chỏ linh hoạt khi bay người cản phá',
