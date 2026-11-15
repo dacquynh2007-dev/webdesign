@@ -153,8 +153,8 @@ const PRODUCTS = [
     rating: 4.6,
     reviewsCount: 247,
     badge: 'ANTHEM JACKET',
-    image: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/a42b94f6f700445d9a9b70b42df52285_9366/Manchester_United_24-25_Anthem_Jacket_Red_KV6731_HM1.jpg',
-    imageBack: 'https://assets.adidas.com/images/w_600,f_auto,q_auto/a42b94f6f700445d9a9b70b42df52285_9366/Manchester_United_24-25_Anthem_Jacket_Red_KV6731_HM3_hover.jpg',
+    image: 'images/anthem-jacket-2024-25-front.png?v=20261115-anthem-jacket',
+    imageBack: 'images/anthem-jacket-2024-25-back.png?v=20261115-anthem-jacket',
     description: 'Mẫu áo khoác các cầu thủ mặc khi xếp hàng chào sân trước mỗi trận cầu đỉnh cao. Thiết kế 2 mặt có thể mặc đảo ngược (Reversible) cực kỳ thời thượng.',
     features: [
       'Thiết kế mặc được 2 mặt: Mặt đỏ rực lửa & Mặt đen huyền bí',
