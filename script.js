@@ -879,7 +879,7 @@ function renderProductDetail(productId) {
         </div>
 
         <div class="p-detail-quick-players">
-          <span style="font-size:0.8rem; color:#888;">Gợi ý in nhanh:</span>
+          <span class="p-detail-quick-label">Gợi ý in nhanh:</span>
           <button type="button" class="player-chip-btn" data-name="BRUNO" data-num="8">Bruno (8)</button>
           <button type="button" class="player-chip-btn" data-name="MAINOO" data-num="37">Mainoo (37)</button>
           <button type="button" class="player-chip-btn" data-name="GARNACHO" data-num="17">Garnacho (17)</button>
@@ -888,7 +888,7 @@ function renderProductDetail(productId) {
         </div>
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
-          <label style="font-size:0.8rem; color:#aaa;">Huy hiệu tay áo:</label>
+          <label class="p-detail-badge-label">Huy hiệu tay áo:</label>
           <select id="detailSelectBadge" style="background:#111; color:#fff; border:1px solid #333; padding:6px 10px; border-radius:4px; font-size:0.85rem;">
             <option value="pl" selected>🦁 Ngoại Hạng Anh (+80K)</option>
             <option value="ucl">⭐ UEFA Champions League (+120K)</option>

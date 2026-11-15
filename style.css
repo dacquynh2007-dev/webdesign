@@ -1380,10 +1380,21 @@ input, select, textarea {
 
 .p-detail-custom-box h5 {
   font-size: 0.9rem;
-  color: #fff;
+  color: #292a32;
   display: flex;
   align-items: center;
   gap: 6px;
+}
+
+.p-detail-custom-box .input-group label,
+.p-detail-custom-box .p-detail-quick-label,
+.p-detail-custom-box .p-detail-badge-label {
+  color: #454650;
+}
+
+.p-detail-custom-box .p-detail-quick-label,
+.p-detail-custom-box .p-detail-badge-label {
+  font-size: 0.8rem;
 }
 
 .p-detail-row {
@@ -3716,4 +3727,14 @@ input, select, textarea {
 .player-chip-btn:hover {
   background: rgba(218, 41, 28, 0.2);
   border-color: var(--color-mu-red);
+}
+
+.p-detail-custom-box .player-chip-btn {
+  background: rgba(255, 255, 255, 0.55);
+  color: #292a32;
+}
+
+.p-detail-custom-box .player-chip-btn:hover {
+  background: var(--color-mu-red);
+  color: #fff;
 }
