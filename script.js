@@ -1456,7 +1456,7 @@ function setupVoucherListeners() {
       state.discountRate = 0.1; // 10%
       state.flatDiscount = 0;
       if (msgEl) {
-        msgEl.innerHTML = '<span style="color:#4cd964;">✓ Áp dụng mã GLORYMU giảm 10% thành công!</span>';
+        msgEl.innerHTML = '<span class="voucher-success">✓ Áp dụng mã GLORYMU giảm 10% thành công!</span>';
       }
       showToast('Áp dụng mã GLORYMU thành công (-10%)', 'success');
       playTone(600, 'triangle', 0.15);
@@ -1465,7 +1465,7 @@ function setupVoucherListeners() {
       state.flatDiscount = 50000;
       state.discountRate = 0;
       if (msgEl) {
-        msgEl.innerHTML = '<span style="color:#4cd964;">✓ Áp dụng mã MUFC50K giảm 50.000đ!</span>';
+        msgEl.innerHTML = '<span class="voucher-success">✓ Áp dụng mã MUFC50K giảm 50.000đ!</span>';
       }
       showToast('Áp dụng mã MUFC50K thành công (-50K)', 'success');
       playTone(600, 'triangle', 0.15);
@@ -1474,12 +1474,12 @@ function setupVoucherListeners() {
       state.discountRate = 0;
       state.flatDiscount = 0;
       if (msgEl) {
-        msgEl.innerHTML = '<span style="color:#4cd964;">✓ Miễn phí vận chuyển toàn quốc!</span>';
+        msgEl.innerHTML = '<span class="voucher-success">✓ Miễn phí vận chuyển toàn quốc!</span>';
       }
       showToast('Miễn phí vận chuyển toàn quốc!', 'success');
     } else {
       if (msgEl) {
-        msgEl.innerHTML = '<span style="color:#ff3b30;">✕ Mã không hợp lệ hoặc đã hết lượt. Thử: GLORYMU</span>';
+        msgEl.innerHTML = '<span class="voucher-error">✕ Mã không hợp lệ hoặc đã hết lượt. Thử: GLORYMU</span>';
       }
       showToast('Mã voucher không hợp lệ', 'error');
     }
@@ -1714,10 +1714,10 @@ function lookupOrder(code) {
 
   if (itemsContainer) {
     itemsContainer.innerHTML = order.items.map(item => `
-      <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(255,255,255,0.05); font-size:0.85rem;">
+      <div style="display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid rgba(42,43,56,0.18); font-size:0.85rem;">
         <div>
           <strong>${item.name} (x${item.quantity})</strong>
-          <div style="font-size:0.75rem; color:#aaa;">Size: ${item.size} • In áo: #${item.customNumber} ${item.customName}</div>
+          <div style="font-size:0.75rem; color:#565762;">Size: ${item.size} • In áo: #${item.customNumber} ${item.customName}</div>
         </div>
         <strong>${formatVND(item.price * item.quantity)}</strong>
       </div>

@@ -207,7 +207,7 @@ input, select, textarea {
   border-radius: var(--radius-pill);
   font-size: 0.9rem;
   font-weight: 600;
-  color: var(--color-text-muted);
+  color: var(--color-text-main);
   position: relative;
   transition: var(--transition-fast);
 }
@@ -310,6 +310,7 @@ input, select, textarea {
 .search-overlay {
   display: none;
   background: var(--color-bg-surface);
+  color: #292a32;
   border-bottom: 1px solid var(--color-border);
   padding: 16px 0;
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
@@ -352,7 +353,7 @@ input, select, textarea {
   gap: 8px;
   margin-top: 12px;
   font-size: 0.85rem;
-  color: var(--color-text-muted);
+  color: #565762;
 }
 
 .tag-btn {
@@ -1574,6 +1575,11 @@ input, select, textarea {
   font-size: 0.85rem;
 }
 
+.cart-drawer .qty-btn,
+.cart-drawer .qty-num {
+  color: #292a32;
+}
+
 .qty-num {
   width: 32px;
   text-align: center;
@@ -1657,6 +1663,22 @@ input, select, textarea {
 .voucher-msg {
   font-size: 0.78rem;
   margin-top: 6px;
+}
+
+.voucher-success {
+  color: #4cd964;
+}
+
+.voucher-error {
+  color: #ff3b30;
+}
+
+.cart-drawer .voucher-success {
+  color: #167a3c;
+}
+
+.cart-drawer .voucher-error {
+  color: #b42318;
 }
 
 .suggested-coupons {
@@ -1810,6 +1832,7 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 14px;
+  color: #292a32;
   cursor: pointer;
   transition: var(--transition-fast);
 }
@@ -1839,17 +1862,17 @@ input, select, textarea {
 .m-text strong {
   display: block;
   font-size: 0.88rem;
-  color: #fff;
+  color: #292a32;
 }
 
 .m-text span {
   font-size: 0.78rem;
-  color: var(--color-text-muted);
+  color: #565762;
 }
 
 .m-price {
   font-weight: 700;
-  color: #fff;
+  color: #292a32;
   font-size: 0.95rem;
 }
 
@@ -1862,13 +1885,13 @@ input, select, textarea {
 .p-info strong {
   display: block;
   font-size: 0.9rem;
-  color: #fff;
+  color: #292a32;
   margin-bottom: 2px;
 }
 
 .p-info span {
   font-size: 0.78rem;
-  color: var(--color-text-muted);
+  color: #565762;
 }
 
 .checkout-terms {
@@ -2099,12 +2122,13 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
   padding: 20px;
+  color: #292a32;
 }
 
 .tracking-details-box h4 {
   font-size: 0.95rem;
   margin-bottom: 12px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid rgba(42, 43, 56, 0.18);
   padding-bottom: 8px;
 }
 
@@ -3061,6 +3085,7 @@ input, select, textarea {
   padding: 12px 20px;
   background: var(--color-bg-surface);
   border-bottom: 1px solid var(--color-border);
+  color: #292a32;
 }
 
 .cart-items-container {
@@ -3088,9 +3113,24 @@ input, select, textarea {
   padding: 20px;
   border-top: 1px solid var(--color-border);
   background: var(--color-bg-surface);
+  color: #292a32;
   display: flex;
   flex-direction: column;
   gap: 12px;
+}
+
+.cart-drawer .cart-summary-totals {
+  color: #565762;
+}
+
+.cart-drawer .btn-outline {
+  color: #292a32;
+  border-color: #565762;
+}
+
+.cart-drawer .btn-outline:hover {
+  color: #b42318;
+  border-color: #b42318;
 }
 
 .cart-summary-totals {
@@ -3109,8 +3149,8 @@ input, select, textarea {
 .sum-row.total {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #fff;
-  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  color: #292a32;
+  border-top: 1px solid rgba(42, 43, 56, 0.18);
   padding-top: 8px;
 }
 
@@ -3188,6 +3228,7 @@ input, select, textarea {
   border-radius: var(--radius-md);
   padding: 20px;
   margin-bottom: 25px;
+  color: #292a32;
 }
 
 .slider-group {
@@ -3202,7 +3243,7 @@ input, select, textarea {
 }
 
 .slider-header strong {
-  color: var(--color-mu-red-light);
+  color: #b42318;
   font-size: 1rem;
 }
 
@@ -3252,20 +3293,20 @@ input, select, textarea {
   font-size: 0.75rem;
   font-weight: 800;
   letter-spacing: 1px;
-  color: var(--color-gold-metallic);
+  color: #80621f;
 }
 
 .rec-size-badge {
   font-family: var(--font-display);
   font-size: 3.5rem;
-  color: #fff;
+  color: #b42318;
   line-height: 1;
   margin: 6px 0;
 }
 
 .rec-note {
   font-size: 0.8rem;
-  color: var(--color-text-muted);
+  color: #454650;
   max-width: 420px;
   margin: 0 auto 16px;
 }
@@ -3295,7 +3336,7 @@ input, select, textarea {
 .size-table tr.highlight td {
   background: rgba(218, 41, 28, 0.15);
   font-weight: 700;
-  color: #fff;
+  color: #292a32;
 }
 
 /* Success Modal */
@@ -3333,7 +3374,7 @@ input, select, textarea {
 .order-code-badge {
   background: var(--color-bg-surface);
   border: 1px dashed var(--color-gold-metallic);
-  color: var(--color-gold-metallic);
+  color: #80621f;
   font-family: var(--font-display);
   font-size: 1.8rem;
   padding: 10px;
