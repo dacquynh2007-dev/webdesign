@@ -175,8 +175,8 @@ const PRODUCTS = [
     rating: 4.5,
     reviewsCount: 328,
     badge: 'PRE-MATCH',
-    image: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-pre-match-warm-up-shirt_ss5_p-200954461+pv-1+u-cfsd6j7f6efyv8efrw0d+v-3a9d9b23f81e4cb89d9016b8d7890760.jpg?_hv=2&w=600',
-    imageBack: 'https://images.footballfanatics.com/manchester-united/manchester-united-adidas-pre-match-warm-up-shirt_ss5_p-200954461+pv-2+u-cfsd6j7f6efyv8efrw0d+v-b2a88d6beae04f719460a8b417c8230b.jpg?_hv=2&w=600',
+    image: 'images/prematch-top-2024-25-front.png?v=20261115-prematch-top',
+    imageBack: 'images/prematch-top-2024-25-back.png?v=20261115-prematch-top',
     description: 'Áo khởi động trên thảm cỏ Old Trafford trước giờ bóng lăn. Họa tiết đồ họa trừu tượng lấy cảm hứng từ biểu tượng Quỷ Đỏ cách điệu.',
     features: [
       'Chất liệu thấm hút mồ hôi Aeroready chuyên sâu',
