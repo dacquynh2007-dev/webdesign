@@ -3426,6 +3426,7 @@ input, select, textarea {
   font-weight: 700;
   letter-spacing: 0.5px;
   margin-bottom: 4px;
+  color: #292a32;
 }
 
 .g-info p {
