@@ -904,11 +904,11 @@ function renderProductDetail(productId) {
           <button class="size-advisor-btn" id="detailSizeCalcBtn"><i class="fa-solid fa-calculator"></i> Tính size chuẩn</button>
         </div>
         <div class="size-buttons-row" id="detailSizeRow">
-          <button class="size-btn" data-size="S">S</button>
-          <button class="size-btn active" data-size="M">M</button>
-          <button class="size-btn" data-size="L">L</button>
-          <button class="size-btn" data-size="XL">XL</button>
-          <button class="size-btn" data-size="2XL">2XL</button>
+          <button class="size-btn" type="button" data-size="S" aria-pressed="false">S</button>
+          <button class="size-btn active" type="button" data-size="M" aria-pressed="true">M</button>
+          <button class="size-btn" type="button" data-size="L" aria-pressed="false">L</button>
+          <button class="size-btn" type="button" data-size="XL" aria-pressed="false">XL</button>
+          <button class="size-btn" type="button" data-size="2XL" aria-pressed="false">2XL</button>
         </div>
       </div>
 
@@ -1010,10 +1010,14 @@ function renderProductDetail(productId) {
   }
 
   // Size buttons on product detail
-  document.querySelectorAll('#detailSizeRow .size-btn').forEach(btn => {
+  container.querySelectorAll('#detailSizeRow .size-btn').forEach(btn => {
     btn.addEventListener('click', () => {
-      document.querySelectorAll('#detailSizeRow .size-btn').forEach(b => b.classList.remove('active'));
+      container.querySelectorAll('#detailSizeRow .size-btn').forEach(b => {
+        b.classList.remove('active');
+        b.setAttribute('aria-pressed', 'false');
+      });
       btn.classList.add('active');
+      btn.setAttribute('aria-pressed', 'true');
       detailSelectedSize = btn.getAttribute('data-size');
     });
   });
@@ -1836,13 +1840,8 @@ function setupSizeGuideListeners() {
       const rec = calculateRecommendedSize();
 
       // Update active size button on product detail
-      document.querySelectorAll('#detailSizeRow .size-btn, .size-buttons-row .size-btn').forEach(btn => {
-        if (btn.getAttribute('data-size') === rec) {
-          btn.classList.add('active');
-        } else {
-          btn.classList.remove('active');
-        }
-      });
+      const recommendedSizeButton = document.querySelector(`#detailSizeRow .size-btn[data-size="${rec}"]`);
+      if (recommendedSizeButton) recommendedSizeButton.click();
 
       closeSizeGuideModal();
       showToast(`Đã chọn Size ${rec} cho áo đấu của bạn!`, 'success');
