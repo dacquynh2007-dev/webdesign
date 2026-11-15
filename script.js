@@ -1,4 +1,4 @@
-/**
+﻿/**
  * RED DEVILS STORE - OFFICIAL JAVASCRIPT ENGINE
  * Full Single-Page Application (SPA) architecture for Manchester United E-commerce
  */
@@ -197,6 +197,21 @@ const STAR_PLAYERS = {
   HØJLUND: { name: 'HØJLUND', number: 9, label: 'Rasmus Højlund' }
 };
 
+function getProductImageById(productId, kitType) {
+  const found = PRODUCTS.find(p => p.id === productId);
+  if (found && found.image) return found.image;
+  const mapByKit = {
+    home: 'assets/user-home-authentic.png',
+    home_polo: 'assets/user-kit-pair-clean.jpg',
+    third: 'assets/user-bruno-third.jpg',
+    retro08: 'assets/user-ronaldo-retro.jpg',
+    retro99: 'assets/kit-retro-1999-studio.jpg',
+    away: 'assets/kit-away-blue.jpg',
+    gk: 'assets/kit-gk-green-2425.jpg'
+  };
+  return mapByKit[kitType] || 'assets/user-home-authentic.png';
+}
+
 // ==================== 2. APPLICATION STATE ====================
 const state = {
   currentView: 'home',
@@ -282,8 +297,8 @@ function navigateTo(viewName, params = {}) {
     case 'history':
       targetViewEl = document.getElementById('viewHistory');
       crumbName = 'Lịch Sử & HLV';
-      renderManagers();
-      initQuiz();
+      initMoscowHistoryPage();
+      if (window.MotionPrimitives && targetViewEl) window.MotionPrimitives.init(targetViewEl);
       break;
     default:
       targetViewEl = document.getElementById('viewHome');
@@ -1301,7 +1316,7 @@ function renderFullCartPage() {
   const fsFill = document.getElementById('cartPageProgressFill');
   if (fsText && fsFill) {
     if (subtotal >= state.freeShippingThreshold || isFreeShip) {
-      fsText.innerHTML = '🎉 Chúc mừng! Đơn hàng của bạn đã đủ điều kiện <strong>FREESHIP TOÀN QUỐC</strong>';
+      fsText.innerHTML = 'Chúc mừng! Đơn hàng của bạn đã đủ điều kiện <strong>FREESHIP TOÀN QUỐC</strong>';
       fsFill.style.width = '100%';
     } else {
       const remaining = state.freeShippingThreshold - subtotal;
@@ -1313,32 +1328,32 @@ function renderFullCartPage() {
 
   if (state.cart.length === 0) {
     container.innerHTML = `
-      <div style="text-align: center; padding: 50px 20px; color: #888;">
-        <i class="fa-solid fa-shirt" style="font-size: 3rem; margin-bottom: 12px; opacity: 0.5;"></i>
+      <div style="text-align: center; padding: 50px 20px; color: #4A4640;">
+        <i class="fa-solid fa-shirt" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.45;"></i>
         <h3>Giỏ hàng của bạn đang trống</h3>
-        <p>Hãy tham quan bộ sưu tập và chọn cho mình chiếc áo đấu ưng ý nhất.</p>
+        <p>Hãy tham quan bộ sưu tập áo đấu và đồ cổ vũ chính hãng của CLB.</p>
         <button class="btn btn-primary" style="margin-top: 15px;" data-navigate="shop">
-          <i class="fa-solid fa-layer-group"></i> Xem Toàn Bộ Áo Đấu
+          <i class="fa-solid fa-layer-group"></i> Xem Toàn Bộ Sản Phẩm
         </button>
       </div>
     `;
   } else {
     container.innerHTML = state.cart.map(item => {
-      const prod = PRODUCTS.find(p => p.id === item.productId);
-      const imgSrc = item.image || (prod ? prod.image : '');
-      const svgThumb = generateJerseySvgContent(item.kitType || 'home', true, item.customName, item.customNumber);
+      const thumbImg = getProductImageById(item.productId, item.kitType);
+      const printRow = item.isMerch
+        ? (item.customName ? `<span class="c-print-tag"><i class="fa-solid fa-gift"></i> Lời nhắn: ${item.customName}</span>` : `<span class="c-print-tag">Vật phẩm CĐV chính hãng</span>`)
+        : `<span class="c-print-tag"><i class="fa-solid fa-bolt"></i> In tên số: #${item.customNumber} ${item.customName}</span><span>Huy hiệu: ${item.badge}</span>`;
       return `
         <div class="cart-row-item">
           <div class="c-item-prod">
-            <div class="c-item-img">
-              ${imgSrc ? `<img src="${imgSrc}" alt="${item.name}" style="width:100%;height:100%;object-fit:contain;">` : `<svg viewBox="0 0 500 580">${svgThumb}</svg>`}
+            <div class="c-item-img" style="overflow: hidden; border-radius: 4px;">
+              <img src="${thumbImg}" alt="${item.name}" style="width: 100%; height: 100%; object-fit: cover;">
             </div>
             <div class="c-item-details">
               <h5>${item.name}</h5>
               <div class="c-item-meta">
-                <span>Phân loại: ${item.version || 'Bản Cầu Thủ'} • Size: <strong>${item.size}</strong></span>
-                <span class="c-print-tag"><i class="fa-solid fa-bolt"></i> In tên số: #${item.customNumber} ${item.customName}</span>
-                <span>Huy hiệu: ${item.badge}</span>
+                <span>Phân loại: ${item.version || 'Bản Cầu Thủ'} • Tùy chọn: <strong>${item.size}</strong></span>
+                ${printRow}
               </div>
             </div>
           </div>
@@ -1456,7 +1471,7 @@ function setupVoucherListeners() {
       state.discountRate = 0.1; // 10%
       state.flatDiscount = 0;
       if (msgEl) {
-        msgEl.innerHTML = '<span class="voucher-success">✓ Áp dụng mã GLORYMU giảm 10% thành công!</span>';
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:600;">✓ Áp dụng mã GLORYMU giảm 10% thành công!</span>';
       }
       showToast('Áp dụng mã GLORYMU thành công (-10%)', 'success');
       playTone(600, 'triangle', 0.15);
@@ -1465,7 +1480,7 @@ function setupVoucherListeners() {
       state.flatDiscount = 50000;
       state.discountRate = 0;
       if (msgEl) {
-        msgEl.innerHTML = '<span class="voucher-success">✓ Áp dụng mã MUFC50K giảm 50.000đ!</span>';
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:600;">✓ Áp dụng mã MUFC50K giảm 50.000đ!</span>';
       }
       showToast('Áp dụng mã MUFC50K thành công (-50K)', 'success');
       playTone(600, 'triangle', 0.15);
@@ -1474,12 +1489,12 @@ function setupVoucherListeners() {
       state.discountRate = 0;
       state.flatDiscount = 0;
       if (msgEl) {
-        msgEl.innerHTML = '<span class="voucher-success">✓ Miễn phí vận chuyển toàn quốc!</span>';
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:600;">✓ Miễn phí vận chuyển toàn quốc!</span>';
       }
       showToast('Miễn phí vận chuyển toàn quốc!', 'success');
     } else {
       if (msgEl) {
-        msgEl.innerHTML = '<span class="voucher-error">✕ Mã không hợp lệ hoặc đã hết lượt. Thử: GLORYMU</span>';
+        msgEl.innerHTML = '<span style="color:#C8102E; font-weight:600;">✕ Mã không hợp lệ hoặc đã hết lượt. Thử: GLORYMU</span>';
       }
       showToast('Mã voucher không hợp lệ', 'error');
     }
@@ -1530,6 +1545,7 @@ function renderCheckoutView() {
   const totalEl = document.getElementById('chkFinalTotal');
   const discRow = document.getElementById('chkDiscountRow');
   const discEl = document.getElementById('chkDiscountAmount');
+  const qrAmountEl = document.getElementById('checkoutQrAmount');
 
   const { subtotal, discount, shipping, finalTotal } = getCartTotals();
 
@@ -1538,7 +1554,7 @@ function renderCheckoutView() {
 
   if (itemsContainer) {
     if (state.cart.length === 0) {
-      itemsContainer.innerHTML = '<p style="color:#888; font-size:0.85rem;">Giỏ hàng trống.</p>';
+      itemsContainer.innerHTML = '<p style="color:#524E48; font-size:0.88rem; font-weight:500;">Giỏ hàng trống.</p>';
     } else {
       itemsContainer.innerHTML = state.cart.map(item => `
         <div class="chk-item">
@@ -1555,6 +1571,7 @@ function renderCheckoutView() {
   if (subEl) subEl.textContent = formatVND(subtotal);
   if (shipEl) shipEl.textContent = shipping === 0 ? 'MIỄN PHÍ' : formatVND(shipping);
   if (totalEl) totalEl.textContent = formatVND(finalTotal);
+  if (qrAmountEl) qrAmountEl.textContent = formatVND(finalTotal);
 
   if (discRow && discEl) {
     if (discount > 0) {
@@ -1569,11 +1586,20 @@ function renderCheckoutView() {
 function setupCheckoutListeners() {
   // Payment Method selection
   const payCards = document.querySelectorAll('.pay-method-card input');
+  const qrBox = document.getElementById('checkoutQrBox');
 
   payCards.forEach(input => {
     input.addEventListener('change', (e) => {
       document.querySelectorAll('.pay-method-card').forEach(c => c.classList.remove('active'));
       e.target.closest('.pay-method-card').classList.add('active');
+
+      if (qrBox) {
+        if (e.target.value === 'vietqr') {
+          qrBox.style.display = 'block';
+        } else {
+          qrBox.style.display = 'none';
+        }
+      }
     });
   });
 
@@ -1592,6 +1618,16 @@ function setupCheckoutListeners() {
       renderCheckoutView();
     });
   });
+
+  // Phone input update QR content code
+  const phoneInput = document.getElementById('chkPhone');
+  const qrContentDisplay = document.getElementById('checkoutQrContent');
+  if (phoneInput && qrContentDisplay) {
+    phoneInput.addEventListener('input', (e) => {
+      const val = e.target.value.trim();
+      qrContentDisplay.textContent = val ? `MUFC ${val}` : 'MUFC [SĐT CỦA BẠN]';
+    });
+  }
 
   // Full Checkout Form Submit
   const checkoutForm = document.getElementById('fullCheckoutForm');
@@ -1665,7 +1701,6 @@ function setupCheckoutListeners() {
     });
   }
 }
-
 // ==================== 9. ORDER TRACKING SYSTEM ====================
 function lookupOrder(code) {
   const clean = code.trim().toUpperCase();
@@ -1952,15 +1987,463 @@ function playStadiumSound(soundType) {
   }
 }
 
+// ==================== 11B. MINI MUSIC PLAYER (CÁCH 3: CHỌN & LƯU NHẠC TỪ MÁY TÍNH) ====================
+const MP_DB_NAME = 'MU_Personal_Music_DB';
+const MP_STORE_NAME = 'user_tracks';
+
+// Synthesize a playable multi-bar WAV Blob URL for built-in default tracks so <audio> works immediately
+function createMelodyWavBlobUrl(notes, tempoBpm = 116) {
+  const sampleRate = 22050;
+  const beatSec = 60 / tempoBpm;
+  let totalSec = 0;
+  notes.forEach(n => { totalSec += n.beats * beatSec; });
+  const numSamples = Math.max(1, Math.floor(totalSec * sampleRate));
+  const buffer = new ArrayBuffer(44 + numSamples * 2);
+  const view = new DataView(buffer);
+
+  function writeStr(offset, str) {
+    for (let i = 0; i < str.length; i++) view.setUint8(offset + i, str.charCodeAt(i));
+  }
+  writeStr(0, 'RIFF');
+  view.setUint32(4, 36 + numSamples * 2, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  writeStr(36, 'data');
+  view.setUint32(40, numSamples * 2, true);
+
+  let cursor = 0;
+  notes.forEach(note => {
+    const durSamples = Math.floor(note.beats * beatSec * sampleRate);
+    const freq = note.f || 0;
+    for (let i = 0; i < durSamples && cursor < numSamples; i++, cursor++) {
+      let val = 0;
+      if (freq > 0) {
+        const t = i / sampleRate;
+        const env = Math.min(1, i / (sampleRate * 0.015)) * Math.exp(-t * 2.4);
+        // Warm organ/brass harmonic blend
+        const wave = Math.sin(2 * Math.PI * freq * t) * 0.65
+                   + Math.sin(2 * Math.PI * (freq * 2) * t) * 0.22
+                   + Math.sin(2 * Math.PI * (freq * 0.5) * t) * 0.18;
+        val = wave * env * 0.45;
+      }
+      const s = Math.max(-1, Math.min(1, val));
+      view.setInt16(44 + cursor * 2, s < 0 ? s * 0x8000 : s * 0x7FFF, true);
+    }
+  });
+
+  const blob = new Blob([buffer], { type: 'audio/wav' });
+  return URL.createObjectURL(blob);
+}
+
+function buildDefaultStadiumTracks() {
+  return [
+    {
+      id: 'default-doibongtoiyeu',
+      title: 'Đội Bóng Tôi Yêu — Manchester United',
+      artist: 'Doibongtoiyeu.mp4 • Nhạc CLB',
+      url: 'assets/Doibongtoiyeu.mp4',
+      isUserFile: false
+    },
+    {
+      id: 'default-glory-mp4',
+      title: 'Glory Glory Manchester United',
+      artist: 'Glory_Glory_Manchester_united.mp4 • Bài hát truyền thống',
+      url: 'assets/Glory_Glory_Manchester_united.mp4',
+      isUserFile: false
+    },
+    {
+      id: 'default-thank-goat-cr7',
+      title: 'Thank Goat CR7 — Cristiano Ronaldo',
+      artist: 'Thank_Goat_Cr7.mp4 • Huyền thoại số 7',
+      url: 'assets/Thank_Goat_Cr7.mp4',
+      isUserFile: false
+    }
+  ];
+}
+
+function openMusicDb() {
+  return new Promise((resolve, reject) => {
+    if (!window.indexedDB) {
+      resolve(null);
+      return;
+    }
+    const req = indexedDB.open(MP_DB_NAME, 1);
+    req.onupgradeneeded = (e) => {
+      const db = e.target.result;
+      if (!db.objectStoreNames.contains(MP_STORE_NAME)) {
+        db.createObjectStore(MP_STORE_NAME, { keyPath: 'id' });
+      }
+    };
+    req.onsuccess = () => resolve(req.result);
+    req.onerror = () => resolve(null);
+  });
+}
+
+async function loadSavedUserTracksFromDb() {
+  const db = await openMusicDb();
+  if (!db) return [];
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(MP_STORE_NAME, 'readonly');
+      const store = tx.objectStore(MP_STORE_NAME);
+      const req = store.getAll();
+      req.onsuccess = () => {
+        const rows = req.result || [];
+        const tracks = rows.map(r => ({
+          id: r.id,
+          title: r.title,
+          artist: r.artist || 'Nhạc từ máy của bạn',
+          url: URL.createObjectURL(r.blob),
+          isUserFile: true
+        }));
+        resolve(tracks);
+      };
+      req.onerror = () => resolve([]);
+    } catch (e) {
+      resolve([]);
+    }
+  });
+}
+
+async function saveUserTrackToDb(trackObj, fileBlob) {
+  const db = await openMusicDb();
+  if (!db) return;
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(MP_STORE_NAME, 'readwrite');
+      const store = tx.objectStore(MP_STORE_NAME);
+      store.put({
+        id: trackObj.id,
+        title: trackObj.title,
+        artist: trackObj.artist,
+        blob: fileBlob,
+        createdAt: Date.now()
+      });
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+    } catch (e) {
+      resolve(false);
+    }
+  });
+}
+
+async function deleteUserTrackFromDb(trackId) {
+  const db = await openMusicDb();
+  if (!db) return;
+  return new Promise((resolve) => {
+    try {
+      const tx = db.transaction(MP_STORE_NAME, 'readwrite');
+      const store = tx.objectStore(MP_STORE_NAME);
+      store.delete(trackId);
+      tx.oncomplete = () => resolve(true);
+      tx.onerror = () => resolve(false);
+    } catch (e) {
+      resolve(false);
+    }
+  });
+}
+
+function formatAudioTime(sec) {
+  if (!isFinite(sec) || sec < 0) return '00:00';
+  const m = Math.floor(sec / 60);
+  const s = Math.floor(sec % 60);
+  return `${String(m).padStart(2, '0')}:${String(s).padStart(2, '0')}`;
+}
+
 function setupSoundListeners() {
-  const headerSoundBtn = document.getElementById('soundBtn');
-  if (headerSoundBtn) {
-    headerSoundBtn.addEventListener('click', () => {
-      headerSoundBtn.classList.toggle('playing');
-      playStadiumSound('chant');
+  const soundBtn = document.getElementById('soundBtn');
+  const popover = document.getElementById('musicPlayerPopover');
+  const closeBtn = document.getElementById('mpCloseBtn');
+  const playPauseBtn = document.getElementById('mpPlayPauseBtn');
+  const playPauseIcon = document.getElementById('mpPlayPauseIcon');
+  const prevBtn = document.getElementById('mpPrevBtn');
+  const nextBtn = document.getElementById('mpNextBtn');
+  const loopBtn = document.getElementById('mpLoopBtn');
+  const seekSlider = document.getElementById('mpSeekSlider');
+  const curTimeEl = document.getElementById('mpCurrentTime');
+  const durTimeEl = document.getElementById('mpTotalDuration');
+  const volSlider = document.getElementById('mpVolumeSlider');
+  const fileInput = document.getElementById('mpFileInput');
+  const playlistEl = document.getElementById('mpPlaylistContainer');
+  const playlistCountEl = document.getElementById('mpPlaylistCount');
+  const curTitleEl = document.getElementById('mpCurrentTitle');
+  const curArtistEl = document.getElementById('mpCurrentArtist');
+  const discIcon = document.getElementById('mpDiscIcon');
+  const liveDot = document.getElementById('mpLiveDot');
+
+  const audio = new Audio();
+  audio.preload = 'metadata';
+  audio.volume = 0.85;
+
+  let playlist = buildDefaultStadiumTracks();
+  let currentIndex = 0;
+  let isPlaying = false;
+  let isLoopOne = false;
+
+  function syncPlayerUi() {
+    const currentTrack = playlist[currentIndex] || playlist[0];
+    if (currentTrack) {
+      if (curTitleEl) curTitleEl.textContent = currentTrack.title;
+      if (curArtistEl) curArtistEl.textContent = currentTrack.artist;
+    }
+    if (playPauseIcon) {
+      playPauseIcon.className = isPlaying ? 'fa-solid fa-pause' : 'fa-solid fa-play';
+    }
+    if (soundBtn) {
+      soundBtn.classList.toggle('playing', isPlaying);
+    }
+    if (discIcon) {
+      discIcon.classList.toggle('spinning', isPlaying);
+    }
+    if (liveDot) {
+      liveDot.classList.toggle('active', isPlaying);
+    }
+    if (playlistCountEl) {
+      playlistCountEl.textContent = playlist.length;
+    }
+
+    if (playlistEl) {
+      playlistEl.innerHTML = playlist.map((tr, idx) => `
+        <li class="mp-track-item ${idx === currentIndex ? 'active' : ''}" data-track-idx="${idx}">
+          <div class="mp-track-item-left">
+            <span class="mp-track-idx">${idx === currentIndex && isPlaying ? '▶' : String(idx + 1).padStart(2, '0')}</span>
+            <span class="mp-track-item-name" title="${tr.title}">${tr.title}</span>
+          </div>
+          <span class="mp-track-badge ${tr.isUserFile ? 'user-file' : ''}">${tr.isUserFile ? 'Nhạc thêm' : 'Đã gắn'}</span>
+          <button class="mp-track-del-btn" data-del-id="${tr.id}" title="Xóa bài này" aria-label="Xóa bài hát"><i class="fa-solid fa-trash-can"></i></button>
+        </li>
+      `).join('');
+    }
+  }
+
+  function loadTrack(index, autoPlay = false) {
+    if (playlist.length === 0) return;
+    currentIndex = ((index % playlist.length) + playlist.length) % playlist.length;
+    const track = playlist[currentIndex];
+    audio.src = track.url;
+    audio.load();
+    syncPlayerUi();
+    if (autoPlay) {
+      audio.play().then(() => {
+        isPlaying = true;
+        syncPlayerUi();
+      }).catch(() => {
+        isPlaying = false;
+        syncPlayerUi();
+      });
+    }
+  }
+
+  function togglePlayPause() {
+    if (!audio.src && playlist.length > 0) {
+      loadTrack(currentIndex, true);
+      return;
+    }
+    if (audio.paused) {
+      audio.play().then(() => {
+        isPlaying = true;
+        syncPlayerUi();
+      }).catch(() => {});
+    } else {
+      audio.pause();
+      isPlaying = false;
+      syncPlayerUi();
+    }
+  }
+
+  // Load saved user tracks from IndexedDB on startup
+  loadSavedUserTracksFromDb().then(savedTracks => {
+    if (savedTracks.length > 0) {
+      playlist = [...savedTracks, ...playlist];
+      currentIndex = 0;
+    }
+    loadTrack(0, false);
+  });
+
+  // Toggle Mini Player Popover when clicking #soundBtn (and auto-play Track #1 if paused on first click)
+  let firstOpenAutoPlayed = false;
+  if (soundBtn && popover) {
+    soundBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const willOpen = !popover.classList.contains('open');
+      popover.classList.toggle('open', willOpen);
+      soundBtn.setAttribute('aria-expanded', String(willOpen));
+      if (willOpen && !firstOpenAutoPlayed && audio.paused) {
+        firstOpenAutoPlayed = true;
+        togglePlayPause();
+      }
     });
   }
 
+  // Handle adding a song by URL / file path (#mpUrlInput & #mpAddUrlBtn)
+  const urlInput = document.getElementById('mpUrlInput');
+  const addUrlBtn = document.getElementById('mpAddUrlBtn');
+  if (urlInput && addUrlBtn) {
+    const handleAddUrl = () => {
+      const rawUrl = urlInput.value.trim();
+      if (!rawUrl) {
+        showToast('Vui lòng dán đường link hoặc đường dẫn file nhạc (.mp3 / .mp4)', 'error');
+        return;
+      }
+      const cleanName = rawUrl.split('/').pop().split('?')[0].replace(/\.[^/.]+$/, '') || 'Bài nhạc từ Link';
+      const newTrack = {
+        id: 'user-url-' + Date.now(),
+        title: decodeURIComponent(cleanName),
+        artist: 'Link nhạc đã thêm',
+        url: rawUrl,
+        isUserFile: true
+      };
+      playlist = [newTrack, ...playlist];
+      loadTrack(0, true);
+      urlInput.value = '';
+      showToast(`🎵 Đã thêm và phát "${newTrack.title}"!`, 'success');
+    };
+    addUrlBtn.addEventListener('click', handleAddUrl);
+    urlInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        e.preventDefault();
+        handleAddUrl();
+      }
+    });
+  }
+
+  if (closeBtn && popover) {
+    closeBtn.addEventListener('click', () => {
+      popover.classList.remove('open');
+      if (soundBtn) soundBtn.setAttribute('aria-expanded', 'false');
+    });
+  }
+
+  // Close popover when clicking outside
+  document.addEventListener('click', (e) => {
+    if (popover && popover.classList.contains('open')) {
+      const wrap = document.getElementById('soundPlayerWrap');
+      if (wrap && !wrap.contains(e.target)) {
+        popover.classList.remove('open');
+        if (soundBtn) soundBtn.setAttribute('aria-expanded', 'false');
+      }
+    }
+  });
+
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', togglePlayPause);
+  }
+
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => loadTrack(currentIndex - 1, true));
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => loadTrack(currentIndex + 1, true));
+  }
+
+  if (loopBtn) {
+    loopBtn.addEventListener('click', () => {
+      isLoopOne = !isLoopOne;
+      audio.loop = isLoopOne;
+      loopBtn.classList.toggle('active', isLoopOne);
+      showToast(isLoopOne ? '🔁 Đã bật lặp lại 1 bài hiện tại' : '▶️ Tự động chuyển bài tiếp theo trong danh sách', 'info');
+    });
+  }
+
+  if (volSlider) {
+    volSlider.addEventListener('input', (e) => {
+      audio.volume = parseFloat(e.target.value);
+    });
+  }
+
+  if (seekSlider) {
+    seekSlider.addEventListener('input', (e) => {
+      if (audio.duration && isFinite(audio.duration)) {
+        audio.currentTime = (parseFloat(e.target.value) / 100) * audio.duration;
+      }
+    });
+  }
+
+  audio.addEventListener('timeupdate', () => {
+    if (curTimeEl) curTimeEl.textContent = formatAudioTime(audio.currentTime);
+    if (durTimeEl && isFinite(audio.duration)) durTimeEl.textContent = formatAudioTime(audio.duration);
+    if (seekSlider && audio.duration && isFinite(audio.duration)) {
+      seekSlider.value = ((audio.currentTime / audio.duration) * 100).toFixed(1);
+    }
+  });
+
+  audio.addEventListener('loadedmetadata', () => {
+    if (durTimeEl && isFinite(audio.duration)) {
+      durTimeEl.textContent = formatAudioTime(audio.duration);
+    }
+  });
+
+  audio.addEventListener('ended', () => {
+    if (!isLoopOne) {
+      loadTrack(currentIndex + 1, true);
+    }
+  });
+
+  // Handle selecting custom MP3 / WAV / M4A files from the user's computer
+  if (fileInput) {
+    fileInput.addEventListener('change', async (e) => {
+      const files = Array.from(e.target.files || []);
+      if (files.length === 0) return;
+
+      const addedTracks = [];
+      for (const file of files) {
+        const cleanTitle = file.name.replace(/\.[^/.]+$/, '');
+        const newTrack = {
+          id: 'user-song-' + Date.now() + '-' + Math.random().toString(36).slice(2, 7),
+          title: cleanTitle,
+          artist: 'Nhạc từ máy tính của bạn',
+          url: URL.createObjectURL(file),
+          isUserFile: true
+        };
+        await saveUserTrackToDb(newTrack, file);
+        addedTracks.push(newTrack);
+      }
+
+      // Put newly added songs at the top of the playlist and play immediately!
+      playlist = [...addedTracks, ...playlist];
+      loadTrack(0, true);
+      showToast(`🎵 Đã thêm và phát "${addedTracks[0].title}" (${addedTracks.length} bài)!`, 'success');
+      fileInput.value = '';
+    });
+  }
+
+  // Click on playlist item to play or delete button to remove
+  if (playlistEl) {
+    playlistEl.addEventListener('click', async (e) => {
+      const delBtn = e.target.closest('.mp-track-del-btn');
+      if (delBtn) {
+        e.stopPropagation();
+        const delId = delBtn.getAttribute('data-del-id');
+        await deleteUserTrackFromDb(delId);
+        const delIdx = playlist.findIndex(t => t.id === delId);
+        if (delIdx !== -1) {
+          playlist.splice(delIdx, 1);
+          if (currentIndex >= playlist.length) currentIndex = 0;
+          loadTrack(currentIndex, isPlaying);
+          showToast('Đã xóa bài hát khỏi danh sách lưu', 'info');
+        }
+        return;
+      }
+
+      const itemEl = e.target.closest('.mp-track-item');
+      if (itemEl) {
+        const idx = parseInt(itemEl.getAttribute('data-track-idx'), 10);
+        if (!isNaN(idx)) {
+          loadTrack(idx, true);
+        }
+      }
+    });
+  }
+
+  // Keep stadium sound pill buttons working if present
   document.querySelectorAll('.sound-pill-btn').forEach(btn => {
     btn.addEventListener('click', () => {
       const sType = btn.getAttribute('data-sound');
@@ -1968,7 +2451,6 @@ function setupSoundListeners() {
     });
   });
 }
-
 // ==================== 12. CONFETTI FIREWORKS SYSTEM ====================
 function triggerConfetti() {
   const canvas = document.getElementById('confettiCanvas');
@@ -2060,712 +2542,1194 @@ function showToast(message, type = 'info') {
   }, 3500);
 }
 
-// ==================== 13b. HISTORY, MANAGERS & QUIZ SYSTEM ====================
-const MANAGERS = [
+// ==================== 13B. LỊCH SỬ CLB (MOSCOW 2008 SCROLLYTELLING, 25 MANAGERS & QUIZ) ====================
+const MU_MANAGERS_DATA = [
+  { id: 1, name: 'A. H. Albut', years: '1892 – 1900', era: 'classic', matches: 350, winRate: '44.5%', trophies: 'Nền móng Newton Heath', desc: 'Thư ký điều hành đầu tiên tổ chức chuyên nghiệp hóa đội bóng đường sắt Newton Heath.' },
+  { id: 2, name: 'James West', years: '1900 – 1903', era: 'classic', matches: 113, winRate: '40.7%', trophies: 'Đổi tên thành Manchester United (1902)', desc: 'Chứng kiến cột mốc lịch sử ngày 24/4/1902 khi CLB chính thức mang tên Manchester United.' },
+  { id: 3, name: 'Ernest Mangnall', years: '1903 – 1912', era: 'legend', matches: 373, winRate: '54.1%', trophies: '2 First Division (1908, 1911), 1 FA Cup (1909), 2 Charity Shield', desc: 'Mang về chức vô địch nước Anh đầu tiên và đưa CLB chuyển tới thánh địa Old Trafford năm 1910.' },
+  { id: 4, name: 'John Bentley', years: '1912 – 1914', era: 'classic', matches: 82, winRate: '36.6%', trophies: 'Trụ hạng First Division', desc: 'Dẫn dắt CLB trong giai đoạn chuyển giao trước thềm Thế chiến thứ nhất.' },
+  { id: 5, name: 'Jack Robson', years: '1914 – 1921', era: 'classic', matches: 139, winRate: '29.5%', trophies: 'Tái thiết sau Thế chiến I', desc: 'Vị HLV trưởng đầu tiên đúng nghĩa trên băng ghế chỉ đạo của Quỷ Đỏ.' },
+  { id: 6, name: 'John Chapman', years: '1921 – 1926', era: 'classic', matches: 221, winRate: '38.9%', trophies: 'Bán kết FA Cup 1926', desc: 'Đưa đội bóng trở lại hạng đấu cao nhất nước Anh năm 1925.' },
+  { id: 7, name: 'Lal Hilditch', years: '1926 – 1927', era: 'classic', matches: 33, winRate: '30.3%', trophies: 'Cầu thủ kiêm HLV', desc: 'Đảm nhận vai trò cầu thủ kiêm huấn luyện viên trưởng tạm quyền.' },
+  { id: 8, name: 'Herbert Bamlett', years: '1927 – 1931', era: 'classic', matches: 183, winRate: '31.1%', trophies: 'Giai đoạn Đại Suy Thoái', desc: 'Chèo lái CLB vượt qua thời kỳ khủng hoảng kinh tế cuối thập niên 1920.' },
+  { id: 9, name: 'Walter Crickmer', years: '1931 – 1932 & 1937 – 1945', era: 'classic', matches: 152, winRate: '42.1%', trophies: 'Đồng sáng lập Học viện trẻ MU (1937)', desc: 'Khởi xướng truyền thống sử dụng cầu thủ tự đào tạo kéo dài hơn 85 năm qua.' },
+  { id: 10, name: 'Scott Duncan', years: '1932 – 1937', era: 'classic', matches: 235, winRate: '39.1%', trophies: 'Vô địch Second Division (1936)', desc: 'Đưa Manchester United giành chức vô địch hạng Nhì năm 1936 để thăng hạng.' },
+  { id: 11, name: 'Sir Matt Busby', years: '1945 – 1969 & 1970 – 1971', era: 'legend', matches: 1141, winRate: '50.5%', trophies: '1 Cúp C1 (1968), 5 First Division, 2 FA Cup, 5 Charity Shield', desc: 'Cha đẻ của thế hệ "Busby Babes", tái thiết CLB từ thảm họa Munich 1958 và đưa MU lên đỉnh châu Âu tại Wembley 1968.' },
+  { id: 12, name: 'Jimmy Murphy', years: '1958 (Tạm quyền)', era: 'legend', matches: 22, winRate: '50.0%', trophies: 'Á quân FA Cup 1958', desc: 'Người giữ ngọn lửa Old Trafford không tắt sau thảm họa Munich khi Sir Matt Busby đang điều trị trong bệnh viện.' },
+  { id: 13, name: 'Wilf McGuinness', years: '1969 – 1970', era: 'classic', matches: 87, winRate: '36.8%', trophies: '3 lần Bán kết Cúp Quốc Nội', desc: 'Cựu cầu thủ Busby Babes tiếp quản ghế nóng ở tuổi 31.' },
+  { id: 14, name: 'Frank O\'Farrell', years: '1971 – 1972', era: 'classic', matches: 81, winRate: '37.0%', trophies: 'Chiêu mộ Martin Buchan', desc: 'Đặt viên gạch đầu tiên cho hàng thủ thập niên 1970 với bản hợp đồng đội trưởng Martin Buchan.' },
+  { id: 15, name: 'Tommy Docherty', years: '1972 – 1977', era: 'classic', matches: 228, winRate: '46.9%', trophies: '1 FA Cup (1977), Second Division (1975)', desc: 'Xây dựng lối chơi tấn công biên rực lửa và đánh bại Liverpool 2-1 tại chung kết FA Cup 1977.' },
+  { id: 16, name: 'Dave Sexton', years: '1977 – 1981', era: 'classic', matches: 201, winRate: '40.3%', trophies: '1 Charity Shield (1977), Á quân Anh 1980', desc: 'Nhà chiến thuật điềm tĩnh đưa MU cán đích ngôi Á quân First Division mùa 1979/80.' },
+  { id: 17, name: 'Ron Atkinson', years: '1981 – 1986', era: 'classic', matches: 292, winRate: '50.0%', trophies: '2 FA Cup (1983, 1985), 1 Charity Shield', desc: 'Chiêu mộ đội trưởng "Captain Marvel" Bryan Robson và mang về 2 chiếc Cúp FA đầy cảm xúc.' },
+  { id: 18, name: 'Sir Alex Ferguson', years: '1986 – 2013', era: 'legend', matches: 1500, winRate: '59.7%', trophies: '38 Danh hiệu: 13 Premier League, 2 Champions League (1999, 2008), 5 FA Cup', desc: 'Kiến trúc sư vĩ đại nhất lịch sử bóng đá thế giới — tác giả Cú Ăn Ba 1999 và Đế Chế Đỏ Moscow 2008.' },
+  { id: 19, name: 'David Moyes', years: '2013 – 2014', era: 'post-saf', matches: 51, winRate: '52.9%', trophies: '1 FA Community Shield (2013)', desc: 'Người kế nhiệm đầu tiên sau khi Sir Alex Ferguson nghỉ hưu mùa hè 2013.' },
+  { id: 20, name: 'Ryan Giggs', years: '2014 (Tạm quyền)', era: 'post-saf', matches: 4, winRate: '50.0%', trophies: 'Cầu thủ giàu thành tích nhất CLB', desc: 'Huyền thoại 963 trận khoác áo Quỷ Đỏ đảm nhận vai trò HLV kiêm cầu thủ cuối mùa 2013/14.' },
+  { id: 21, name: 'Louis van Gaal', years: '2014 – 2016', era: 'post-saf', matches: 103, winRate: '52.4%', trophies: '1 FA Cup (2016)', desc: 'Mang về chức vô địch FA Cup 2016 tại Wembley và trao cơ hội ra mắt cho Marcus Rashford.' },
+  { id: 22, name: 'José Mourinho', years: '2016 – 2018', era: 'post-saf', matches: 144, winRate: '58.3%', trophies: '1 UEFA Europa League (2017), 1 League Cup (2017), 1 Community Shield', desc: 'Hoàn tất bộ sưu tập cúp châu Âu của CLB với chiến thắng 2-0 tại chung kết Europa League ở Stockholm.' },
+  { id: 23, name: 'Ole Gunnar Solskjær', years: '2018 – 2021', era: 'post-saf', matches: 168, winRate: '54.2%', trophies: 'Á quân Premier League (2021) & Europa League (2021)', desc: 'Người hùng 1999 tái khơi dậy bản sắc phản công tốc độ và đêm ngược dòng lịch sử tại Paris.' },
+  { id: 24, name: 'Erik ten Hag', years: '2022 – 2024', era: 'post-saf', matches: 128, winRate: '54.7%', trophies: '1 FA Cup (2024), 1 Carabao Cup (2023)', desc: 'Giành 2 danh hiệu quốc nội trong 2 mùa liên tiếp, đỉnh cao là chiến thắng 2-1 trước Man City tại chung kết FA Cup 2024.' },
+  { id: 25, name: 'Rúben Amorim', years: '2024 – Hiện Tại', era: 'current', matches: 24, winRate: '54.2%', trophies: 'Kỷ nguyên chiến thuật 3-4-2-1 hiện đại', desc: 'Thuyền trưởng trẻ tuổi người Bồ Đào Nha mở ra chương tái thiết toàn diện tại Old Trafford.' }
+];
+
+const MU_QUIZ_QUESTIONS = [
   {
-    id: 'albut',
-    name: 'A. H. Albut',
-    period: '1892 - 1900',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 265,
-    wins: 130,
-    winRate: '49.1%',
-    trophies: ['Thư ký điều hành đầu tiên', 'Khai sinh thời Newton Heath'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Vị thư ký kiêm quản lý chính thức đầu tiên phụ trách các vấn đề của Newton Heath F.C. (tiền thân của Manchester United).'
+    q: 'Trong trận chung kết UEFA Champions League ngày 21/05/2008 dưới cơn mưa Moscow, ai là người ghi bàn mở tỷ số bằng pha bật cao đánh đầu ở phút 26 cho Manchester United?',
+    options: ['Wayne Rooney', 'Cristiano Ronaldo', 'Carlos Tevez', 'Paul Scholes'],
+    answer: 1,
+    explain: 'Phút 26 tại SVĐ Luzhniki, từ quả tạt của Wes Brown, Cristiano Ronaldo bật cao đánh đầu mở tỷ số 1-0 cho Quỷ Đỏ.'
   },
   {
-    id: 'west',
-    name: 'James West',
-    period: '1900 - 1903',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 113,
-    wins: 46,
-    winRate: '40.7%',
-    trophies: ['Chứng kiến đổi tên CLB', 'Khai sinh sắc áo Đỏ (1902)'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Chứng kiến thời khắc lịch sử khi CLB được cứu khỏi phá sản và chính thức mang tên Manchester United vào năm 1902.'
+    q: 'Bộ ba tấn công nguyên tử Ronaldo – Rooney – Tevez đã ghi tổng cộng bao nhiêu bàn thắng trên mọi đấu trường trong mùa giải 2007/2008?',
+    options: ['65 bàn thắng', '72 bàn thắng', '79 bàn thắng', '84 bàn thắng'],
+    answer: 2,
+    explain: 'Bộ ba Ronaldo (42 bàn), Tevez (19 bàn) và Rooney (18 bàn) tạo thành họng pháo 79 bàn thắng đưa MU giành cú đúp Premier League & Champions League.'
   },
   {
-    id: 'mangnall',
-    name: 'Ernest Mangnall',
-    period: '1903 - 1912',
-    category: 'legend',
-    subCategories: ['classic'],
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 373,
-    wins: 202,
-    winRate: '54.2%',
-    trophies: ['2 First Division (1908, 1911)', '1 FA Cup (1909)', '2 Charity Shield'],
-    badge: 'Huyền Thoại',
-    badgeClass: 'badge-legend',
-    desc: 'Kiến trúc sư đưa Quỷ Đỏ giành chức Vô địch Nước Anh đầu tiên trong lịch sử (1908) và khánh thành thánh địa Old Trafford năm 1910.'
+    q: 'Ở loạt sút luân lưu thứ 7 trận chung kết C1 năm 2008, thủ môn Edwin van der Sar đã cản phá cú sút của cầu thủ nào bên phía Chelsea?',
+    options: ['Frank Lampard', 'Michael Ballack', 'Salomon Kalou', 'Nicolas Anelka'],
+    answer: 3,
+    explain: 'Edwin van der Sar chỉ tay về góc trái rồi bay người sang phải cản phá cú sút của Nicolas Anelka, ấn định chiến thắng luân lưu 6-5.'
   },
   {
-    id: 'bentley',
-    name: 'John Bentley',
-    period: '1912 - 1914',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 82,
-    wins: 36,
-    winRate: '43.9%',
-    trophies: ['Dẫn dắt trước Thế chiến I'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Tiếp quản chiếc ghế nóng từ Mangnall và giúp MU giữ vững vị thế tại giải VĐQG trước khi Thế chiến thứ nhất bùng nổ.'
+    q: 'Ai là tác giả bàn thắng sút xa sấm sét vào lưới Barcelona ở bán kết lượt về tại Old Trafford, đưa MU tiến thẳng tới chung kết Moscow 2008?',
+    options: ['Paul Scholes', 'Michael Carrick', 'Owen Hargreaves', 'Ryan Giggs'],
+    answer: 0,
+    explain: 'Phút 14 trận bán kết lượt về tại Old Trafford (29/04/2008), Paul Scholes tung cú sút xa 25m cháy lưới Barcelona.'
   },
   {
-    id: 'robson',
-    name: 'Jack Robson',
-    period: '1914 - 1921',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 139,
-    wins: 41,
-    winRate: '29.5%',
-    trophies: ['Duy trì CLB qua Thế chiến I'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Vị thuyền trưởng tận tụy chèo lái Manchester United duy trì hoạt động và thi đấu giải thời chiến trong suốt Thế chiến thứ nhất.'
-  },
-  {
-    id: 'chapman',
-    name: 'John Chapman',
-    period: '1921 - 1926',
-    category: 'classic',
-    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-    matches: 221,
-    wins: 86,
-    winRate: '38.9%',
-    trophies: ['Thăng hạng First Division (1925)'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'HLV người Scotland đầu tiên của United, giúp đội bóng thăng hạng trở lại giải đấu cao nhất nước Anh vào năm 1925.'
-  },
-  {
-    id: 'hilditch',
-    name: 'Clarence Hilditch',
-    period: '1926 - 1927',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 33,
-    wins: 10,
-    winRate: '30.3%',
-    trophies: ['Cầu thủ kiêm HLV đầu tiên'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Cầu thủ kiêm HLV trưởng đầu tiên và duy nhất trong kỷ nguyên sơ khai của Manchester United.'
-  },
-  {
-    id: 'bamlett',
-    name: 'Herbert Bamlett',
-    period: '1927 - 1931',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 183,
-    wins: 57,
-    winRate: '31.1%',
-    trophies: ['Cựu trọng tài Chung kết FA Cup 1914'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Từng là trọng tài bắt trận chung kết FA Cup 1914 trước khi chuyển sang dẫn dắt Manchester United trong thời kỳ suy thoái kinh tế.'
-  },
-  {
-    id: 'crickmer',
-    name: 'Walter Crickmer',
-    period: '1931 - 1932 & 1937 - 1945',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 119,
-    wins: 49,
-    winRate: '41.2%',
-    trophies: ['2 nhiệm kỳ HLV trưởng', 'Thư ký cống hiến 32 năm'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Thư ký huyền thoại 2 lần đứng ra làm HLV tạm quyền cứu nguy CLB. Ông hy sinh anh dũng trong thảm họa Munich 1958.'
-  },
-  {
-    id: 'duncan',
-    name: 'Scott Duncan',
-    period: '1932 - 1937',
-    category: 'classic',
-    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-    matches: 235,
-    wins: 92,
-    winRate: '39.1%',
-    trophies: ['Vô địch Second Division (1936)'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Chiến lược gia người Scotland đưa Quỷ Đỏ đoạt chức vô địch giải Hạng Nhì 1936 cùng lối đá phòng ngự phản công sắc bén.'
-  },
-  {
-    id: 'busby',
-    name: 'Sir Matt Busby',
-    period: '1945 - 1969 & 1970 - 1971',
-    category: 'legend',
-    subCategories: ['classic'],
-    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-    matches: 1141,
-    wins: 576,
-    winRate: '50.5%',
-    trophies: ['1 Cúp C1 Châu Âu (1968)', '5 First Division', '2 FA Cup', '5 Charity Shield'],
-    badge: 'Huyền Thoại Bất Tử',
-    badgeClass: 'badge-legend',
-    desc: 'Biểu tượng vĩ đại khai sinh dàn sao "Busby Babes", kiên cường hồi sinh từ tro tàn Munich 1958 để đưa MU đăng quang Cúp C1 Châu Âu 1968.'
-  },
-  {
-    id: 'mcguinness',
-    name: 'Wilf McGuinness',
-    period: '1969 - 1970',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 87,
-    wins: 32,
-    winRate: '36.8%',
-    trophies: ['Bán kết Cúp Liên đoàn', 'Bán kết Cúp FA'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Cựu danh thủ thuộc thế hệ Busby Babes dũng cảm tiếp nhận trọng trách thay thế Sir Matt Busby ở tuổi 31.'
-  },
-  {
-    id: 'ofarrell',
-    name: 'Frank O\'Farrell',
-    period: '1971 - 1972',
-    category: 'classic',
-    nationality: 'Ireland 🇮🇪',
-    matches: 81,
-    wins: 30,
-    winRate: '37.0%',
-    trophies: ['HLV người Ireland đầu tiên'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Chiến lược gia người Ireland từng đưa Leicester vào chung kết FA Cup trước khi chuyển đến lãnh xướng chiếc ghế nóng tại Old Trafford.'
-  },
-  {
-    id: 'docherty',
-    name: 'Tommy Docherty',
-    period: '1972 - 1977',
-    category: 'legend',
-    subCategories: ['classic'],
-    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-    matches: 228,
-    wins: 107,
-    winRate: '46.9%',
-    trophies: ['1 FA Cup (1977)', '1 Second Division (1975)'],
-    badge: 'Huyền Thoại',
-    badgeClass: 'badge-legend',
-    desc: '"The Doc" mang lại thứ bóng đá tấn công rực lửa, tái thiết đội hình và đập tan hy vọng ăn ba của Liverpool ở trận chung kết FA Cup 1977.'
-  },
-  {
-    id: 'sexton',
-    name: 'Dave Sexton',
-    period: '1977 - 1981',
-    category: 'classic',
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 201,
-    wins: 81,
-    winRate: '40.3%',
-    trophies: ['1 Charity Shield (1977)', 'Á quân First Division (1980)'],
-    badge: 'Cổ Điển',
-    badgeClass: 'badge-classic',
-    desc: 'Chiến lược gia điềm tĩnh nâng cao Charity Shield 1977, dẫn dắt đội bóng vào chung kết FA Cup 1979 và về nhì tại First Division 1980.'
-  },
-  {
-    id: 'atkinson',
-    name: 'Ron Atkinson',
-    period: '1981 - 1986',
-    category: 'legend',
-    subCategories: ['classic'],
-    nationality: 'Anh 🏴󠁧󠁢󠁥󠁮󠁧󠁿',
-    matches: 292,
-    wins: 146,
-    winRate: '50.0%',
-    trophies: ['2 FA Cup (1983, 1985)', '1 Charity Shield (1983)'],
-    badge: 'Huyền Thoại',
-    badgeClass: 'badge-legend',
-    desc: '"Big Ron" đưa về siêu tiền vệ Bryan Robson, biến United thành thế lực đấu cúp đáng sợ với 2 chức vô địch FA Cup 1983 và 1985.'
-  },
-  {
-    id: 'ferguson',
-    name: 'Sir Alex Ferguson',
-    period: '1986 - 2013',
-    category: 'legend',
-    subCategories: ['classic'],
-    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-    matches: 1500,
-    wins: 895,
-    winRate: '59.7%',
-    trophies: ['38 danh hiệu đỉnh cao: 13 Premier League', '2 Champions League', '5 FA Cup', 'Cú Ăn Ba 1999'],
-    badge: 'Vĩ Đại Nhất Mọi Thời Đại',
-    badgeClass: 'badge-legend',
-    desc: 'Nhà cầm quân vĩ đại nhất lịch sử bóng đá thế giới. 26 năm hoàng kim biến Manchester United thành đế chế toàn cầu không thể xô đổ.'
-  },
-  {
-    id: 'moyes',
-    name: 'David Moyes',
-    period: '2013 - 2014',
-    category: 'post-saf',
-    nationality: 'Scotland 🏴󠁧󠁢󠁳󠁣󠁴󠁿',
-    matches: 51,
-    wins: 27,
-    winRate: '52.9%',
-    trophies: ['1 FA Community Shield (2013)'],
-    badge: 'Hậu Sir Alex',
-    badgeClass: 'badge-postsaf',
-    desc: '"The Chosen One" được chính Sir Alex Ferguson tiến cử, mang về danh hiệu Siêu Cúp Anh 2013 ngay trong trận chính thức đầu tiên.'
-  },
-  {
-    id: 'giggs',
-    name: 'Ryan Giggs',
-    period: '2014 (Tạm quyền)',
-    category: 'legend',
-    subCategories: ['post-saf'],
-    nationality: 'Xứ Wales 🏴󠁧󠁢󠁷󠁬󠁳󠁿',
-    matches: 4,
-    wins: 2,
-    winRate: '50.0%',
-    trophies: ['Kỷ lục 963 trận thi đấu', '34 danh hiệu cầu thủ'],
-    badge: 'Huyền Thoại',
-    badgeClass: 'badge-legend',
-    desc: 'Huyền thoại ra sân nhiều nhất lịch sử MU đảm nhận vai trò HLV tạm quyền 4 trận cuối mùa 2013/14 trong sự tôn kính của toàn bộ người hâm mộ.'
-  },
-  {
-    id: 'vangaal',
-    name: 'Louis van Gaal',
-    period: '2014 - 2016',
-    category: 'post-saf',
-    nationality: 'Hà Lan 🇳🇱',
-    matches: 103,
-    wins: 54,
-    winRate: '52.4%',
-    trophies: ['1 FA Cup (2016)'],
-    badge: 'Hậu Sir Alex',
-    badgeClass: 'badge-postsaf',
-    desc: '"Tulip Thép" mang phong cách kiểm soát triệt để, đoạt Cúp FA 2016 và mở ra cơ hội tỏa sáng cho lứa sao trẻ như Marcus Rashford.'
-  },
-  {
-    id: 'mourinho',
-    name: 'José Mourinho',
-    period: '2016 - 2018',
-    category: 'post-saf',
-    nationality: 'Bồ Đào Nha 🇵🇹',
-    matches: 144,
-    wins: 84,
-    winRate: '58.3%',
-    trophies: ['1 UEFA Europa League (2017)', '1 EFL Cup (2017)', '1 Community Shield (2016)'],
-    badge: 'Hậu Sir Alex',
-    badgeClass: 'badge-postsaf',
-    desc: '"Người đặc biệt" đem về cú đúp danh hiệu Europa League & League Cup 2016/17, hoàn tất bộ sưu tập cúp châu lục duy nhất còn thiếu của Quỷ Đỏ.'
-  },
-  {
-    id: 'solskjaer',
-    name: 'Ole Gunnar Solskjær',
-    period: '2018 - 2021',
-    category: 'legend',
-    subCategories: ['post-saf'],
-    nationality: 'Na Uy 🇳🇴',
-    matches: 168,
-    wins: 91,
-    winRate: '54.2%',
-    trophies: ['Á quân Premier League (2021)', 'Kỷ lục 29 trận bất bại sân khách'],
-    badge: 'Huyền Thoại',
-    badgeClass: 'badge-legend',
-    desc: 'Người hùng Nou Camp 1999 trở lại làm bùng cháy tinh thần Quỷ Đỏ, xác lập kỷ lục vô tiền khoáng hậu 29 trận bất bại liên tiếp trên sân khách.'
-  },
-  {
-    id: 'rangnick',
-    name: 'Ralf Rangnick',
-    period: '2021 - 2022 (Tạm quyền)',
-    category: 'post-saf',
-    nationality: 'Đức 🇩🇪',
-    matches: 29,
-    wins: 11,
-    winRate: '37.9%',
-    trophies: ['Bậc thầy Gegenpressing hiện đại'],
-    badge: 'Hậu Sir Alex',
-    badgeClass: 'badge-postsaf',
-    desc: 'Nhà tư tưởng bóng đá Đức mang đến những phân tích chiến thuật hiện đại và đặt nền móng cho kế hoạch tái thiết cơ cấu thể thao.'
-  },
-  {
-    id: 'tenhag',
-    name: 'Erik ten Hag',
-    period: '2022 - 2024',
-    category: 'post-saf',
-    nationality: 'Hà Lan 🇳🇱',
-    matches: 128,
-    wins: 70,
-    winRate: '54.7%',
-    trophies: ['1 Carabao Cup (2023)', '1 FA Cup (2024)'],
-    badge: 'Hậu Sir Alex',
-    badgeClass: 'badge-postsaf',
-    desc: 'Giải tỏa cơn khát 6 năm trắng danh hiệu với chức vô địch Carabao Cup 2023 và đánh bại Man City 2-1 tại Wembley để nâng cao Cúp FA 2024.'
-  },
-  {
-    id: 'amorim',
-    name: 'Rúben Amorim',
-    period: '2024 - Hiện tại',
-    category: 'current',
-    nationality: 'Bồ Đào Nha 🇵🇹',
-    matches: 'Đang cập nhật',
-    wins: 'Mới nhậm chức',
-    winRate: 'Kỳ vọng lớn',
-    trophies: ['2 VĐQG Bồ Đào Nha (Sporting CP)', 'Sơ đồ 3-4-2-1 biến ảo'],
-    badge: 'HLV Đương Nhiệm',
-    badgeClass: 'badge-current',
-    desc: 'Tân thuyền trưởng tài ba mang sơ đồ 3-4-2-1 cùng triết lý bóng đá cường độ cao, mở ra kỷ nguyên mới đầy hứa hẹn dưới sự bảo trợ của INEOS.'
+    q: 'Hàng phòng ngự thép Ferdinand – Vidić – Van der Sar chỉ để thủng lưới bao nhiêu bàn sau 38 vòng đấu Ngoại hạng Anh mùa giải 2007/2008?',
+    options: ['18 bàn thua', '22 bàn thua', '27 bàn thua', '30 bàn thua'],
+    answer: 1,
+    explain: 'Manchester United chỉ để lọt lưới 22 bàn sau 38 vòng Ngoại hạng Anh 2007/08 và giành chức vô địch với 87 điểm.'
   }
 ];
 
-function renderManagers(query = '', filter = 'all') {
+let moscowRainAnimId = null;
+let quizState = { currentIdx: 0, score: 0, answered: false };
+
+function startMoscowRainAnimation() {
+  const canvas = document.getElementById('moscowRainCanvas');
+  if (!canvas) return;
+  const ctx = canvas.getContext('2d');
+
+  function resizeRain() {
+    const parent = canvas.parentElement;
+    canvas.width = parent ? parent.clientWidth : window.innerWidth;
+    canvas.height = parent ? parent.clientHeight : 640;
+  }
+  resizeRain();
+
+  if (moscowRainAnimId) {
+    cancelAnimationFrame(moscowRainAnimId);
+  }
+
+  const drops = Array.from({ length: 115 }, () => ({
+    x: Math.random() * canvas.width,
+    y: Math.random() * canvas.height,
+    len: Math.random() * 22 + 12,
+    speed: Math.random() * 9 + 11,
+    drift: -1.8,
+    alpha: Math.random() * 0.35 + 0.12
+  }));
+
+  function drawRain() {
+    if (state.currentView !== 'history') return;
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    ctx.lineWidth = 1.15;
+    ctx.lineCap = 'round';
+
+    for (let i = 0; i < drops.length; i++) {
+      const d = drops[i];
+      ctx.strokeStyle = `rgba(235, 242, 255, ${d.alpha})`;
+      ctx.beginPath();
+      ctx.moveTo(d.x, d.y);
+      ctx.lineTo(d.x + d.drift * 2.2, d.y + d.len);
+      ctx.stroke();
+
+      d.x += d.drift;
+      d.y += d.speed;
+
+      if (d.y > canvas.height) {
+        d.y = -25;
+        d.x = Math.random() * (canvas.width + 120);
+      }
+    }
+    moscowRainAnimId = requestAnimationFrame(drawRain);
+  }
+
+  drawRain();
+}
+
+function renderManagers(filterEra = 'all', searchQuery = '') {
   const container = document.getElementById('managersGridContainer');
   if (!container) return;
 
-  const q = query.toLowerCase().trim();
-
-  const filtered = MANAGERS.filter(m => {
-    const matchQuery = !q || m.name.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q) || m.nationality.toLowerCase().includes(q);
-    let matchFilter = true;
-    if (filter === 'legend') {
-      matchFilter = m.category === 'legend' || (m.subCategories && m.subCategories.includes('legend'));
-    } else if (filter === 'classic') {
-      matchFilter = m.category === 'classic' || (m.subCategories && m.subCategories.includes('classic'));
-    } else if (filter === 'post-saf') {
-      matchFilter = m.category === 'post-saf' || (m.subCategories && m.subCategories.includes('post-saf'));
-    } else if (filter === 'current') {
-      matchFilter = m.category === 'current';
-    }
-    return matchQuery && matchFilter;
+  const q = searchQuery.trim().toLowerCase();
+  const filtered = MU_MANAGERS_DATA.filter(m => {
+    const matchEra = filterEra === 'all' || m.era === filterEra;
+    const matchQ = !q || m.name.toLowerCase().includes(q) || m.trophies.toLowerCase().includes(q) || m.desc.toLowerCase().includes(q);
+    return matchEra && matchQ;
   });
 
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: var(--color-text-subtle);">
-        <i class="fa-solid fa-user-slash" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.5;"></i>
-        <h4>Không tìm thấy huấn luyện viên nào phù hợp</h4>
-        <p>Thử tìm với tên như "Ferguson", "Busby", "Amorim", "Ten Hag", "Mourinho"...</p>
+  container.innerHTML = filtered.map(m => `
+    <article class="manager-card ${m.era === 'legend' ? 'mgr-legend' : ''}">
+      <div class="mgr-card-top">
+        <span class="mgr-order">#${String(m.id).padStart(2, '0')}</span>
+        <span class="mgr-years">${m.years}</span>
       </div>
-    `;
-    return;
-  }
-
-  container.innerHTML = filtered.map(m => {
-    const cardClass = m.category === 'legend' ? 'manager-card legend-card' : (m.category === 'current' ? 'manager-card current-card' : 'manager-card');
-    const trophiesHtml = m.trophies.map(t => `<span class="mgr-trophy-pill"><i class="fa-solid fa-trophy"></i> ${t}</span>`).join('');
-    const avatarIcon = m.category === 'legend' ? 'fa-star' : (m.category === 'current' ? 'fa-bolt' : 'fa-user-tie');
-
-    return `
-      <div class="${cardClass}">
-        <span class="mgr-badge ${m.badgeClass}">${m.badge}</span>
-        <div class="mgr-card-header">
-          <div class="mgr-avatar">
-            <i class="fa-solid ${avatarIcon}"></i>
-          </div>
-          <div class="mgr-main-info">
-            <h4 class="mgr-name">${m.name}</h4>
-            <div class="mgr-meta">
-              <span><i class="fa-regular fa-calendar"></i> ${m.period}</span>
-              <span>•</span>
-              <span>${m.nationality}</span>
-            </div>
-          </div>
-        </div>
-
-        <div class="mgr-stats-grid">
-          <div class="mgr-stat-box">
-            <div class="mgr-stat-val">${m.matches}</div>
-            <div class="mgr-stat-lbl">Số Trận</div>
-          </div>
-          <div class="mgr-stat-box">
-            <div class="mgr-stat-val">${m.wins}</div>
-            <div class="mgr-stat-lbl">Thắng</div>
-          </div>
-          <div class="mgr-stat-box">
-            <div class="mgr-stat-val text-gold">${m.winRate}</div>
-            <div class="mgr-stat-lbl">Tỷ Lệ</div>
-          </div>
-        </div>
-
-        <div class="mgr-trophies-wrap">
-          <h5>Thành Tích & Dấu Ấn</h5>
-          <div class="mgr-trophy-tags">
-            ${trophiesHtml}
-          </div>
-        </div>
-
-        <p class="mgr-desc">${m.desc}</p>
+      <h3 class="mgr-name">${m.name}</h3>
+      <div class="mgr-trophy-pill"><i class="fa-solid fa-trophy"></i> ${m.trophies}</div>
+      <p class="mgr-desc">${m.desc}</p>
+      <div class="mgr-stats-row">
+        <div><span>Số trận:</span> <strong>${m.matches}</strong></div>
+        <div><span>Tỷ lệ thắng:</span> <strong>${m.winRate}</strong></div>
       </div>
-    `;
-  }).join('');
-}
-
-const QUIZ_QUESTIONS = [
-  {
-    question: "Manchester United được thành lập vào năm nào và dưới tên gọi ban đầu là gì?",
-    options: [
-      "1878 - Newton Heath LYR F.C.",
-      "1902 - Manchester Central F.C.",
-      "1888 - Red Devils F.C.",
-      "1910 - Stretford United"
-    ],
-    correctIndex: 0,
-    explanation: "Đội bóng được thành lập năm 1878 bởi các công nhân công ty đường sắt Lancashire & Yorkshire Railway với tên gọi Newton Heath LYR F.C. trước khi đổi tên thành Manchester United vào năm 1902."
-  },
-  {
-    question: "Sir Alex Ferguson đã giành được tổng cộng bao nhiêu danh hiệu chính thức cùng Manchester United trong 26 năm cầm quân?",
-    options: [
-      "25 danh hiệu",
-      "38 danh hiệu",
-      "30 danh hiệu",
-      "42 danh hiệu"
-    ],
-    correctIndex: 1,
-    explanation: "Sir Alex Ferguson đã giành tổng cộng 38 danh hiệu chính thức (bao gồm 13 Premier League, 2 Champions League, 5 FA Cup, 4 Cúp Liên đoàn...) trở thành HLV vĩ đại nhất lịch sử."
-  },
-  {
-    question: "Ai là người ghi bàn ấn định chiến thắng 2-1 ở phút bù giờ 90+3 trong trận chung kết Champions League 1999 tại Camp Nou?",
-    options: [
-      "David Beckham",
-      "Teddy Sheringham",
-      "Ole Gunnar Solskjær",
-      "Ryan Giggs"
-    ],
-    correctIndex: 2,
-    explanation: "Teddy Sheringham gỡ hòa 1-1 ở phút 90+1 và Ole Gunnar Solskjær đệm bóng cận thành ở phút 90+3 đưa MU hoàn tất Cú Ăn Ba vĩ đại nhất lịch sử."
-  },
-  {
-    question: "Đội bóng Anh đầu tiên trong lịch sử đăng quang Cúp C1 Châu Âu vào năm 1968 dưới sự dẫn dắt của ai?",
-    options: [
-      "Sir Alex Ferguson",
-      "Sir Matt Busby",
-      "Ernest Mangnall",
-      "Tommy Docherty"
-    ],
-    correctIndex: 1,
-    explanation: "Sir Matt Busby cùng bộ ba Trinity (Bobby Charlton, George Best, Denis Law) đã vượt qua bi kịch Munich 1958 để đưa MU vô địch Cúp C1 vào năm 1968 sau chiến thắng 4-1 trước Benfica."
-  },
-  {
-    question: "Ai là HLV trưởng chính thức tiếp quản chiếc ghế nóng tại Old Trafford từ tháng 11/2024?",
-    options: [
-      "José Mourinho",
-      "Rúben Amorim",
-      "Erik ten Hag",
-      "Thomas Tuchel"
-    ],
-    correctIndex: 1,
-    explanation: "Chiến lược gia người Bồ Đào Nha Rúben Amorim chính thức ký hợp đồng dẫn dắt Quỷ Đỏ từ tháng 11/2024, mở đầu kỷ nguyên mới cùng ban lãnh đạo INEOS."
-  }
-];
-
-function initQuiz() {
-  state.quizCurrentIndex = 0;
-  state.quizScore = 0;
-  state.quizAnswered = false;
-
-  const quizContainer = document.getElementById('quizContainer');
-  const quizResultBox = document.getElementById('quizResultBox');
-  if (quizContainer) quizContainer.style.display = 'block';
-  if (quizResultBox) quizResultBox.style.display = 'none';
-
-  renderQuizQuestion();
+    </article>
+  `).join('');
 }
 
 function renderQuizQuestion() {
-  const qIndex = state.quizCurrentIndex;
-  const total = QUIZ_QUESTIONS.length;
-  const qData = QUIZ_QUESTIONS[qIndex];
-  if (!qData) return;
-
-  state.quizAnswered = false;
-
+  const bodyEl = document.getElementById('quizBody');
   const numEl = document.getElementById('quizCurrentNum');
   const scoreEl = document.getElementById('quizLiveScore');
-  const progressEl = document.getElementById('quizProgressFill');
-  const bodyEl = document.getElementById('quizBody');
+  const fillEl = document.getElementById('quizProgressFill');
   const feedbackEl = document.getElementById('quizFeedback');
   const nextBtn = document.getElementById('btnNextQuiz');
+  const quizContainer = document.getElementById('quizContainer');
+  const resultBox = document.getElementById('quizResultBox');
 
-  if (numEl) numEl.textContent = qIndex + 1;
-  if (scoreEl) scoreEl.textContent = state.quizScore;
-  if (progressEl) progressEl.style.width = `${((qIndex + 1) / total) * 100}%`;
+  if (!bodyEl) return;
+
+  if (quizState.currentIdx >= MU_QUIZ_QUESTIONS.length) {
+    if (quizContainer) quizContainer.style.display = 'none';
+    if (resultBox) {
+      resultBox.style.display = 'block';
+      const badge = document.getElementById('quizFinalScoreBadge');
+      if (badge) badge.textContent = `${quizState.score} / 50 ĐIỂM`;
+    }
+    return;
+  }
+
+  if (quizContainer) quizContainer.style.display = 'block';
+  if (resultBox) resultBox.style.display = 'none';
+
+  const item = MU_QUIZ_QUESTIONS[quizState.currentIdx];
+  quizState.answered = false;
+
+  if (numEl) numEl.textContent = quizState.currentIdx + 1;
+  if (scoreEl) scoreEl.textContent = quizState.score;
+  if (fillEl) fillEl.style.width = `${((quizState.currentIdx + 1) / MU_QUIZ_QUESTIONS.length) * 100}%`;
   if (feedbackEl) feedbackEl.style.display = 'none';
   if (nextBtn) nextBtn.style.display = 'none';
 
-  const letters = ['A', 'B', 'C', 'D'];
-  const optionsHtml = qData.options.map((opt, idx) => `
-    <button class="quiz-option-btn" data-opt-idx="${idx}">
-      <span class="quiz-option-letter">${letters[idx]}</span>
-      <span class="quiz-option-text">${opt}</span>
-    </button>
-  `).join('');
+  bodyEl.innerHTML = `
+    <h4 class="quiz-question-title">${item.q}</h4>
+    <div class="quiz-options-grid">
+      ${item.options.map((opt, idx) => `
+        <button class="quiz-opt-btn" data-opt-idx="${idx}">
+          <span class="opt-letter">${String.fromCharCode(65 + idx)}</span>
+          <span class="opt-label">${opt}</span>
+        </button>
+      `).join('')}
+    </div>
+  `;
 
-  if (bodyEl) {
-    bodyEl.innerHTML = `
-      <div class="quiz-q-title">${qIndex + 1}. ${qData.question}</div>
-      <div class="quiz-options">
-        ${optionsHtml}
-      </div>
-    `;
+  bodyEl.querySelectorAll('.quiz-opt-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      if (quizState.answered) return;
+      quizState.answered = true;
+      const chosen = parseInt(btn.getAttribute('data-opt-idx'));
+      const allBtns = bodyEl.querySelectorAll('.quiz-opt-btn');
 
-    bodyEl.querySelectorAll('.quiz-option-btn').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const selectedIdx = parseInt(btn.getAttribute('data-opt-idx'), 10);
-        handleQuizAnswer(selectedIdx);
+      allBtns.forEach((b, i) => {
+        if (i === item.answer) b.classList.add('correct');
+        else if (i === chosen) b.classList.add('wrong');
       });
-    });
-  }
-}
 
-function handleQuizAnswer(selectedIdx) {
-  if (state.quizAnswered) return;
-  state.quizAnswered = true;
-
-  const qIndex = state.quizCurrentIndex;
-  const qData = QUIZ_QUESTIONS[qIndex];
-  const isCorrect = selectedIdx === qData.correctIndex;
-
-  const optionBtns = document.querySelectorAll('.quiz-option-btn');
-  optionBtns.forEach((btn, idx) => {
-    btn.disabled = true;
-    if (idx === qData.correctIndex) {
-      btn.classList.add('correct');
-    } else if (idx === selectedIdx && !isCorrect) {
-      btn.classList.add('wrong');
-    }
-  });
-
-  const feedbackEl = document.getElementById('quizFeedback');
-  const nextBtn = document.getElementById('btnNextQuiz');
-  const scoreEl = document.getElementById('quizLiveScore');
-
-  if (isCorrect) {
-    state.quizScore += 10;
-    if (scoreEl) scoreEl.textContent = state.quizScore;
-    playTone(659.25, 'sine', 0.15); // pleasant chime
-    if (feedbackEl) {
-      feedbackEl.className = 'quiz-feedback correct';
-      feedbackEl.innerHTML = `<strong><i class="fa-solid fa-circle-check"></i> CHÍNH XÁC!</strong> +10 điểm. ${qData.explanation}`;
-      feedbackEl.style.display = 'block';
-    }
-  } else {
-    playTone(220, 'sawtooth', 0.2); // low tone
-    if (feedbackEl) {
-      feedbackEl.className = 'quiz-feedback wrong';
-      feedbackEl.innerHTML = `<strong><i class="fa-solid fa-circle-xmark"></i> CHƯA CHÍNH XÁC!</strong> Đáp án đúng là: <strong>${qData.options[qData.correctIndex]}</strong>. ${qData.explanation}`;
-      feedbackEl.style.display = 'block';
-    }
-  }
-
-  if (nextBtn) {
-    if (qIndex === QUIZ_QUESTIONS.length - 1) {
-      nextBtn.innerHTML = 'Xem Kết Quả <i class="fa-solid fa-trophy"></i>';
-    } else {
-      nextBtn.innerHTML = 'Câu Tiếp Theo <i class="fa-solid fa-arrow-right"></i>';
-    }
-    nextBtn.style.display = 'inline-flex';
-  }
-}
-
-function handleQuizNext() {
-  if (state.quizCurrentIndex < QUIZ_QUESTIONS.length - 1) {
-    state.quizCurrentIndex++;
-    renderQuizQuestion();
-  } else {
-    showQuizResult();
-  }
-}
-
-function showQuizResult() {
-  const quizContainer = document.getElementById('quizContainer');
-  const quizResultBox = document.getElementById('quizResultBox');
-  const finalBadge = document.getElementById('quizFinalScoreBadge');
-  const resultTitle = document.getElementById('quizResultTitle');
-  const evalText = document.getElementById('quizEvaluationText');
-
-  if (quizContainer) quizContainer.style.display = 'none';
-  if (quizResultBox) quizResultBox.style.display = 'block';
-
-  const score = state.quizScore;
-  if (finalBadge) finalBadge.textContent = `${score} / 50 ĐIỂM`;
-
-  if (score === 50) {
-    if (resultTitle) resultTitle.textContent = 'XUẤT SẮC! BẠN LÀ MANUCIAN ĐÍCH THỰC';
-    if (evalText) evalText.textContent = 'Kiến thức về lịch sử MU và các đời HLV của bạn vô cùng uyên bác! Tinh thần Quỷ Đỏ chảy rực lửa trong huyết quản của bạn!';
-    launchConfetti();
-    playStadiumSound('chant');
-  } else if (score >= 30) {
-    if (resultTitle) resultTitle.textContent = 'RẤT TỐT! FAN TRUNG THÀNH CỦA QUỶ ĐỎ';
-    if (evalText) evalText.textContent = 'Bạn có nền tảng kiến thức rất đáng nể về Manchester United. Hãy tiếp tục tình yêu bất diệt với Nhà hát của những giấc mơ!';
-    launchConfetti();
-  } else {
-    if (resultTitle) resultTitle.textContent = 'CỐ GẮNG LÊN! HÃY TÌM HIỂU THÊM VỀ MU';
-    if (evalText) evalText.textContent = 'Lịch sử 147 năm của Man United còn rất nhiều điều kỳ thú đang chờ bạn khám phá. Hãy thử sức lại lần nữa nhé!';
-  }
-}
-
-function setupHistoryListeners() {
-  // History Quick Anchor Navigation Tabs
-  document.querySelectorAll('.h-tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.h-tab-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const targetSecId = btn.getAttribute('data-target-sec');
-      const targetSec = document.getElementById(targetSecId);
-      if (targetSec) {
-        targetSec.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      if (chosen === item.answer) {
+        quizState.score += 10;
+        if (scoreEl) scoreEl.textContent = quizState.score;
+        if (feedbackEl) {
+          feedbackEl.style.display = 'block';
+          feedbackEl.className = 'quiz-feedback feedback-ok';
+          feedbackEl.innerHTML = `<strong>Chính xác (+10 điểm)!</strong> ${item.explain}`;
+        }
+      } else {
+        if (feedbackEl) {
+          feedbackEl.style.display = 'block';
+          feedbackEl.className = 'quiz-feedback feedback-err';
+          feedbackEl.innerHTML = `<strong>Chưa chính xác!</strong> ${item.explain}`;
+        }
       }
+
+      if (nextBtn) nextBtn.style.display = 'inline-flex';
     });
   });
+}
 
-  // Timeline era filters
-  document.querySelectorAll('.t-filter-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.t-filter-btn').forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
-      const era = btn.getAttribute('data-era');
-      const timelineItems = document.querySelectorAll('.timeline-item');
-      timelineItems.forEach(item => {
-        if (era === 'all' || item.getAttribute('data-era') === era) {
-          item.style.display = 'block';
-        } else {
-          item.style.display = 'none';
+let moscowListenersInitialized = false;
+function initMoscowHistoryPage() {
+  startMoscowRainAnimation();
+  renderManagers();
+  renderQuizQuestion();
+
+  // Trigger color reveal on scroll for Scene 2 archival cards
+  if ('IntersectionObserver' in window) {
+    const colorObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('color-revealed');
         }
       });
+    }, { threshold: 0.35 });
+    document.querySelectorAll('.color-reveal-card').forEach(el => colorObserver.observe(el));
+  }
+
+  if (moscowListenersInitialized) return;
+  moscowListenersInitialized = true;
+
+  // Chapter navigation buttons inside #viewHistory
+  document.querySelectorAll('#viewHistory .h-tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('#viewHistory .h-tab-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const secId = btn.getAttribute('data-target-sec');
+      const secEl = document.getElementById(secId);
+      if (secEl) secEl.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   });
 
-  // Managers search and filter
-  const mgrSearchInput = document.getElementById('mgrSearchInput');
-  if (mgrSearchInput) {
-    mgrSearchInput.addEventListener('input', (e) => {
-      renderManagers(e.target.value, state.currentMgrFilter || 'all');
+  // Smooth scroll buttons on Moscow Hero & Ending CTA
+  const btnScrollScene2 = document.getElementById('btnScrollMoscowScene2');
+  if (btnScrollScene2) {
+    btnScrollScene2.addEventListener('click', (e) => {
+      e.preventDefault();
+      const s2 = document.getElementById('moscowScene2');
+      if (s2) s2.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  }
+  const btnScrollScene1 = document.getElementById('btnScrollMoscowScene1');
+  if (btnScrollScene1) {
+    btnScrollScene1.addEventListener('click', (e) => {
+      e.preventDefault();
+      const s1 = document.getElementById('moscowScene1');
+      if (s1) s1.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
   }
 
-  document.querySelectorAll('.m-pill').forEach(pill => {
+  // Luzhniki Horizontal Film Strip Prev/Next Controls
+  const strip = document.getElementById('luzhnikiFilmStrip');
+  const prevBtn = document.getElementById('btnLuzhnikiPrev');
+  const nextBtn = document.getElementById('btnLuzhnikiNext');
+  if (strip && prevBtn && nextBtn) {
+    prevBtn.addEventListener('click', () => {
+      strip.scrollBy({ left: -460, behavior: 'smooth' });
+    });
+    nextBtn.addEventListener('click', () => {
+      strip.scrollBy({ left: 460, behavior: 'smooth' });
+    });
+  }
+
+  // Manager search & filter pills
+  const mgrInput = document.getElementById('mgrSearchInput');
+  let activeMgrEra = 'all';
+  if (mgrInput) {
+    mgrInput.addEventListener('input', (e) => {
+      renderManagers(activeMgrEra, e.target.value);
+    });
+  }
+  document.querySelectorAll('#mgrFilterPills .m-pill').forEach(pill => {
     pill.addEventListener('click', () => {
-      document.querySelectorAll('.m-pill').forEach(p => p.classList.remove('active'));
+      document.querySelectorAll('#mgrFilterPills .m-pill').forEach(p => p.classList.remove('active'));
       pill.classList.add('active');
-      const filter = pill.getAttribute('data-mgr-filter');
-      state.currentMgrFilter = filter;
-      const q = mgrSearchInput ? mgrSearchInput.value : '';
-      renderManagers(q, filter);
+      activeMgrEra = pill.getAttribute('data-mgr-filter');
+      renderManagers(activeMgrEra, mgrInput ? mgrInput.value : '');
     });
   });
 
-  // Quiz next and restart buttons
-  const btnNext = document.getElementById('btnNextQuiz');
-  if (btnNext) {
-    btnNext.addEventListener('click', handleQuizNext);
+  // Quiz next & restart buttons
+  const nextQuizBtn = document.getElementById('btnNextQuiz');
+  if (nextQuizBtn) {
+    nextQuizBtn.addEventListener('click', () => {
+      quizState.currentIdx++;
+      renderQuizQuestion();
+    });
+  }
+  const restartQuizBtn = document.getElementById('btnRestartQuiz');
+  if (restartQuizBtn) {
+    restartQuizBtn.addEventListener('click', () => {
+      quizState = { currentIdx: 0, score: 0, answered: false };
+      renderQuizQuestion();
+    });
+  }
+}
+
+// ==================== 13C. CHECKOUT MINI-GAMES & VOUCHER REWARDS ====================
+state.unlockedPerks = state.unlockedPerks || [];
+state.hasFreeShipPerk = state.hasFreeShipPerk || false;
+state.fanCardTier = state.fanCardTier || null;
+
+// Upgraded Cart Totals supporting Quiz Vouchers (70%, 85%, 100% FREE) & Penalty 2008 Rewards
+function getCartTotals() {
+  const subtotal = state.cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+
+  let discount = 0;
+  if (state.discountRate > 0) {
+    discount += Math.round(subtotal * state.discountRate);
+  }
+  if (state.flatDiscount > 0) {
+    discount += state.flatDiscount;
+  }
+  discount = Math.min(subtotal, discount);
+
+  const isFreeShip =
+    subtotal >= state.freeShippingThreshold ||
+    ['FREESHIP', 'VIPFAN85', 'GOAT100', 'MOSCOW08'].includes(state.voucherCode) ||
+    state.hasFreeShipPerk === true;
+  const shipping = subtotal > 0 ? (isFreeShip ? 0 : state.shippingFee) : 0;
+  const finalTotal = Math.max(0, subtotal - discount + shipping);
+
+  return { subtotal, discount, shipping, finalTotal, isFreeShip };
+}
+
+function setupVoucherListeners() {
+  const addUniquePerk = (perkText) => {
+    if (!state.unlockedPerks) state.unlockedPerks = [];
+    if (!state.unlockedPerks.includes(perkText)) {
+      state.unlockedPerks.push(perkText);
+    }
+  };
+
+  const applyVoucherLogic = (code, msgEl) => {
+    const clean = (code || '').toUpperCase().trim();
+    if (!clean) return;
+
+    if (clean === 'GOAT100') {
+      state.voucherCode = 'GOAT100';
+      state.discountRate = 1.0; // 100% FREE ALL JERSEYS
+      state.flatDiscount = 0;
+      state.hasFreeShipPerk = true;
+      state.fanCardTier = 'LEGEND 10/10';
+      addUniquePerk('MUA FREE 100% TẤT CẢ CÁC LOẠI ÁO ĐẤU (Kỷ lục Quiz 10/10)');
+      addUniquePerk('Thẻ Fan Cứng MU Hạng Huyền Thoại (Legend Edition) + Miễn phí Ship Hỏa tốc');
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:700;">★ Đỉnh cao 10/10! Đã kích hoạt mã GOAT100: MUA FREE 100% TẤT CẢ ÁO ĐẤU!</span>';
+      }
+      showToast('Chúc mừng! Kích hoạt GOAT100 — Mua FREE 100% tất cả áo đấu!', 'success');
+      playTone(880, 'triangle', 0.25);
+    } else if (clean === 'VIPFAN85') {
+      state.voucherCode = 'VIPFAN85';
+      state.discountRate = 0.85; // 85% OFF
+      state.flatDiscount = 0;
+      state.hasFreeShipPerk = true;
+      state.fanCardTier = 'VIP FAN CỨNG';
+      addUniquePerk('Thẻ Fan Cứng MU Chính Thức (Red Devils VIP Member Card)');
+      addUniquePerk('Voucher Giảm 85% + Tặng Khăn Quàng Cổ Stretford End & Huy Hiệu Moscow 2008');
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:700;">★ Đã kích hoạt VIPFAN85: Giảm 85% + Tặng Thẻ Fan Cứng MU & Bộ Quà Tặng!</span>';
+      }
+      showToast('Kích hoạt VIPFAN85 (-85% + Thẻ Fan Cứng MU & Quà tặng)!', 'success');
+      playTone(760, 'triangle', 0.22);
+    } else if (clean === 'MUFAN70') {
+      state.voucherCode = 'MUFAN70';
+      state.discountRate = 0.70; // 70% OFF
+      state.flatDiscount = 0;
+      addUniquePerk('Voucher Giảm Giá 70% (Vượt qua 7/10 câu hỏi Trắc nghiệm MU)');
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:700;">✓ Đã kích hoạt mã MUFAN70: Giảm ngay 70% tổng giá trị đơn hàng!</span>';
+      }
+      showToast('Áp dụng mã MUFAN70 thành công (-70%)!', 'success');
+      playTone(680, 'triangle', 0.2);
+    } else if (clean === 'MOSCOW08') {
+      if (state.discountRate < 0.50) {
+        state.voucherCode = 'MOSCOW08';
+        state.discountRate = 0.50;
+      }
+      state.flatDiscount = 0;
+      state.hasFreeShipPerk = true;
+      addUniquePerk('Nhà Vô Địch Penalty Moscow 2008: Giảm 50% + Free Ship Hỏa Tốc + Huy Hiệu C1 2008');
+      if (msgEl) {
+        const activeRateText = Math.round(state.discountRate * 100) + '%';
+        msgEl.innerHTML = `<span style="color:#15603A; font-weight:700;">🏆 Chiến thắng Penalty Moscow 2008! Ưu đãi giảm ${activeRateText} + Free Ship & Quà C1!</span>`;
+      }
+      showToast('Kích hoạt phần thưởng Vô Địch Penalty Moscow 2008!', 'success');
+      playTone(720, 'triangle', 0.2);
+    } else if (clean === 'GLORYMU') {
+      state.voucherCode = 'GLORYMU';
+      state.discountRate = 0.1;
+      state.flatDiscount = 0;
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:600;">✓ Áp dụng mã GLORYMU giảm 10% thành công!</span>';
+      }
+      showToast('Áp dụng mã GLORYMU thành công (-10%)', 'success');
+      playTone(600, 'triangle', 0.15);
+    } else if (clean === 'MUFC50K') {
+      state.voucherCode = 'MUFC50K';
+      state.flatDiscount = 50000;
+      state.discountRate = 0;
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:600;">✓ Áp dụng mã MUFC50K giảm 50.000đ!</span>';
+      }
+      showToast('Áp dụng mã MUFC50K thành công (-50K)', 'success');
+      playTone(600, 'triangle', 0.15);
+    } else if (clean === 'FREESHIP') {
+      state.voucherCode = 'FREESHIP';
+      state.discountRate = 0;
+      state.flatDiscount = 0;
+      state.hasFreeShipPerk = true;
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#15603A; font-weight:600;">✓ Miễn phí vận chuyển toàn quốc!</span>';
+      }
+      showToast('Miễn phí vận chuyển toàn quốc!', 'success');
+    } else {
+      if (msgEl) {
+        msgEl.innerHTML = '<span style="color:#C8102E; font-weight:600;">✕ Mã không hợp lệ. Hãy bấm nút "Lấy Voucher" để chơi Quiz nhận mã 70%–100%!</span>';
+      }
+      showToast('Mã voucher không hợp lệ', 'error');
+    }
+
+    ['voucherInput', 'cartPageVoucherInput', 'chkVoucherInput'].forEach(id => {
+      const el = document.getElementById(id);
+      if (el && state.voucherCode) el.value = state.voucherCode;
+    });
+
+    renderCartDrawer();
+    if (state.currentView === 'cart') renderFullCartPage();
+    if (state.currentView === 'checkout') renderCheckoutView();
+  };
+
+  window.applyMURewardVoucher = (code) => {
+    const chkMsg = document.getElementById('chkVoucherMsg');
+    applyVoucherLogic(code, chkMsg);
+  };
+
+  const btnDrawerVoucher = document.getElementById('btnApplyVoucher');
+  const inputDrawerVoucher = document.getElementById('voucherInput');
+  const msgDrawerVoucher = document.getElementById('voucherMsg');
+  if (btnDrawerVoucher && inputDrawerVoucher) {
+    btnDrawerVoucher.onclick = () => applyVoucherLogic(inputDrawerVoucher.value, msgDrawerVoucher);
   }
 
-  const btnRestart = document.getElementById('btnRestartQuiz');
-  if (btnRestart) {
-    btnRestart.addEventListener('click', initQuiz);
+  const btnPageVoucher = document.getElementById('btnCartPageApplyVoucher');
+  const inputPageVoucher = document.getElementById('cartPageVoucherInput');
+  const msgPageVoucher = document.getElementById('cartPageVoucherMsg');
+  if (btnPageVoucher && inputPageVoucher) {
+    btnPageVoucher.onclick = () => applyVoucherLogic(inputPageVoucher.value, msgPageVoucher);
+  }
+
+  const btnChkVoucher = document.getElementById('btnChkApplyVoucher');
+  const inputChkVoucher = document.getElementById('chkVoucherInput');
+  const msgChkVoucher = document.getElementById('chkVoucherMsg');
+  if (btnChkVoucher && inputChkVoucher) {
+    btnChkVoucher.onclick = () => applyVoucherLogic(inputChkVoucher.value, msgChkVoucher);
+  }
+
+  document.querySelectorAll('.coupon-chip').forEach(chip => {
+    chip.onclick = () => {
+      const code = chip.getAttribute('data-coupon');
+      if (inputPageVoucher) inputPageVoucher.value = code;
+      applyVoucherLogic(code, msgPageVoucher);
+    };
+  });
+}
+
+function renderCheckoutView() {
+  const itemsContainer = document.getElementById('checkoutItemsList');
+  const countEl = document.getElementById('chkItemsCount');
+  const subEl = document.getElementById('chkSubtotal');
+  const shipEl = document.getElementById('chkShipping');
+  const totalEl = document.getElementById('chkFinalTotal');
+  const discRow = document.getElementById('chkDiscountRow');
+  const discEl = document.getElementById('chkDiscountAmount');
+  const qrAmountEl = document.getElementById('checkoutQrAmount');
+  const chkVoucherInput = document.getElementById('chkVoucherInput');
+  const perksBox = document.getElementById('chkUnlockedPerksBox');
+  const perkTitle = document.getElementById('chkPerkTitle');
+  const perkList = document.getElementById('chkPerkList');
+
+  const { subtotal, discount, shipping, finalTotal } = getCartTotals();
+
+  const totalCount = state.cart.reduce((sum, item) => sum + item.quantity, 0);
+  if (countEl) countEl.textContent = totalCount;
+
+  if (chkVoucherInput && state.voucherCode) {
+    chkVoucherInput.value = state.voucherCode;
+  }
+
+  if (itemsContainer) {
+    if (state.cart.length === 0) {
+      itemsContainer.innerHTML = '<p style="color:#524E48; font-size:0.88rem; font-weight:500;">Giỏ hàng trống.</p>';
+    } else {
+      itemsContainer.innerHTML = state.cart.map(item => `
+        <div class="chk-item">
+          <div class="chk-item-info">
+            <strong>${item.name} (x${item.quantity})</strong>
+            <span>Size: ${item.size} • In: #${item.customNumber} ${item.customName}</span>
+          </div>
+          <strong>${state.discountRate === 1 ? '<s style="color:#8C857B;font-weight:500;margin-right:4px;">' + formatVND(item.price * item.quantity) + '</s> <span style="color:#15603A;">0đ (FREE)</span>' : formatVND(item.price * item.quantity)}</strong>
+        </div>
+      `).join('');
+    }
+  }
+
+  if (subEl) subEl.textContent = formatVND(subtotal);
+  if (shipEl) shipEl.textContent = shipping === 0 ? 'MIỄN PHÍ' : formatVND(shipping);
+  if (totalEl) {
+    totalEl.textContent = (finalTotal === 0 && subtotal > 0) ? '0đ (MIỄN PHÍ 100%)' : formatVND(finalTotal);
+  }
+  if (qrAmountEl) qrAmountEl.textContent = formatVND(finalTotal);
+
+  if (discRow && discEl) {
+    if (discount > 0) {
+      discRow.style.display = 'flex';
+      const rateBadge = state.discountRate >= 0.5 ? ` (-${Math.round(state.discountRate * 100)}%)` : '';
+      discEl.textContent = `-${formatVND(discount)}${rateBadge}`;
+    } else {
+      discRow.style.display = 'none';
+    }
+  }
+
+  if (perksBox && perkList) {
+    if (state.unlockedPerks && state.unlockedPerks.length > 0) {
+      perksBox.style.display = 'block';
+      if (perkTitle) {
+        perkTitle.textContent = state.fanCardTier
+          ? `Đặc Quyền ${state.fanCardTier} Đã Kích Hoạt`
+          : 'Đặc Quyền & Quà Tặng Mini-Game Đã Mở Khóa';
+      }
+      perkList.innerHTML = state.unlockedPerks.map(p => `<li>${p}</li>`).join('');
+    } else {
+      perksBox.style.display = 'none';
+    }
+  }
+}
+
+// 10-Question Manchester United Quiz Data for "Lấy Voucher" Game
+const VOUCHER_QUIZ_10_QUESTIONS = [
+  {
+    q: 'Trong trận Chung kết Champions League 2008 dưới mưa Moscow, ai là người bật cao đánh đầu ghi bàn mở tỷ số 1-0 cho Manchester United ở phút 26?',
+    options: ['Wayne Rooney', 'Cristiano Ronaldo', 'Carlos Tevez', 'Paul Scholes'],
+    answer: 1,
+    explain: 'Phút 26, từ quả tạt chuẩn xác của Wes Brown, Cristiano Ronaldo bật cao hơn tất cả đánh đầu tung lưới Petr Čech.'
+  },
+  {
+    q: 'Thủ môn huyền thoại nào đã cản phá cú sút luân lưu quyết định của Nicolas Anelka ở lượt sút thứ 7, đưa MU lên đỉnh châu Âu năm 2008?',
+    options: ['Peter Schmeichel', 'David de Gea', 'Edwin van der Sar', 'Fabien Barthez'],
+    answer: 2,
+    explain: 'Edwin van der Sar đã chỉ tay sang trái để đánh lạc hướng rồi bay người sang phải cản phá cú sút của Anelka!'
+  },
+  {
+    q: 'Sân vận động Old Trafford của Manchester United được huyền thoại Sir Bobby Charlton đặt biệt danh nổi tiếng là gì?',
+    options: ['Nhà Hát Của Những Giấc Mơ (Theatre of Dreams)', 'Pháo Đài Đỏ (Red Fortress)', 'Thánh Đường Nước Anh', 'Đấu Trường Huyền Thoại'],
+    answer: 0,
+    explain: 'Old Trafford luôn được biết đến trên toàn thế giới với tên gọi "The Theatre of Dreams" — Nhà Hát Của Những Giấc Mơ.'
+  },
+  {
+    q: 'Huấn luyện viên vĩ đại nhất lịch sử Manchester United — người đã mang về 38 danh hiệu lớn trong 26 năm dẫn dắt CLB (1986–2013) là ai?',
+    options: ['Sir Matt Busby', 'Sir Alex Ferguson', 'José Mourinho', 'Tommy Docherty'],
+    answer: 1,
+    explain: 'Sir Alex Ferguson dẫn dắt Quỷ Đỏ từ tháng 11/1986 đến năm 2013 và giành tổng cộng 38 danh hiệu lớn nhỏ.'
+  },
+  {
+    q: 'Mùa giải "Cú Ăn Ba" (The Treble: Ngoại hạng Anh, FA Cup, Champions League) vĩ đại đầu tiên trong lịch sử bóng đá Anh của MU diễn ra vào năm nào?',
+    options: ['Mùa giải 1998/1999', 'Mùa giải 1995/1996', 'Mùa giải 2002/2003', 'Mùa giải 2010/2011'],
+    answer: 0,
+    explain: 'Mùa giải 1998/99 khép lại bằng 2 bàn thắng ngược dòng kinh điển ở phút bù giờ tại Camp Nou trước Bayern Munich.'
+  },
+  {
+    q: 'Trong mùa giải đỉnh cao 2007/2008, Cristiano Ronaldo đã ghi tổng cộng bao nhiêu bàn thắng trên mọi đấu trường để giành Chiếc Giày Vàng châu Âu và Quả Bóng Vàng 2008?',
+    options: ['31 bàn thắng', '36 bàn thắng', '42 bàn thắng', '50 bàn thắng'],
+    answer: 2,
+    explain: 'Ronaldo ghi tới 42 bàn sau 49 trận trên mọi đấu trường (31 bàn tại Premier League, 8 bàn tại Champions League).'
+  },
+  {
+    q: 'Ai là người tung cú sút xa sấm sét từ cự ly 25m vào lưới Barcelona ở bán kết lượt về Champions League 2007/08, đưa MU thẳng tiến tới Moscow?',
+    options: ['Michael Carrick', 'Paul Scholes', 'Owen Hargreaves', 'Ryan Giggs'],
+    answer: 1,
+    explain: 'Phút 14 tại Old Trafford, Paul Scholes tung cú vuốt bóng cháy lưới Victor Valdés, ghi bàn duy nhất của cả cặp bán kết.'
+  },
+  {
+    q: 'Cặp trung vệ "Bức tường thép" xuất sắc nhất châu Âu của Manchester United mùa giải 2007/2008 là bộ đôi nào?',
+    options: ['Rio Ferdinand & Nemanja Vidić', 'Jaap Stam & Ronny Johnsen', 'Gary Pallister & Steve Bruce', 'Raphaël Varane & Lisandro Martínez'],
+    answer: 0,
+    explain: 'Rio Ferdinand và Nemanja Vidić tạo nên lá chắn thép chỉ để lọt lưới 22 bàn sau 38 vòng Ngoại hạng Anh 2007/08.'
+  },
+  {
+    q: 'Cầu thủ nào giữ kỷ lục khoác áo Manchester United nhiều trận nhất mọi thời đại với 963 lần ra sân chính thức?',
+    options: ['Sir Bobby Charlton', 'Wayne Rooney', 'Ryan Giggs', 'Gary Neville'],
+    answer: 2,
+    explain: 'Huyền thoại xứ Wales Ryan Giggs đã gắn bó trọn sự nghiệp với Quỷ Đỏ và ra sân kỷ lục 963 trận.'
+  },
+  {
+    q: 'Nhà tài trợ in trước ngực chiếc áo đấu đỏ huyền thoại của Manchester United trong đêm chung kết Champions League 2008 tại Moscow là thương hiệu nào?',
+    options: ['SHARP', 'Vodafone', 'AIG', 'AON'],
+    answer: 2,
+    explain: 'Logo AIG màu trắng nổi bật trên nền áo đỏ sọc trắng sau lưng là biểu tượng bất hủ của giai đoạn 2006–2009.'
+  }
+];
+
+function setupCheckoutMinigames() {
+  // -------------------- GAME 1: 10-QUESTION VOUCHER QUIZ --------------------
+  const vqModal = document.getElementById('voucherQuizModal');
+  const btnOpenQuiz1 = document.getElementById('btnOpenVoucherQuiz');
+  const btnOpenQuiz2 = document.getElementById('btnQuickOpenVoucherQuiz');
+  const btnCloseQuiz = document.getElementById('btnCloseVoucherQuiz');
+
+  const qmTier7 = document.getElementById('qmTier7');
+  const qmTier89 = document.getElementById('qmTier89');
+  const qmTier10 = document.getElementById('qmTier10');
+
+  const vquizPlayArea = document.getElementById('vquizPlayArea');
+  const vquizResultArea = document.getElementById('vquizResultArea');
+  const vqCurrentNum = document.getElementById('vqCurrentNum');
+  const vqDotsTrack = document.getElementById('vqDotsTrack');
+  const vqCorrectCount = document.getElementById('vqCorrectCount');
+  const vqProgressBar = document.getElementById('vqProgressBar');
+  const vqMascotIcon = document.getElementById('vqMascotIcon');
+  const vqCategoryTag = document.getElementById('vqCategoryTag');
+  const vqQuestionText = document.getElementById('vqQuestionText');
+  const vqOptionsGrid = document.getElementById('vqOptionsGrid');
+  const vqFeedbackBanner = document.getElementById('vqFeedbackBanner');
+  const btnVqRestartMid = document.getElementById('btnVqRestartMid');
+  const btnVqNextQuestion = document.getElementById('btnVqNextQuestion');
+
+  const vqResultMedal = document.getElementById('vqResultMedal');
+  const vqResultScoreTag = document.getElementById('vqResultScoreTag');
+  const vqResultTitle = document.getElementById('vqResultTitle');
+  const vqResultDesc = document.getElementById('vqResultDesc');
+  const vqRewardShowcase = document.getElementById('vqRewardShowcase');
+  const btnVqPlayAgain = document.getElementById('btnVqPlayAgain');
+  const btnVqClaimReward = document.getElementById('btnVqClaimReward');
+
+  let vqState = {
+    idx: 0,
+    score: 0,
+    answered: false,
+    history: new Array(VOUCHER_QUIZ_10_QUESTIONS.length).fill(null),
+    unlockedCode: null
+  };
+
+  function updateVqMilestones() {
+    if (qmTier7) qmTier7.classList.toggle('achieved', vqState.score >= 7);
+    if (qmTier89) qmTier89.classList.toggle('achieved', vqState.score >= 8);
+    if (qmTier10) qmTier10.classList.toggle('achieved', vqState.score === 10);
+  }
+
+  function renderVqDots() {
+    if (!vqDotsTrack) return;
+    vqDotsTrack.innerHTML = VOUCHER_QUIZ_10_QUESTIONS.map((_, i) => {
+      let cls = 'vq-dot';
+      if (i === vqState.idx && vqState.history[i] === null) cls += ' current';
+      if (vqState.history[i] === true) cls += ' ok';
+      if (vqState.history[i] === false) cls += ' err';
+      return `<span class="${cls}">${i + 1}</span>`;
+    }).join('');
+  }
+
+  function renderVqQuestion() {
+    const total = VOUCHER_QUIZ_10_QUESTIONS.length;
+    if (vqState.idx >= total) {
+      showVqResult();
+      return;
+    }
+
+    const item = VOUCHER_QUIZ_10_QUESTIONS[vqState.idx];
+    vqState.answered = false;
+
+    if (vquizPlayArea) vquizPlayArea.style.display = 'block';
+    if (vquizResultArea) vquizResultArea.style.display = 'none';
+    if (vqCurrentNum) vqCurrentNum.textContent = String(vqState.idx + 1).padStart(2, '0');
+    if (vqCorrectCount) vqCorrectCount.textContent = vqState.score;
+    if (vqProgressBar) vqProgressBar.style.width = `${((vqState.idx + 1) / total) * 100}%`;
+    if (vqMascotIcon) vqMascotIcon.textContent = ['😈', '⚽', '🏆', '🔥', '👑'][vqState.idx % 5];
+    if (vqCategoryTag) vqCategoryTag.textContent = `CÂU HỎI ${String(vqState.idx + 1).padStart(2, '0')} / 10 • SĂN VOUCHER QUỶ ĐỎ`;
+    if (vqQuestionText) vqQuestionText.textContent = item.q;
+
+    if (vqFeedbackBanner) {
+      vqFeedbackBanner.style.display = 'none';
+      vqFeedbackBanner.className = 'vq-feedback-banner';
+    }
+    if (btnVqNextQuestion) {
+      btnVqNextQuestion.style.display = 'none';
+      btnVqNextQuestion.innerHTML = (vqState.idx === total - 1)
+        ? 'Xem Kết Quả & Mở Quà Tặng <i class="fa-solid fa-gift"></i>'
+        : 'Câu Tiếp Theo <i class="fa-solid fa-arrow-right"></i>';
+    }
+
+    updateVqMilestones();
+    renderVqDots();
+
+    const letters = ['A', 'B', 'C', 'D'];
+    if (vqOptionsGrid) {
+      vqOptionsGrid.innerHTML = item.options.map((opt, optIdx) => `
+        <button type="button" class="vq-opt-btn" data-opt="${optIdx}">
+          <span class="vq-opt-letter">${letters[optIdx]}</span>
+          <span>${opt}</span>
+        </button>
+      `).join('');
+
+      vqOptionsGrid.querySelectorAll('.vq-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          if (vqState.answered) return;
+          vqState.answered = true;
+          const chosen = parseInt(btn.getAttribute('data-opt'), 10);
+          const isCorrect = chosen === item.answer;
+          vqState.history[vqState.idx] = isCorrect;
+
+          vqOptionsGrid.querySelectorAll('.vq-opt-btn').forEach((b, bIdx) => {
+            b.disabled = true;
+            if (bIdx === item.answer) b.classList.add('correct');
+            if (bIdx === chosen && !isCorrect) b.classList.add('wrong');
+          });
+
+          if (isCorrect) {
+            vqState.score++;
+            if (vqCorrectCount) vqCorrectCount.textContent = vqState.score;
+            playTone(740, 'triangle', 0.16);
+            if (vqFeedbackBanner) {
+              vqFeedbackBanner.style.display = 'block';
+              vqFeedbackBanner.className = 'vq-feedback-banner ok';
+              vqFeedbackBanner.innerHTML = `<strong>✓ Chính xác! (${vqState.score}/10 câu đúng)</strong> — ${item.explain}`;
+            }
+          } else {
+            playTone(240, 'sawtooth', 0.18);
+            if (vqFeedbackBanner) {
+              vqFeedbackBanner.style.display = 'block';
+              vqFeedbackBanner.className = 'vq-feedback-banner err';
+              vqFeedbackBanner.innerHTML = `<strong>✕ Chưa đúng!</strong> Đáp án chuẩn là <strong>${letters[item.answer]}. ${item.options[item.answer]}</strong> — ${item.explain}`;
+            }
+          }
+
+          updateVqMilestones();
+          renderVqDots();
+          if (btnVqNextQuestion) btnVqNextQuestion.style.display = 'inline-flex';
+        });
+      });
+    }
+  }
+
+  function showVqResult() {
+    if (vquizPlayArea) vquizPlayArea.style.display = 'none';
+    if (vquizResultArea) vquizResultArea.style.display = 'block';
+
+    const s = vqState.score;
+    if (vqResultScoreTag) vqResultScoreTag.textContent = `ĐÚNG ${s} / 10 CÂU`;
+
+    if (s === 10) {
+      vqState.unlockedCode = 'GOAT100';
+      if (vqResultMedal) vqResultMedal.textContent = '👑';
+      if (vqResultTitle) vqResultTitle.textContent = 'TUYỆT ĐỈNH 10/10! BẠN ĐƯỢC MUA FREE 100% TẤT CẢ CÁC LOẠI ÁO!';
+      if (vqResultDesc) vqResultDesc.textContent = 'Hoàn hảo tuyệt đối! Bạn chính thức được cấp Thẻ Fan Cứng Huyền Thoại và mở khóa đặc quyền MUA FREE 100% toàn bộ các loại áo đấu trong đơn hàng!';
+      if (vqRewardShowcase) {
+        vqRewardShowcase.innerHTML = `
+          <div class="mu-fan-vip-card">
+            <div class="fan-card-top">
+              <span>MANCHESTER UNITED • OFFICIAL FAN CLUB</span>
+              <span>LEGEND 10/10 • FREE ALL KITS</span>
+            </div>
+            <div class="fan-card-body">
+              <h4>THẺ FAN CỨNG HUYỀN THOẠI (10/10)</h4>
+              <p>Đặc quyền tối thượng: Mua FREE 100% tất cả các loại áo đấu + Tặng kèm Khăn quàng cổ Stretford End & Huy hiệu Vàng Moscow 2008 + Free Ship Hỏa tốc.</p>
+            </div>
+            <div class="fan-card-footer">
+              <span>ID: #MUFC-GOAT-2008</span>
+              <span>ĐIỂM SỐ: 10/10 TUYỆT ĐỐI</span>
+            </div>
+          </div>
+          <div class="vq-voucher-ticket">
+            <div>
+              <strong>VOUCHER MUA FREE 100% TẤT CẢ CÁC LOẠI ÁO</strong>
+              <span>Áp dụng giảm 100% (0đ) trực tiếp tại trang Thanh Toán</span>
+            </div>
+            <span class="vq-code-pill">GOAT100</span>
+          </div>
+        `;
+      }
+      if (btnVqClaimReward) {
+        btnVqClaimReward.style.display = 'inline-flex';
+        btnVqClaimReward.innerHTML = '<i class="fa-solid fa-crown"></i> Kích Hoạt Mua FREE 100% Tất Cả Áo Ngay';
+      }
+      if (typeof fireConfetti === 'function') fireConfetti();
+    } else if (s === 8 || s === 9) {
+      vqState.unlockedCode = 'VIPFAN85';
+      if (vqResultMedal) vqResultMedal.textContent = '💳';
+      if (vqResultTitle) vqResultTitle.textContent = `XUẤT SẮC (${s}/10)! TẶNG THẺ FAN CỨNG MU + VOUCHER 85% & QUÀ TẶNG!`;
+      if (vqResultDesc) vqResultDesc.textContent = `Với ${s}/10 câu trả lời đúng, bạn nhận ngay Thẻ Fan Cứng MU chính thức kèm Voucher giảm 85% và bộ quà tặng nhiều hơn (Khăn Stretford End + Huy hiệu Moscow 2008)!`;
+      if (vqRewardShowcase) {
+        vqRewardShowcase.innerHTML = `
+          <div class="mu-fan-vip-card">
+            <div class="fan-card-top">
+              <span>MANCHESTER UNITED • RED DEVILS VIP</span>
+              <span>THẺ FAN CỨNG MU (${s}/10)</span>
+            </div>
+            <div class="fan-card-body">
+              <h4>THẺ FAN CỨNG QUỶ ĐỎ CHÍNH THỨC</h4>
+              <p>Đặc quyền: Giảm 85% toàn bộ đơn hàng + Tặng kèm Khăn quàng cổ Stretford End + Huy hiệu C1 Moscow 2008 + Miễn phí giao hàng Hỏa tốc.</p>
+            </div>
+            <div class="fan-card-footer">
+              <span>ID: #MUFC-VIP-08</span>
+              <span>ĐIỂM SỐ: ${s}/10 CÂU ĐÚNG</span>
+            </div>
+          </div>
+          <div class="vq-voucher-ticket">
+            <div>
+              <strong>SIÊU VOUCHER FAN CỨNG GIẢM 85% + BỘ QUÀ TẶNG MU</strong>
+              <span>Tự động cộng kèm Thẻ Fan Cứng MU & Quà tặng vào đơn hàng</span>
+            </div>
+            <span class="vq-code-pill">VIPFAN85</span>
+          </div>
+        `;
+      }
+      if (btnVqClaimReward) {
+        btnVqClaimReward.style.display = 'inline-flex';
+        btnVqClaimReward.innerHTML = '<i class="fa-solid fa-id-card"></i> Nhận Thẻ Fan Cứng MU & Áp Dụng Voucher 85%';
+      }
+      if (typeof fireConfetti === 'function') fireConfetti();
+    } else if (s === 7) {
+      vqState.unlockedCode = 'MUFAN70';
+      if (vqResultMedal) vqResultMedal.textContent = '🎟️';
+      if (vqResultTitle) vqResultTitle.textContent = 'CHÚC MỪNG (7/10)! BẠN NHẬN ĐƯỢC VOUCHER GIẢM GIÁ 70%!';
+      if (vqResultDesc) vqResultDesc.textContent = 'Bạn đã trả lời đúng 7/10 câu hỏi và mở khóa thành công Voucher giảm giá 70%! (Mẹo: Đạt 8–9/10 để nhận thêm Thẻ Fan Cứng MU & Quà tặng, hoặc 10/10 để mua FREE tất cả áo!)';
+      if (vqRewardShowcase) {
+        vqRewardShowcase.innerHTML = `
+          <div class="vq-voucher-ticket">
+            <div>
+              <strong>VOUCHER GIẢM GIÁ 70% ĐƠN HÀNG (MỐC 7/10)</strong>
+              <span>Giảm trực tiếp 70% tổng giá trị đơn hàng tại trang Thanh Toán</span>
+            </div>
+            <span class="vq-code-pill">MUFAN70</span>
+          </div>
+        `;
+      }
+      if (btnVqClaimReward) {
+        btnVqClaimReward.style.display = 'inline-flex';
+        btnVqClaimReward.innerHTML = '<i class="fa-solid fa-ticket"></i> Áp Dụng Voucher Giảm 70% Ngay';
+      }
+      if (typeof fireConfetti === 'function') fireConfetti();
+    } else {
+      vqState.unlockedCode = null;
+      if (vqResultMedal) vqResultMedal.textContent = '⚽';
+      if (vqResultTitle) vqResultTitle.textContent = `BẠN ĐẠT ${s}/10 CÂU — CẦN ĐẠT TỪ 7/10 ĐỂ LẤY VOUCHER 70%!`;
+      if (vqResultDesc) vqResultDesc.textContent = 'Hãy thử sức lại ngay! Đạt 7/10 nhận Voucher 70%, đạt 8–9/10 nhận Thẻ Fan Cứng MU + Voucher 85% & Quà tặng, và đạt 10/10 được mua FREE 100% tất cả các loại áo!';
+      if (vqRewardShowcase) {
+        vqRewardShowcase.innerHTML = '';
+      }
+      if (btnVqClaimReward) btnVqClaimReward.style.display = 'none';
+    }
+  }
+
+  function openVoucherQuizModal() {
+    if (!vqModal) return;
+    vqState = {
+      idx: 0,
+      score: 0,
+      answered: false,
+      history: new Array(VOUCHER_QUIZ_10_QUESTIONS.length).fill(null),
+      unlockedCode: null
+    };
+    renderVqQuestion();
+    vqModal.classList.add('active');
+  }
+
+  function closeVoucherQuizModal() {
+    if (vqModal) vqModal.classList.remove('active');
+  }
+
+  if (btnOpenQuiz1) btnOpenQuiz1.addEventListener('click', openVoucherQuizModal);
+  if (btnOpenQuiz2) btnOpenQuiz2.addEventListener('click', openVoucherQuizModal);
+  if (btnCloseQuiz) btnCloseQuiz.addEventListener('click', closeVoucherQuizModal);
+  if (vqModal) {
+    vqModal.addEventListener('click', (e) => {
+      if (e.target === vqModal) closeVoucherQuizModal();
+    });
+  }
+
+  if (btnVqNextQuestion) {
+    btnVqNextQuestion.addEventListener('click', () => {
+      vqState.idx++;
+      renderVqQuestion();
+    });
+  }
+
+  if (btnVqRestartMid) {
+    btnVqRestartMid.addEventListener('click', openVoucherQuizModal);
+  }
+
+  if (btnVqPlayAgain) {
+    btnVqPlayAgain.addEventListener('click', openVoucherQuizModal);
+  }
+
+  if (btnVqClaimReward) {
+    btnVqClaimReward.addEventListener('click', () => {
+      if (vqState.unlockedCode && typeof window.applyMURewardVoucher === 'function') {
+        window.applyMURewardVoucher(vqState.unlockedCode);
+      }
+      closeVoucherQuizModal();
+    });
+  }
+
+  // -------------------- GAME 2: MOSCOW 2008 PENALTY SHOOTOUT WITH RONALDO --------------------
+  const penModal = document.getElementById('penaltyGameModal');
+  const btnOpenPen = document.getElementById('btnOpenPenaltyGame');
+  const btnClosePen = document.getElementById('btnClosePenaltyGame');
+
+  const penDotsStrip = document.getElementById('penDotsStrip');
+  const penShotCounter = document.getElementById('penShotCounter');
+  const penGoalCounter = document.getElementById('penGoalCounter');
+  const penStadiumStage = document.getElementById('penStadiumStage');
+  const penRainCanvas = document.getElementById('penRainCanvas');
+  const penCommentary = document.getElementById('penCommentary');
+  const penGoalkeeper = document.getElementById('penGoalkeeper');
+  const penBall = document.getElementById('penBall');
+  const penRonaldoFigure = document.getElementById('penRonaldoFigure');
+  const penControlsFooter = document.getElementById('penControlsFooter');
+  const penResultBox = document.getElementById('penResultBox');
+  const penResultBadge = document.getElementById('penResultBadge');
+  const penResultTitle = document.getElementById('penResultTitle');
+  const penResultDesc = document.getElementById('penResultDesc');
+  const btnPenPlayAgain = document.getElementById('btnPenPlayAgain');
+  const btnPenClaimReward = document.getElementById('btnPenClaimReward');
+
+  const penTargetZones = document.querySelectorAll('.pen-target-zone');
+  const penQuickBtns = document.querySelectorAll('.pen-shot-btn');
+
+  const TOTAL_PENALTY_SHOTS = 10;
+  const WIN_GOALS_REQUIRED = 5;
+
+  let penState = {
+    shotIdx: 0,
+    goals: 0,
+    isShooting: false,
+    results: new Array(TOTAL_PENALTY_SHOTS).fill(null)
+  };
+
+  // Moscow 2008 Rain Animation on Canvas
+  let rainAnimId = null;
+  function startMoscowRainCanvas() {
+    if (!penRainCanvas) return;
+    const ctx = penRainCanvas.getContext('2d');
+    if (!ctx) return;
+    penRainCanvas.width = penRainCanvas.offsetWidth || 800;
+    penRainCanvas.height = penRainCanvas.offsetHeight || 390;
+
+    const drops = Array.from({ length: 65 }, () => ({
+      x: Math.random() * penRainCanvas.width,
+      y: Math.random() * penRainCanvas.height,
+      len: 10 + Math.random() * 14,
+      speed: 7 + Math.random() * 6
+    }));
+
+    function drawRain() {
+      if (!penModal || !penModal.classList.contains('active')) {
+        rainAnimId = null;
+        return;
+      }
+      ctx.clearRect(0, 0, penRainCanvas.width, penRainCanvas.height);
+      ctx.strokeStyle = 'rgba(226, 232, 240, 0.32)';
+      ctx.lineWidth = 1.2;
+      ctx.beginPath();
+      drops.forEach(d => {
+        ctx.moveTo(d.x, d.y);
+        ctx.lineTo(d.x - 2.5, d.y + d.len);
+        d.y += d.speed;
+        d.x -= 1.2;
+        if (d.y > penRainCanvas.height) {
+          d.y = -15;
+          d.x = Math.random() * penRainCanvas.width;
+        }
+        if (d.x < 0) d.x = penRainCanvas.width;
+      });
+      ctx.stroke();
+      rainAnimId = requestAnimationFrame(drawRain);
+    }
+
+    if (!rainAnimId) {
+      rainAnimId = requestAnimationFrame(drawRain);
+    }
+  }
+
+  function renderPenScoreboard() {
+    if (penShotCounter) {
+      penShotCounter.textContent = `${Math.min(penState.shotIdx + 1, TOTAL_PENALTY_SHOTS)} / ${TOTAL_PENALTY_SHOTS}`;
+    }
+    if (penGoalCounter) {
+      penGoalCounter.textContent = `${penState.goals} / ${TOTAL_PENALTY_SHOTS}`;
+    }
+    if (penDotsStrip) {
+      penDotsStrip.innerHTML = penState.results.map((res, i) => {
+        let cls = 'pen-shot-dot';
+        let label = i + 1;
+        if (i === penState.shotIdx && res === null) cls += ' active';
+        if (res === true) {
+          cls += ' goal';
+          label = '⚽';
+        } else if (res === false) {
+          cls += ' miss';
+          label = '✕';
+        }
+        return `<span class="${cls}" title="Lượt sút ${i + 1}">${label}</span>`;
+      }).join('');
+    }
+  }
+
+  function setShotButtonsDisabled(disabled) {
+    penTargetZones.forEach(b => { b.disabled = disabled; });
+    penQuickBtns.forEach(b => { b.disabled = disabled; });
+  }
+
+  function resetPitchPositions() {
+    if (penGoalkeeper) penGoalkeeper.className = 'pen-goalkeeper';
+    if (penBall) penBall.className = 'pen-ball';
+    if (penRonaldoFigure) penRonaldoFigure.className = 'pen-ronaldo-figure';
+    setShotButtonsDisabled(false);
+  }
+
+  function startPenaltyGame() {
+    penState = {
+      shotIdx: 0,
+      goals: 0,
+      isShooting: false,
+      results: new Array(TOTAL_PENALTY_SHOTS).fill(null)
+    };
+    if (penStadiumStage) penStadiumStage.style.display = 'flex';
+    if (penControlsFooter) penControlsFooter.style.display = 'block';
+    if (penResultBox) penResultBox.style.display = 'none';
+    if (penCommentary) {
+      penCommentary.textContent = '🌧️ Đêm mưa Moscow 2008: Chọn 1 trong 6 góc khung thành bên dưới để Ronaldo #7 tung cú sút! (Vào ≥ 5/10 quả là THẮNG)';
+    }
+    resetPitchPositions();
+    renderPenScoreboard();
+    setTimeout(startMoscowRainCanvas, 60);
+  }
+
+  function handlePenaltyShot(zoneIndex) {
+    if (penState.isShooting || penState.shotIdx >= TOTAL_PENALTY_SHOTS) return;
+    penState.isShooting = true;
+    setShotButtonsDisabled(true);
+
+    // Goalkeeper AI: 6 zones (0..5). Keeper dives to a zone.
+    // Give player a fun ~65% scoring chance on each shot so scoring 5/10 is exciting and achievable!
+    let gkZone;
+    if (Math.random() < 0.35) {
+      gkZone = zoneIndex; // Keeper guessed right
+    } else {
+      const otherZones = [0, 1, 2, 3, 4, 5].filter(z => z !== zoneIndex);
+      gkZone = otherZones[Math.floor(Math.random() * otherZones.length)];
+    }
+
+    const isGoal = zoneIndex !== gkZone;
+
+    // Trigger Ronaldo run-up, ball flight & goalkeeper dive
+    if (penRonaldoFigure) penRonaldoFigure.classList.add('kicking');
+    if (penBall) penBall.className = `pen-ball shot-${zoneIndex}`;
+    if (penGoalkeeper) penGoalkeeper.className = `pen-goalkeeper dive-${gkZone}`;
+
+    const zoneNames = [
+      'Góc Cao Trái',
+      'Panenka Giữa Khung Thành',
+      'Góc Cao Phải',
+      'Góc Thấp Trái',
+      'Chính Giữa Khung Thành',
+      'Góc Thấp Phải'
+    ];
+
+    setTimeout(() => {
+      penState.results[penState.shotIdx] = isGoal;
+      if (isGoal) {
+        penState.goals++;
+        playTone(820, 'triangle', 0.2);
+        if (penCommentary) {
+          penCommentary.textContent = `⚽ VÀOOOOO! Lượt ${penState.shotIdx + 1}/10: Ronaldo sút tung lưới ${zoneNames[zoneIndex]}! (Đã ghi ${penState.goals}/10 bàn — Cần ≥ 5 bàn)`;
+        }
+      } else {
+        playTone(220, 'sawtooth', 0.22);
+        if (penCommentary) {
+          penCommentary.textContent = `🧤 KHÔNG VÀO! Lượt ${penState.shotIdx + 1}/10: Thủ môn đã đoán đúng hướng bay người cản phá ở ${zoneNames[gkZone]}!`;
+        }
+      }
+
+      penState.shotIdx++;
+      renderPenScoreboard();
+
+      setTimeout(() => {
+        if (penState.shotIdx >= TOTAL_PENALTY_SHOTS) {
+          showPenaltyFinalResult();
+        } else {
+          resetPitchPositions();
+          penState.isShooting = false;
+        }
+      }, 900);
+    }, 480);
+  }
+
+  function showPenaltyFinalResult() {
+    if (penControlsFooter) penControlsFooter.style.display = 'none';
+    if (penResultBox) penResultBox.style.display = 'block';
+
+    const g = penState.goals;
+    const isWin = g >= WIN_GOALS_REQUIRED;
+
+    if (isWin) {
+      if (penResultBadge) penResultBadge.textContent = `🏆 CHIẾN THẮNG MOSCOW 2008 (${g}/10 BÀN)`;
+      if (penResultTitle) penResultTitle.textContent = `XUẤT SẮC! BẠN & RONALDO ĐÃ GHI ${g}/10 BÀN VÀ VÔ ĐỊCH C1!`;
+      if (penResultDesc) {
+        penResultDesc.textContent = `Bạn đã sút vào ${g}/10 quả phạt đền (đạt mốc ≥ 5/10 quả) dưới cơn mưa Luzhniki 2008! Phần thưởng mở khóa: Mã MOSCOW08 (Giảm 50% + Miễn phí Ship Hỏa tốc + Tặng Huy hiệu Vô Địch C1 2008)!`;
+      }
+      if (btnPenClaimReward) btnPenClaimReward.style.display = 'inline-flex';
+      if (typeof fireConfetti === 'function') fireConfetti();
+    } else {
+      if (penResultBadge) penResultBadge.textContent = `🌧️ KẾT QUẢ: ${g}/10 BÀN — CHƯA ĐẠT MỐC 5 BÀN`;
+      if (penResultTitle) penResultTitle.textContent = `TIẾC QUÁ! BẠN MỚI GHI ĐƯỢC ${g}/10 QUẢ (CẦN TỐI THIỂU 5/10 QUẢ)`;
+      if (penResultDesc) {
+        penResultDesc.textContent = 'Đừng nản lòng! Hãy bấm nút "Sút Lại Loạt 10 Quả" bên dưới để cùng Ronaldo chinh phục mốc 5/10 bàn thắng và lấy quà tặng Moscow 2008!';
+      }
+      if (btnPenClaimReward) btnPenClaimReward.style.display = 'none';
+    }
+  }
+
+  function openPenaltyModal() {
+    if (!penModal) return;
+    startPenaltyGame();
+    penModal.classList.add('active');
+  }
+
+  function closePenaltyModal() {
+    if (penModal) penModal.classList.remove('active');
+  }
+
+  if (btnOpenPen) btnOpenPen.addEventListener('click', openPenaltyModal);
+  if (btnClosePen) btnClosePen.addEventListener('click', closePenaltyModal);
+  if (penModal) {
+    penModal.addEventListener('click', (e) => {
+      if (e.target === penModal) closePenaltyModal();
+    });
+  }
+
+  penTargetZones.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const z = parseInt(btn.getAttribute('data-zone'), 10);
+      handlePenaltyShot(z);
+    });
+  });
+
+  penQuickBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const z = parseInt(btn.getAttribute('data-zone'), 10);
+      handlePenaltyShot(z);
+    });
+  });
+
+  if (btnPenPlayAgain) {
+    btnPenPlayAgain.addEventListener('click', startPenaltyGame);
+  }
+
+  if (btnPenClaimReward) {
+    btnPenClaimReward.addEventListener('click', () => {
+      if (typeof window.applyMURewardVoucher === 'function') {
+        window.applyMURewardVoucher('MOSCOW08');
+      }
+      closePenaltyModal();
+    });
   }
 }
 
@@ -2777,10 +3741,19 @@ document.addEventListener('DOMContentLoaded', () => {
   setupShopFilters();
   setupCartListeners();
   setupCheckoutListeners();
-  setupTrackingListeners();
+  setupCheckoutMinigames();
   setupSizeGuideListeners();
   setupSoundListeners();
-  setupHistoryListeners();
+
+  // Delegate [data-open-product] clicks (e.g., from History 2008 page to Retro 2008 product detail)
+  document.addEventListener('click', (e) => {
+    const openProdBtn = e.target.closest('[data-open-product]');
+    if (openProdBtn) {
+      e.preventDefault();
+      const prodId = openProdBtn.getAttribute('data-open-product');
+      navigateTo('product-detail', { id: prodId });
+    }
+  });
 
   // Render initial views
   renderCatalog();
@@ -2788,7 +3761,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Check URL hash for direct links (e.g. #shop, #customizer, #cart, #checkout, #history)
   const hash = window.location.hash.replace('#', '');
-  if (['home', 'shop', 'cart', 'checkout', 'tracking', 'history'].includes(hash)) {
+  if (['home', 'shop', 'customizer', 'cart', 'checkout', 'history'].includes(hash)) {
     navigateTo(hash);
   } else {
     navigateTo('home');
@@ -2802,5 +3775,9 @@ document.addEventListener('DOMContentLoaded', () => {
       baseOrders += Math.floor(Math.random() * 2);
       counterEl.textContent = new Intl.NumberFormat('vi-VN').format(baseOrders) + '+';
     }, 12000);
+  }
+
+  if (window.MotionPrimitives) {
+    window.MotionPrimitives.init(document);
   }
 });
