@@ -5,34 +5,34 @@
 
 :root {
   --color-mu-red: #DA291C;
-  --color-mu-red-light: #FF3B30;
+  --color-mu-red-light: #C62828;
   --color-mu-red-dark: #8B0B0B;
   --color-mu-red-glow: rgba(218, 41, 28, 0.45);
   
-  --color-gold: #FFE500;
-  --color-gold-metallic: #C8A45D;
+  --color-gold: #8A6500;
+  --color-gold-metallic: #80621F;
   --color-gold-glow: rgba(200, 164, 93, 0.4);
 
-  --color-bg-base: #0A0A0D;
-  --color-bg-surface: #f0f1f3;
-  --color-bg-card: #181922;
-  --color-bg-card-hover: #21222E;
-  --color-bg-glass: rgba(24, 25, 34, 0.85);
+  --color-bg-base: #f0f1f3;
+  --color-bg-surface: #ffffff;
+  --color-bg-card: #ffffff;
+  --color-bg-card-hover: #f7f8fa;
+  --color-bg-glass: rgba(255, 255, 255, 0.92);
 
-  --color-border: #2A2B38;
+  --color-border: #d7d9df;
   --color-border-focus: #DA291C;
   
-  --color-text-main: #FFFFFF;
-  --color-text-muted: #9E9EB2;
-  --color-text-subtle: #68697D;
+  --color-text-main: #292a32;
+  --color-text-muted: #565762;
+  --color-text-subtle: #747687;
 
   --font-display: 'Oswald', sans-serif;
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --shadow-card: 0 10px 30px rgba(0, 0, 0, 0.5);
-  --shadow-red-glow: 0 0 25px rgba(218, 41, 28, 0.35);
-  --shadow-gold-glow: 0 0 25px rgba(200, 164, 93, 0.35);
+  --shadow-card: 0 10px 30px rgba(31, 41, 55, 0.12);
+  --shadow-red-glow: 0 0 25px rgba(218, 41, 28, 0.2);
+  --shadow-gold-glow: 0 0 25px rgba(128, 98, 31, 0.18);
 
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -140,7 +140,7 @@ input, select, textarea {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(10, 10, 13, 0.92);
+  background: rgba(255, 255, 255, 0.94);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
   transition: var(--transition-normal);
@@ -182,7 +182,7 @@ input, select, textarea {
   font-size: 1.6rem;
   letter-spacing: 2px;
   line-height: 1;
-  color: #FFFFFF;
+  color: var(--color-text-main);
 }
 
 .logo-subtitle {
@@ -213,13 +213,13 @@ input, select, textarea {
 }
 
 .nav-link:hover {
-  color: #fff;
-  background: rgba(255, 255, 255, 0.05);
+  color: var(--color-text-main);
+  background: rgba(41, 42, 50, 0.05);
 }
 
 .nav-link.active {
-  color: #fff;
-  background: linear-gradient(135deg, rgba(218, 41, 28, 0.3) 0%, rgba(218, 41, 28, 0.1) 100%);
+  color: #b42318;
+  background: linear-gradient(135deg, rgba(218, 41, 28, 0.12) 0%, rgba(218, 41, 28, 0.04) 100%);
   border: 1px solid rgba(218, 41, 28, 0.4);
   box-shadow: 0 0 15px rgba(218, 41, 28, 0.2);
 }
@@ -253,7 +253,7 @@ input, select, textarea {
   justify-content: center;
   background: var(--color-bg-card);
   border: 1px solid var(--color-border);
-  color: #fff;
+  color: var(--color-text-main);
   font-size: 1.05rem;
   position: relative;
   transition: var(--transition-fast);
@@ -303,7 +303,7 @@ input, select, textarea {
 .mobile-toggle {
   display: none;
   font-size: 1.3rem;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 /* Quick Search Overlay */
@@ -313,7 +313,7 @@ input, select, textarea {
   color: #292a32;
   border-bottom: 1px solid var(--color-border);
   padding: 16px 0;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  box-shadow: 0 10px 30px rgba(31, 41, 55, 0.12);
 }
 
 .search-overlay.open {
@@ -341,7 +341,7 @@ input, select, textarea {
   background: transparent;
   border: none;
   padding: 12px 0;
-  color: #fff;
+  color: var(--color-text-main);
   font-size: 0.95rem;
   outline: none;
 }
@@ -362,7 +362,7 @@ input, select, textarea {
   padding: 4px 10px;
   border-radius: var(--radius-pill);
   font-size: 0.8rem;
-  color: #ddd;
+  color: var(--color-text-main);
 }
 
 .tag-btn:hover {
@@ -373,8 +373,8 @@ input, select, textarea {
 
 /* Breadcrumbs Bar */
 .breadcrumbs-bar {
-  background: rgba(18, 19, 24, 0.6);
-  border-bottom: 1px solid rgba(42, 43, 56, 0.5);
+  background: rgba(255, 255, 255, 0.75);
+  border-bottom: 1px solid var(--color-border);
   padding: 8px 0;
   font-size: 0.82rem;
   color: var(--color-text-muted);
@@ -493,7 +493,7 @@ input, select, textarea {
   display: block;
   line-height: 1.3;
   padding: 0.14em 0 0.18em;
-  background: linear-gradient(90deg, #FFFFFF 0%, #DA291C 60%, #FFA29E 100%);
+  background: linear-gradient(90deg, #292a32 0%, #DA291C 60%, #8B0B0B 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
@@ -522,7 +522,7 @@ input, select, textarea {
   border-radius: var(--radius-sm);
   font-size: 0.82rem;
   font-weight: 500;
-  color: #e0e0e0;
+  color: var(--color-text-main);
 }
 
 .chip i {
@@ -564,19 +564,19 @@ input, select, textarea {
 
 .btn-secondary {
   background: var(--color-bg-card);
-  color: #FFFFFF;
+  color: var(--color-text-main);
   border: 1px solid var(--color-border);
 }
 
 .btn-secondary:hover {
   background: var(--color-bg-card-hover);
-  border-color: #fff;
+  border-color: #9da1ad;
   transform: translateY(-2px);
 }
 
 .btn-outline {
   background: transparent;
-  color: #FFFFFF;
+  color: var(--color-text-main);
   border: 1px solid var(--color-border);
 }
 
@@ -812,7 +812,7 @@ input, select, textarea {
 .product-card:hover {
   transform: translateY(-6px);
   border-color: rgba(218, 41, 28, 0.6);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 12px 30px rgba(31, 41, 55, 0.16);
 }
 
 .p-card-badge {
@@ -937,13 +937,13 @@ input, select, textarea {
   gap: 8px;
   margin-top: auto;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
 }
 
 .p-current-price {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #FFFFFF;
+  color: var(--color-text-main);
 }
 
 .p-old-price {
@@ -988,9 +988,9 @@ input, select, textarea {
 }
 
 .sound-pill-btn {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(41, 42, 50, 0.04);
   border: 1px solid var(--color-border);
-  color: #fff;
+  color: var(--color-text-main);
   padding: 12px 20px;
   border-radius: var(--radius-pill);
   font-size: 0.9rem;
@@ -1032,7 +1032,7 @@ input, select, textarea {
 
 .review-quote {
   font-size: 0.9rem;
-  color: #dedede;
+  color: var(--color-text-muted);
   font-style: italic;
   line-height: 1.5;
   margin-bottom: 20px;
@@ -1065,7 +1065,7 @@ input, select, textarea {
 
 .reviewer-tag {
   font-size: 0.75rem;
-  color: #4cd964;
+  color: #167a3c;
 }
 
 /* ==================== VIEW 2: SHOP / CATALOG PAGE ==================== */
@@ -1114,8 +1114,8 @@ input, select, textarea {
   align-items: center;
   gap: 8px;
   margin-bottom: 16px;
-  color: #fff;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+  color: var(--color-text-main);
+  border-bottom: 1px solid var(--color-border);
   padding-bottom: 10px;
 }
 
@@ -1139,8 +1139,8 @@ input, select, textarea {
 }
 
 .filter-link:hover, .filter-link.active {
-  background: rgba(218, 41, 28, 0.15);
-  color: #fff;
+  background: rgba(218, 41, 28, 0.08);
+  color: #b42318;
 }
 
 .filter-link.active {
@@ -1149,7 +1149,7 @@ input, select, textarea {
 }
 
 .badge-count {
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(41, 42, 50, 0.06);
   padding: 2px 7px;
   border-radius: var(--radius-pill);
   font-size: 0.72rem;
@@ -1508,7 +1508,7 @@ input, select, textarea {
   grid-template-columns: 2.5fr 1fr 1fr 1fr 0.5fr;
   align-items: center;
   padding: 20px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .cart-row-item:last-child {
@@ -1540,7 +1540,7 @@ input, select, textarea {
 
 .c-item-details h5 {
   font-size: 0.95rem;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 4px;
 }
 
@@ -1571,7 +1571,7 @@ input, select, textarea {
   display: flex;
   align-items: center;
   justify-content: center;
-  color: #fff;
+  color: var(--color-text-main);
   font-size: 0.85rem;
 }
 
@@ -1666,11 +1666,11 @@ input, select, textarea {
 }
 
 .voucher-success {
-  color: #4cd964;
+  color: #167a3c;
 }
 
 .voucher-error {
-  color: #ff3b30;
+  color: #b42318;
 }
 
 .cart-drawer .voucher-success {
@@ -1691,7 +1691,7 @@ input, select, textarea {
 }
 
 .coupon-chip {
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(41, 42, 50, 0.04);
   border: 1px dashed var(--color-border);
   padding: 2px 8px;
   border-radius: 4px;
@@ -1716,13 +1716,13 @@ input, select, textarea {
 }
 
 .summary-line strong {
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .summary-line.total {
   font-size: 1.15rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--color-text-main);
   margin-top: 4px;
 }
 
@@ -1937,12 +1937,12 @@ input, select, textarea {
   justify-content: space-between;
   font-size: 0.85rem;
   padding-bottom: 10px;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+  border-bottom: 1px solid var(--color-border);
 }
 
 .chk-item-info strong {
   display: block;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .chk-item-info span {
@@ -1968,7 +1968,7 @@ input, select, textarea {
 .total-row.final {
   font-size: 1.2rem;
   font-weight: 800;
-  color: #fff;
+  color: var(--color-text-main);
   margin-top: 6px;
 }
 
@@ -1992,7 +1992,7 @@ input, select, textarea {
   flex: 1;
   background: transparent;
   border: none;
-  color: #fff;
+  color: var(--color-text-main);
   font-size: 1rem;
   outline: none;
 }
@@ -2094,8 +2094,8 @@ input, select, textarea {
 }
 
 .timeline-step.completed .step-icon {
-  background: #4cd964;
-  border-color: #4cd964;
+  background: #167a3c;
+  border-color: #167a3c;
   color: #fff;
 }
 
@@ -2109,7 +2109,7 @@ input, select, textarea {
 .step-content strong {
   display: block;
   font-size: 0.95rem;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .step-content span {
@@ -2138,14 +2138,14 @@ input, select, textarea {
   align-items: center;
   margin-top: 12px;
   padding-top: 10px;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
   font-weight: 700;
 }
 
 /* ==================== VIEW 8: LỊCH SỬ & CÁC ĐỜI HLV (HISTORY & MANAGERS VIEW) ==================== */
 .history-hero-banner {
   position: relative;
-  background: radial-gradient(circle at 50% 20%, rgba(218, 41, 28, 0.16) 0%, rgba(10, 10, 13, 0.98) 75%), var(--color-bg-base);
+  background: radial-gradient(circle at 50% 20%, rgba(218, 41, 28, 0.08) 0%, rgba(255, 255, 255, 0.96) 75%), var(--color-bg-base);
   padding: 80px 0 60px;
   overflow: hidden;
   border-bottom: 1px solid var(--color-border);
@@ -2205,7 +2205,7 @@ input, select, textarea {
   align-items: center;
   gap: 8px;
   padding: 10px 20px;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(41, 42, 50, 0.04);
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   color: var(--color-text-main);
@@ -2296,7 +2296,7 @@ input, select, textarea {
   width: 56px;
   height: 56px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(41, 42, 50, 0.04);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -2338,7 +2338,7 @@ input, select, textarea {
   font-size: 0.9rem;
   color: var(--color-text-muted);
   line-height: 1.6;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  border-top: 1px solid var(--color-border);
   padding-top: 12px;
 }
 
@@ -2354,7 +2354,7 @@ input, select, textarea {
 .t-filter-btn {
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
   font-size: 0.88rem;
@@ -2471,7 +2471,7 @@ input, select, textarea {
   letter-spacing: 1px;
   padding: 3px 10px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(41, 42, 50, 0.05);
   color: var(--color-text-muted);
   margin-bottom: 10px;
 }
@@ -2488,7 +2488,7 @@ input, select, textarea {
 
 .t-tag.tragedy-tag {
   background: rgba(255, 59, 48, 0.15);
-  color: #ff3b30;
+  color: #b42318;
 }
 
 .timeline-card h3 {
@@ -2496,7 +2496,7 @@ input, select, textarea {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 10px;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .timeline-card p {
@@ -2535,7 +2535,7 @@ input, select, textarea {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-pill);
   padding: 13px 20px 13px 48px;
-  color: #fff;
+  color: var(--color-text-main);
   font-size: 0.95rem;
   outline: none;
   transition: var(--transition-fast);
@@ -2556,7 +2556,7 @@ input, select, textarea {
 .m-pill {
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.04);
+  background: #ffffff;
   border: 1px solid var(--color-border);
   color: var(--color-text-muted);
   font-size: 0.85rem;
@@ -2565,7 +2565,7 @@ input, select, textarea {
 }
 
 .m-pill:hover {
-  color: #fff;
+  color: var(--color-text-main);
   border-color: rgba(218, 41, 28, 0.4);
   transform: translateY(-2px);
 }
@@ -2627,7 +2627,7 @@ input, select, textarea {
   width: 52px;
   height: 52px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(41, 42, 50, 0.05);
   border: 2px solid var(--color-border);
   display: flex;
   align-items: center;
@@ -2655,7 +2655,7 @@ input, select, textarea {
   font-family: var(--font-heading);
   font-size: 1.15rem;
   font-weight: 700;
-  color: #fff;
+  color: var(--color-text-main);
   line-height: 1.25;
   margin-bottom: 4px;
 }
@@ -2692,14 +2692,14 @@ input, select, textarea {
 }
 
 .badge-classic {
-  background: rgba(255, 255, 255, 0.06);
+  background: rgba(41, 42, 50, 0.05);
   color: var(--color-text-muted);
   border: 1px solid var(--color-border);
 }
 
 .badge-postsaf {
   background: rgba(100, 149, 237, 0.12);
-  color: #8da4ef;
+  color: #3b5da8;
   border: 1px solid rgba(100, 149, 237, 0.25);
 }
 
@@ -2707,8 +2707,8 @@ input, select, textarea {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 8px;
-  background: rgba(0, 0, 0, 0.25);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  background: #f5f6f8;
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-sm);
   padding: 10px;
   margin-bottom: 14px;
@@ -2718,7 +2718,7 @@ input, select, textarea {
 .mgr-stat-val {
   font-family: var(--font-display);
   font-size: 1.15rem;
-  color: #fff;
+  color: var(--color-text-main);
   letter-spacing: 0.5px;
 }
 
@@ -2754,8 +2754,8 @@ input, select, textarea {
   font-size: 0.75rem;
   padding: 3px 8px;
   border-radius: 4px;
-  background: rgba(255, 255, 255, 0.05);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(41, 42, 50, 0.04);
+  border: 1px solid var(--color-border);
   color: var(--color-text-muted);
 }
 
@@ -2768,7 +2768,7 @@ input, select, textarea {
   font-size: 0.86rem;
   color: var(--color-text-muted);
   line-height: 1.55;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
   padding-top: 12px;
 }
 
@@ -2813,7 +2813,7 @@ input, select, textarea {
   font-size: 1.15rem;
   font-weight: 700;
   margin-bottom: 12px;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .heritage-card p {
@@ -2854,7 +2854,7 @@ input, select, textarea {
 .quiz-progress-bar {
   width: 100%;
   height: 8px;
-  background: rgba(255, 255, 255, 0.08);
+  background: #e4e6eb;
   border-radius: var(--radius-pill);
   overflow: hidden;
   margin-bottom: 25px;
@@ -2872,7 +2872,7 @@ input, select, textarea {
   font-weight: 700;
   margin-bottom: 20px;
   line-height: 1.5;
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .quiz-options {
@@ -2886,7 +2886,7 @@ input, select, textarea {
   align-items: center;
   padding: 14px 18px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.03);
+  background: #ffffff;
   border: 1px solid var(--color-border);
   color: var(--color-text-main);
   text-align: left;
@@ -2904,14 +2904,14 @@ input, select, textarea {
 
 .quiz-option-btn.correct {
   background: rgba(76, 217, 100, 0.15) !important;
-  border-color: #4cd964 !important;
-  color: #4cd964 !important;
+  border-color: #167a3c !important;
+  color: #167a3c !important;
 }
 
 .quiz-option-btn.wrong {
   background: rgba(255, 59, 48, 0.15) !important;
-  border-color: #ff3b30 !important;
-  color: #ff3b30 !important;
+  border-color: #b42318 !important;
+  color: #b42318 !important;
 }
 
 .quiz-option-btn:disabled {
@@ -2925,7 +2925,7 @@ input, select, textarea {
   width: 30px;
   height: 30px;
   border-radius: 50%;
-  background: rgba(255, 255, 255, 0.08);
+  background: #f0f1f3;
   font-weight: 700;
   font-size: 0.85rem;
   margin-right: 14px;
@@ -2933,12 +2933,12 @@ input, select, textarea {
 }
 
 .quiz-option-btn.correct .quiz-option-letter {
-  background: #4cd964;
-  color: #000;
+  background: #167a3c;
+  color: #fff;
 }
 
 .quiz-option-btn.wrong .quiz-option-letter {
-  background: #ff3b30;
+  background: #b42318;
   color: #fff;
 }
 
@@ -2953,13 +2953,13 @@ input, select, textarea {
 .quiz-feedback.correct {
   background: rgba(76, 217, 100, 0.1);
   border: 1px solid rgba(76, 217, 100, 0.3);
-  color: #7fe390;
+  color: #167a3c;
 }
 
 .quiz-feedback.wrong {
   background: rgba(255, 59, 48, 0.1);
   border: 1px solid rgba(255, 59, 48, 0.3);
-  color: #ff8580;
+  color: #b42318;
 }
 
 .quiz-actions {
@@ -3051,7 +3051,7 @@ input, select, textarea {
   display: flex;
   flex-direction: column;
   transition: var(--transition-normal);
-  box-shadow: -10px 0 30px rgba(0, 0, 0, 0.7);
+  box-shadow: -10px 0 30px rgba(31, 41, 55, 0.18);
 }
 
 .cart-drawer.active {
@@ -3078,7 +3078,7 @@ input, select, textarea {
 }
 
 .drawer-close:hover {
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .free-shipping-bar-wrap {
@@ -3203,7 +3203,7 @@ input, select, textarea {
 }
 
 .modal-close:hover {
-  color: #fff;
+  color: var(--color-text-main);
 }
 
 .modal-header {
@@ -3271,7 +3271,7 @@ input, select, textarea {
   padding: 4px 10px;
   border-radius: var(--radius-pill);
   font-size: 0.75rem;
-  color: #ccc;
+  color: var(--color-text-main);
 }
 
 .fit-btn.active {
@@ -3349,8 +3349,8 @@ input, select, textarea {
   height: 80px;
   border-radius: 50%;
   background: rgba(76, 217, 100, 0.15);
-  border: 2px solid #4cd964;
-  color: #4cd964;
+  border: 2px solid #167a3c;
+  color: #167a3c;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -3423,7 +3423,7 @@ input, select, textarea {
   border-bottom: 1px solid var(--color-border);
   padding: 14px 20px;
   border-radius: var(--radius-sm);
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 10px 25px rgba(31, 41, 55, 0.16);
   display: flex;
   align-items: center;
   gap: 12px;
@@ -3478,7 +3478,7 @@ input, select, textarea {
 
 /* Footer */
 .site-footer {
-  background: #060608;
+  background: #ffffff;
   padding: 60px 0 0;
   border-top: 1px solid var(--color-border);
 }
@@ -3523,7 +3523,7 @@ input, select, textarea {
   font-size: 0.88rem;
   font-weight: 700;
   letter-spacing: 1px;
-  color: #fff;
+  color: var(--color-text-main);
   margin-bottom: 18px;
 }
 
@@ -3578,7 +3578,7 @@ input, select, textarea {
 
 .store-badge-verified {
   font-size: 0.72rem;
-  color: #4cd964;
+  color: #167a3c;
   font-weight: 700;
   display: flex;
   align-items: center;
@@ -3586,7 +3586,7 @@ input, select, textarea {
 }
 
 .footer-bottom {
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
   padding: 20px 0;
   font-size: 0.78rem;
   color: var(--color-text-subtle);
@@ -3757,7 +3757,7 @@ input, select, textarea {
 .player-chip-btn {
   padding: 4px 10px;
   border-radius: var(--radius-pill);
-  background: rgba(255, 255, 255, 0.05);
+  background: rgba(41, 42, 50, 0.04);
   border: 1px solid var(--color-border);
   color: var(--color-text-main);
   font-size: 0.8rem;
@@ -3772,7 +3772,7 @@ input, select, textarea {
 }
 
 .p-detail-custom-box .player-chip-btn {
-  background: rgba(255, 255, 255, 0.55);
+  background: #f0f1f3;
   color: #292a32;
 }
 
@@ -3792,10 +3792,10 @@ input, select, textarea {
   min-width: 48px;
   min-height: 44px;
   padding: 8px 14px;
-  border: 1px solid #5b5c6b;
+  border: 1px solid #c5c8d0;
   border-radius: var(--radius-sm);
-  background: #242530;
-  color: #f2f2f5;
+  background: #ffffff;
+  color: #292a32;
   font-size: 0.95rem;
   font-weight: 700;
   line-height: 1.2;
@@ -3829,14 +3829,14 @@ input, select, textarea {
   border: 1px solid rgba(255, 91, 82, 0.65);
   border-radius: var(--radius-sm);
   background: rgba(218, 41, 28, 0.12);
-  color: #ff817a;
+  color: #b42318;
   font-size: 0.82rem;
   font-weight: 600;
 }
 
 .size-advisor-btn:hover {
   background: rgba(218, 41, 28, 0.24);
-  color: #ffaaa5;
+  color: #8b0b0b;
 }
 
 /* ==========================================================================

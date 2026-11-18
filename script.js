@@ -710,7 +710,7 @@ function renderShopProducts(productsList) {
   if (shopGrid) {
     if (productsList.length === 0) {
       shopGrid.innerHTML = `
-        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: #888;">
+        <div style="grid-column: 1 / -1; text-align: center; padding: 60px 20px; color: var(--color-text-muted);">
           <i class="fa-solid fa-shirt" style="font-size: 3rem; margin-bottom: 16px; opacity: 0.5;"></i>
           <h3>Không tìm thấy mẫu áo đấu phù hợp</h3>
           <p>Thử tìm kiếm với từ khóa khác hoặc điều chỉnh bộ lọc giá.</p>
@@ -866,13 +866,13 @@ function renderProductDetail(productId) {
           ${renderRatingStars(prod.rating)}
         </span>
         <span class="rating-count">(${prod.reviewsCount} Đánh giá từ Manucian)</span>
-        <span class="stock-tag" style="color: #4cd964;"><i class="fa-solid fa-circle-check"></i> Còn hàng sẵn giao</span>
+        <span class="stock-tag" style="color: #167a3c;"><i class="fa-solid fa-circle-check"></i> Còn hàng sẵn giao</span>
       </div>
 
       <div class="p-detail-price-box">
         <span class="p-detail-current-price" id="detailCalculatedPrice">${formatVND(prod.playerPrice)}</span>
         <span class="p-detail-old-price">${formatVND(prod.oldPrice)}</span>
-        <span class="discount-tag" style="background: rgba(218,41,28,0.2); color: #ff3b30; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem;">
+        <span class="discount-tag" style="background: rgba(218,41,28,0.1); color: #b42318; padding: 2px 8px; border-radius: 4px; font-weight: 700; font-size: 0.8rem;">
           TIẾT KIỆM ${formatVND(prod.oldPrice - prod.playerPrice)}
         </span>
       </div>
@@ -885,11 +885,11 @@ function renderProductDetail(productId) {
         <div class="p-detail-row">
           <div class="input-group">
             <label>TÊN IN TRÊN ÁO:</label>
-            <input type="text" id="detailInputName" value="BRUNO" maxlength="12" style="background:#111; color:#fff; border:1px solid #333; padding:8px 12px; border-radius:4px; font-weight:700; width:100%; text-transform:uppercase;">
+            <input type="text" id="detailInputName" value="BRUNO" maxlength="12" style="background:var(--color-bg-surface); color:var(--color-text-main); border:1px solid var(--color-border); padding:8px 12px; border-radius:4px; font-weight:700; width:100%; text-transform:uppercase;">
           </div>
           <div class="input-group">
             <label>SỐ ÁO:</label>
-            <input type="number" id="detailInputNumber" value="8" min="1" max="99" style="background:#111; color:#fff; border:1px solid #333; padding:8px 12px; border-radius:4px; font-weight:700; width:100%;">
+            <input type="number" id="detailInputNumber" value="8" min="1" max="99" style="background:var(--color-bg-surface); color:var(--color-text-main); border:1px solid var(--color-border); padding:8px 12px; border-radius:4px; font-weight:700; width:100%;">
           </div>
         </div>
 
@@ -904,7 +904,7 @@ function renderProductDetail(productId) {
 
         <div style="display:flex; justify-content:space-between; align-items:center; margin-top:12px;">
           <label class="p-detail-badge-label">Huy hiệu tay áo:</label>
-          <select id="detailSelectBadge" style="background:#111; color:#fff; border:1px solid #333; padding:6px 10px; border-radius:4px; font-size:0.85rem;">
+          <select id="detailSelectBadge" style="background:var(--color-bg-surface); color:var(--color-text-main); border:1px solid var(--color-border); padding:6px 10px; border-radius:4px; font-size:0.85rem;">
             <option value="pl" selected>🦁 Ngoại Hạng Anh (+80K)</option>
             <option value="ucl">⭐ UEFA Champions League (+120K)</option>
             <option value="none">✖ Không gắn huy hiệu (+0đ)</option>
@@ -1328,7 +1328,7 @@ function renderFullCartPage() {
 
   if (state.cart.length === 0) {
     container.innerHTML = `
-      <div style="text-align: center; padding: 50px 20px; color: #4A4640;">
+      <div style="text-align: center; padding: 50px 20px; color: var(--color-text-muted);">
         <i class="fa-solid fa-shirt" style="font-size: 2.5rem; margin-bottom: 12px; opacity: 0.45;"></i>
         <h3>Giỏ hàng của bạn đang trống</h3>
         <p>Hãy tham quan bộ sưu tập áo đấu và đồ cổ vũ chính hãng của CLB.</p>
@@ -1554,7 +1554,7 @@ function renderCheckoutView() {
 
   if (itemsContainer) {
     if (state.cart.length === 0) {
-      itemsContainer.innerHTML = '<p style="color:#524E48; font-size:0.88rem; font-weight:500;">Giỏ hàng trống.</p>';
+      itemsContainer.innerHTML = '<p style="color:var(--color-text-muted); font-size:0.88rem; font-weight:500;">Giỏ hàng trống.</p>';
     } else {
       itemsContainer.innerHTML = state.cart.map(item => `
         <div class="chk-item">
@@ -2522,9 +2522,9 @@ function showToast(message, type = 'info') {
   toast.className = 'toast';
 
   const icons = {
-    success: '<i class="fa-solid fa-circle-check" style="color: #4cd964; font-size: 1.1rem;"></i>',
-    error: '<i class="fa-solid fa-circle-xmark" style="color: #ff3b30; font-size: 1.1rem;"></i>',
-    info: '<i class="fa-solid fa-circle-info" style="color: #FFE500; font-size: 1.1rem;"></i>'
+    success: '<i class="fa-solid fa-circle-check" style="color: #167a3c; font-size: 1.1rem;"></i>',
+    error: '<i class="fa-solid fa-circle-xmark" style="color: #b42318; font-size: 1.1rem;"></i>',
+    info: '<i class="fa-solid fa-circle-info" style="color: #80621f; font-size: 1.1rem;"></i>'
   };
 
   toast.innerHTML = `
