@@ -4,35 +4,36 @@
 ========================================================= */
 
 :root {
-  --color-mu-red: #DA291C;
-  --color-mu-red-light: #C62828;
-  --color-mu-red-dark: #8B0B0B;
-  --color-mu-red-glow: rgba(218, 41, 28, 0.45);
+  --color-mu-red: #C8102E;
+  --color-mu-red-light: #E01E37;
+  --color-mu-red-dark: #9E0B22;
+  --color-mu-red-glow: rgba(200, 16, 46, 0.3);
   
-  --color-gold: #8A6500;
-  --color-gold-metallic: #80621F;
-  --color-gold-glow: rgba(200, 164, 93, 0.4);
+  --color-gold: #D4AF37;
+  --color-gold-metallic: #9A7228;
+  --color-gold-glow: rgba(154, 114, 40, 0.2);
 
-  --color-bg-base: #f0f1f3;
-  --color-bg-surface: #ffffff;
+  --color-bg-base: #FAF7F2;
+  --color-bg-surface: #F2ECE4;
   --color-bg-card: #ffffff;
-  --color-bg-card-hover: #f7f8fa;
-  --color-bg-glass: rgba(255, 255, 255, 0.92);
+  --color-bg-card-hover: #F7F3EC;
+  --color-bg-glass: rgba(250, 247, 242, 0.94);
 
-  --color-border: #d7d9df;
-  --color-border-focus: #DA291C;
+  --color-border: #DFD8CE;
+  --color-border-strong: #C5BDB0;
+  --color-border-focus: #C8102E;
   
-  --color-text-main: #292a32;
-  --color-text-muted: #565762;
-  --color-text-subtle: #747687;
+  --color-text-main: #141312;
+  --color-text-muted: #5C564F;
+  --color-text-subtle: #78716A;
 
   --font-display: 'Oswald', sans-serif;
   --font-heading: 'Inter', sans-serif;
   --font-body: 'Inter', sans-serif;
 
-  --shadow-card: 0 10px 30px rgba(31, 41, 55, 0.12);
-  --shadow-red-glow: 0 0 25px rgba(218, 41, 28, 0.2);
-  --shadow-gold-glow: 0 0 25px rgba(128, 98, 31, 0.18);
+  --shadow-card: 0 2px 8px rgba(20, 19, 18, 0.05), 0 1px 2px rgba(20, 19, 18, 0.04);
+  --shadow-red-glow: 0 0 25px rgba(200, 16, 46, 0.18);
+  --shadow-gold-glow: 0 0 25px rgba(154, 114, 40, 0.16);
 
   --radius-sm: 6px;
   --radius-md: 12px;
@@ -140,7 +141,7 @@ input, select, textarea {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(255, 255, 255, 0.94);
+  background: rgba(250, 247, 242, 0.96);
   backdrop-filter: blur(16px);
   border-bottom: 1px solid var(--color-border);
   transition: var(--transition-normal);
